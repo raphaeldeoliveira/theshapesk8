@@ -1,0 +1,69 @@
+@import "../../global/colors.scss";
+
+.login_and_register {
+    background-color: $tertiary-color;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+
+    .login_and_register__login, .login_and_register__register {
+        width: 50%;
+        h2 {
+            margin: 20px 0px;
+        }
+        input, button {
+            display: block;
+            margin: 10px 0px;
+        }
+        button {
+            border: 1px solid black;
+            padding: 15px 0px;
+            width: 70%;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        input {
+            border: 1px solid black;
+            padding: 10px;
+            width: 60%;
+        }
+    }
+
+    .login_and_register__login {
+        
+        color: $secundary-color;
+        a {
+            color: $secundary-color;
+        }
+        & > form > button:hover {
+            background-color: $secundary-color;
+            color: white;
+            transition: background-color 500ms ease, color 500ms ease;
+        }
+    }
+
+    .login_and_register__register {
+        color: $primary-color;
+        & > form > div {
+            display: flex;
+        }
+        .input--checkbox {
+            display: inline-block;
+            color: white;
+            cursor: pointer;
+            width: 22px;
+            height: 22px;
+        }
+        & > form > button:hover {
+            background-color: $primary-color;
+            color: white;
+            transition: background-color 500ms ease, color 500ms ease;
+        }
+        .checkbox__container {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+}

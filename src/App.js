@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Product from "./pages/Product";
 import Error from "./pages/Error";
 import Layout from "./components/global/Layout";
+import Search from "./pages/Search"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="product/:id" element={<Product />} />
+          <Route path="search" element={<Search />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

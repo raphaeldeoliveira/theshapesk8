@@ -1,0 +1,19 @@
+.searchPage {
+    padding: 0px 50px;
+    text-align: center;
+    background-color: black;
+    color: white;
+
+    & > h1 {
+        padding: 20px 0px;
+    }
+
+    .searchPage__grid {
+        // por enquanto flex, depois tem que implementar o grid conforme o numero
+        // de resultados que a busca retornar
+        // Teremos 3 classes de grid: 2 colunas, 3 colunas e 4 colunas e elas
+        // vao aparecer conforme o tamanho da width (usando media querys(
+        display: flex;
+        justify-content: space-evenly;
+    }
+}

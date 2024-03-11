@@ -1,0 +1,39 @@
+@import "../../global/colors.scss";
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px dashed white;
+    width: auto;
+    padding: 20px;
+    text-decoration: none;
+    margin: 26px;
+
+    & > img {
+        width: 200px;
+    }
+
+    & > h2, & > h3 {
+        color: white;
+        text-decoration: none;
+    }
+
+    & > h2 {
+        margin: 14px 0px;
+        font-size: 1.5rem;
+    }
+
+    & > h3 {
+        font-size: 1.4rem;
+    }
+
+    &:hover {
+        border: 3px dashed $secundary-color;
+
+        h2, h3 {
+            color: $secundary-color;
+        }
+    }
+}
+
