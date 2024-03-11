@@ -1,0 +1,11 @@
+.homePage {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    & > img {
+        width: 80%;
+        margin: 28px auto;
+        cursor: pointer;
+    }
+}

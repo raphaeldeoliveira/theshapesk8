@@ -1,0 +1,31 @@
+@import "../../global/colors.scss";
+
+footer {
+    background-color: $primary-color;
+    color: white;
+    display: flex;
+    align-items: center;
+
+    & > img {
+        width: 80px;
+        margin: 12px 40px;
+    }
+    
+    & > h2 {
+        font-weight: normal;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+
+        & > a {
+            color: white;
+            text-decoration: none;
+            
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+}
