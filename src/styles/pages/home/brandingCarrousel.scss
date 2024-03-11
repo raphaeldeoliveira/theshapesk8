@@ -1,0 +1,35 @@
+.brandingCarrousel {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .brand_container {
+        position: relative;
+
+        .branding_default {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            &:hover {
+                display: none;
+            }
+        }
+        .branding_hover {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            &:hover {
+                display: block;
+            }
+        }
+    }
+
+}
