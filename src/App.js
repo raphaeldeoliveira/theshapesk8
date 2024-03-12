@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Import das páginas
 import Home from "./pages/Home";
-import Register from "./pages/Register";
+import RegisterAndLogin from "./pages/RegisterAndLogin"
 import Product from "./pages/Product";
 import Error from "./pages/Error";
 import Layout from "./components/global/Layout";
@@ -15,7 +15,7 @@ function App() {
        <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="register" element={<Register />} />
+          <Route path="register" element={<RegisterAndLogin />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="search" element={<Search />} />
           <Route path="*" element={<Error />} />
