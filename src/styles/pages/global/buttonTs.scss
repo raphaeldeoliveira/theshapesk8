@@ -1,0 +1,30 @@
+.buttonTS {
+    width: 63%;
+    padding: 15px 0px;
+    border: 1px solid white;
+    color: white;
+    border-radius: 8px;
+
+    &:hover {
+        cursor: pointer;
+        transition: background-color 0.5s ease
+    }
+}
+
+.buttonTS--ff9800 {
+    @extend .buttonTS;
+    background-color: #ff9800;
+
+    &:hover {
+        background-color: darken(#ff9800, 20%)
+    }
+}
+
+.buttonTS--673ab7 {
+    @extend .buttonTS;
+    background-color: #673ab7;
+
+    &:hover {
+        background-color: darken(#673ab7, 20%)
+    }
+}

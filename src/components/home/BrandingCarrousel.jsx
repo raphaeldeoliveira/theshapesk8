@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/pages/home/brandingCarrousel.scss"
+import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa6";
 
 // import das imagens
 import alien from "../../assets/images/home/brandings/Alien-Workshop-HP-Logo-Fade.jpg"
@@ -32,16 +33,16 @@ export default function BradingCarrousel() {
 
     return (
         <div className="brandingCarrousel">
-            <h3>left button</h3>
+            <FaHandPointLeft className="branding__arrow--left"/>
             {branding.map((brand, index) => {
                 return (
-                    <div className="brand_container">
-                        <img className="branding_default" src={brand} />
-                        <img className="branding_hover" src={brandingHover[index]} />
+                    <div className="brand__container">
+                        <img className="branding__hover" src={brandingHover[index]} />
+                        <img className="branding__default" src={brand} />
                     </div>
                 )
             })}
-            <h3>right button</h3>
+            <FaHandPointRight className="branding__arrow--right" />
         </div>
     )
 }

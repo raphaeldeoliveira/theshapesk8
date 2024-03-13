@@ -15,14 +15,14 @@
             display: block;
             margin: 10px 0px;
         }
-        button {
+        /*button {
             border: 1px solid black;
             padding: 15px 0px;
             width: 70%;
             border-radius: 8px;
             font-weight: bold;
             cursor: pointer;
-        }
+        }*/
         input {
             border: 1px solid black;
             padding: 10px;
@@ -36,11 +36,11 @@
         a {
             color: $secundary-color;
         }
-        & > form > button:hover {
+        /*& > form > button:hover {
             background-color: $secundary-color;
             color: white;
             transition: background-color 500ms ease, color 500ms ease;
-        }
+        }*/
     }
 
     .login_and_register__register {
@@ -55,11 +55,11 @@
             width: 22px;
             height: 22px;
         }
-        & > form > button:hover {
+        /*& > form > button:hover {
             background-color: $primary-color;
             color: white;
             transition: background-color 500ms ease, color 500ms ease;
-        }
+        }*/
         .checkbox__container {
             display: flex;
             align-items: center;

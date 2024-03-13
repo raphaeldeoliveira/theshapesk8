@@ -1,6 +1,7 @@
 import { useState, React } from "react";
 import "../styles/pages/registerandlogin/registerandlogin.scss"
 import { Link } from "react-router-dom";
+import ButtonShape from "../components/global/ButtonShape";
 
 export default function Register() {
 
@@ -87,7 +88,7 @@ export default function Register() {
                     <input type="text" name="email" placeholder="E-mail" value={loginData.email} onChange={handleLoginInputChange}></input>
                     <input type="password" name="senha" placeholder="Senha" value={loginData.senha} onChange={handleLoginInputChange}></input>
                     <Link>Esqueci minha senha</Link>
-                    <button type="submit">ENTRAR</button>
+                    <ButtonShape type="submit" title="ENTRAR" color="ff9800"/>
                 </form>
             </div>
             <div className="login_and_register__register">
@@ -102,7 +103,7 @@ export default function Register() {
                         <input className="input--checkbox" type="checkbox"></input>
                         <label>Aceito receber promoções</label>
                     </div>
-                    <button type="submit">REGISTRAR</button>
+                    <ButtonShape type="submit" title="REGISTRAR" color="673ab7"/>
                 </form>
             </div>
         </div>
