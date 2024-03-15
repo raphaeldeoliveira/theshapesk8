@@ -1,12 +1,13 @@
 import React from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
+import { useParams } from "react-router-dom";
 
 export default function Search() {
 
-    // o h1title deve passar o array que foi colcoado no input que deve ser pego
-    // da URL
+    const { productname } = useParams()
+    // pega esse product name e manda pra API
 
     return (
-        <SearchPageGrid h1title="Busca por:" />
+        <SearchPageGrid h1title={`Busca por: ${productname}`} />
     )
 }

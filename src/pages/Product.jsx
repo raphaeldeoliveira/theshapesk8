@@ -2,14 +2,26 @@ import React from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
 import ButtonShape from "../components/global/ButtonShape";
 import "../styles/pages/product/product.scss"
+import { useParams} from "react-router-dom";
+
+import { useSelector } from "react-redux";
 
 export default function Product() {
+
+    const search = useSelector(state => state.searchReducer.search);
+    alert(`search: ${search}`)
 
     // a parte do product container esta fugindo do wireframe, mais pro site inspiração
     // isso por conta da falta de complexidade: uma foto, sem opções de cor, etc
 
+    const { id } = useParams()
+    // usa esse ID pra recuperar as informações do produto (pelo menos uma imagem
+    // com melhor resolução)
+
     const product_sizes = ["P", "M", "G"]
     // essa informação vai vim da API
+
+    const { productname } = useParams()
 
     return (
         <div>

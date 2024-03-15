@@ -22,9 +22,10 @@ export default function SearchPageGrid(props) {
         <div className="searchPage">
             <h1>{props.h1title}</h1>
             <div className="searchPage__grid">
-                {arrayDeRetornoDaBusca.map((item) => {
+                {arrayDeRetornoDaBusca.map((item, index) => {
                     return (
                         <ProductCard 
+                            id={index}
                             image={item.image}
                             name={item.name}
                             price={item.price}
