@@ -32,11 +32,29 @@
         width: 60px;
         height: 60px;
         color: gray;
+    }
 
-        &:hover {
-            color: black;
-            cursor: pointer;
+    @keyframes lefthandanimation {
+        50% {
+            transform: rotate(45deg);
         }
+    }
+    @keyframes righthandanimation {
+        50% {
+            transform: rotate(-45deg);
+        }
+    }
+
+    .branding__arrow--left:hover {
+        color: black;
+        animation: lefthandanimation 400ms ease;
+        cursor: pointer;
+    }
+
+    .branding__arrow--right:hover {
+        color: black;
+        animation: righthandanimation 400ms ease;
+        cursor: pointer;
     }
 
 }

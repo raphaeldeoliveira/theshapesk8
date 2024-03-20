@@ -46,6 +46,10 @@ header {
         height: 50px;
         margin: 20px;
         cursor: pointer;
+
+        &:hover {
+            color: darken(white, 30%);
+        }
     }
 
     .sgv--user {
