@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# The Shape Skateshop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O The Shape Skateshop é um e-commerce especializado na venda de peças, roupas e acessórios relacionados ao skate. Este projeto foi desenvolvido com o objetivo de oferecer uma plataforma onde os amantes do skate possam encontrar produtos de qualidade e fazer suas compras de forma fácil e segura.
 
-## Available Scripts
+## Funcionalidades
 
-In the project directory, you can run:
+### Para Administradores
+- Cadastro, edição e exclusão de produtos.
+- Visualização detalhada de produtos cadastrados.
+- Aplicação de descontos especiais em produtos.
+- Gerenciamento de estoque.
 
-### `npm start`
+### Para Clientes
+- Visualização de produtos disponíveis na loja.
+- Adição de produtos ao carrinho de compras.
+- Finalização de compra com desconto, quando aplicável.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tecnologias Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **React**: Framework principal para o desenvolvimento do frontend.
+- **Redux**: Ferramenta de centralização do estado da aplicação.
+- **Scss**: Linguagem de estilos, um CSS com super poderes.
+- **JS**: Linguagem de programação para criar interações com o usuario.
+- **HTML**: Linguagem de marcação de texto para estruturar o projeto.
 
-### `npm test`
+## Como Rodar o Projeto Localmente
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Para rodar o projeto localmente em sua máquina, siga os passos abaixo:
 
-### `npm run build`
+1. Clone este repositório para o seu ambiente local.
+2. Abra o projeto no Visual Studio Code.
+3. roda 'npm install' para instalar as dependencias do node.
+4. rode 'npm start' para abrir o servidor de desenvolvimento e visualizar o site no navegador na porta 3000 (`http://localhost:3000`).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Autor
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Este projeto foi desenvolvido por:
+ - Raphael de Oliveira (https://github.com/raphaeldeoliveira)
