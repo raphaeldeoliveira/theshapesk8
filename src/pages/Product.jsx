@@ -2,14 +2,14 @@ import React from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
 import ButtonShape from "../components/global/ButtonShape";
 import "../styles/pages/product/product.scss"
-import { useParams} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 
 export default function Product() {
 
-    const search = useSelector(state => state.searchReducer.search);
-    alert(`search: ${search}`)
+    const searchTerm = useSelector(state => state.searchReducer.currentSearch);
+    //alert(`search: ${search}`)
 
     // a parte do product container esta fugindo do wireframe, mais pro site inspiração
     // isso por conta da falta de complexidade: uma foto, sem opções de cor, etc
@@ -25,6 +25,7 @@ export default function Product() {
 
     return (
         <div>
+            <Link to={`/search/${searchTerm}`}>voltar para pagina de busca ::: {searchTerm}</Link>
             <div className="product__container">
                 <div className="container__product__image">
                     <img src="https://socalskateshop.com/mm5/graphics/00000001/38/Dickies-Vincent-Alvarez-Block-Collar-Short-Sleeve-Work-Shirt-Gulf-Blue-1_280x280.jpg"/>

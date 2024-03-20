@@ -1,16 +1,17 @@
-import React, { useDebugValue, useState } from "react";
-import "../../styles/pages/global/header.scss"
+import React, { useState } from "react";
+import "../../styles/pages/global/header.scss";
 import { MdShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
-import banner from "../../assets/images/banner.png"
+import banner from "../../assets/images/banner.png";
 import { Link } from "react-router-dom";
-
+import { escrever } from "../../redux/search/actions";
 import { useDispatch } from "react-redux";
-import { writesearch } from "../../redux/search/actions"
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleChange = (event) => {
@@ -19,9 +20,8 @@ export default function Header() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Navegar para a próxima rota com o valor do input passado como parâmetro de rota
-        window.location.href = `/search/${searchTerm}`;
-        dispatch(writesearch("termo de nusca"))
+        dispatch(escrever(searchTerm));
+        navigate(`/search/${searchTerm}`)
     };
 
     return (
