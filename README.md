@@ -29,7 +29,7 @@ O The Shape Skateshop é um e-commerce especializado na venda de peças, roupas 
 Para rodar o projeto localmente em sua máquina, siga os passos abaixo:
 
 1. Clone este repositório para o seu ambiente local.
-2. Abra o projeto no Visual Studio.
+2. Abra o projeto no Visual Studio Code.
 3. roda 'npm install' para instalar as dependencias do node.
 4. rode 'npm start' para abrir o servidor de desenvolvimento e visualizar o site no navegador na porta 3000 (`http://localhost:3000`).
 
