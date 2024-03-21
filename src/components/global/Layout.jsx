@@ -6,7 +6,7 @@ import Footer from "../global/Footer"
 export default function Layout() {
 
     return (
-        <div>
+        <div style={{ backgroundColor: 'black' }}>
             <Header />
             <Outlet />
             <Footer />

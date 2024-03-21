@@ -1,7 +1,7 @@
 import SearchActionTypes from "./action-types"
 
 const initialState = {
-    currentSearch: 'thats why'
+    currentSearch: ''
 }
 
 const searchReducer = (state = initialState, action) => {

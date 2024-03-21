@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
 import ButtonShape from "../components/global/ButtonShape";
 import "../styles/pages/product/product.scss"
 import { useParams, Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 import { useSelector } from "react-redux";
 
 export default function Product() {
+
+    const [productQtd, setProductQtd] = useState(0)
+
+    function incrementQdt() {
+        setProductQtd((prev) => prev + 1)
+    }
+
+    function decrementQtd() {
+        if (productQtd > 0) {
+            setProductQtd((prev) => prev - 1)
+        }
+    }
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);
     //alert(`search: ${search}`)
@@ -25,7 +38,7 @@ export default function Product() {
 
     return (
         <div>
-            <Link to={`/search/${searchTerm}`}>voltar para pagina de busca ::: {searchTerm}</Link>
+            <Link className="return-link" to={`/search/${searchTerm}`}><FaArrowLeft /> <span>voltar para pagina de busca: {searchTerm}</span></Link>
             <div className="product__container">
                 <div className="container__product__image">
                     <img src="https://socalskateshop.com/mm5/graphics/00000001/38/Dickies-Vincent-Alvarez-Block-Collar-Short-Sleeve-Work-Shirt-Gulf-Blue-1_280x280.jpg"/>
@@ -47,9 +60,9 @@ export default function Product() {
                     <div className="detail__quantity">
                         <h3>Quantidade: </h3>
                         <div>
-                            <button>-</button>
-                            <div>1</div>
-                            <button>+</button>
+                            <button onClick={decrementQtd}>-</button>
+                            <div>{productQtd}</div>
+                            <button onClick={incrementQdt}>+</button>
                         </div>
                     </div>
                     <div>
