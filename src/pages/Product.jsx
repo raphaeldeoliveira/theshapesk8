@@ -38,7 +38,7 @@ export default function Product() {
 
     return (
         <div>
-            <Link className="return-link" to={`/search/${searchTerm}`}><FaArrowLeft /> <span>voltar para pagina de busca: {searchTerm}</span></Link>
+            <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}><FaArrowLeft /> <span>voltar para pagina de busca: {searchTerm}</span></Link>
             <div className="product__container">
                 <div className="container__product__image">
                     <img src="https://socalskateshop.com/mm5/graphics/00000001/38/Dickies-Vincent-Alvarez-Block-Collar-Short-Sleeve-Work-Shirt-Gulf-Blue-1_280x280.jpg"/>
