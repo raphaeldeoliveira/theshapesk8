@@ -1,3 +1,5 @@
+@import "../../global/colors.scss";
+
 .brandingCarrousel {
     display: flex;
     justify-content: space-evenly;
@@ -31,7 +33,7 @@
     .branding__arrow--left , .branding__arrow--right {
         width: 60px;
         height: 60px;
-        color: gray;
+        color: $secundary-color;
     }
 
     @keyframes lefthandanimation {
@@ -46,13 +48,13 @@
     }
 
     .branding__arrow--left:hover {
-        color: black;
+        color: lighten($secundary-color, 20%);
         animation: lefthandanimation 400ms ease;
         cursor: pointer;
     }
 
     .branding__arrow--right:hover {
-        color: black;
+        color: lighten($secundary-color, 20%);
         animation: righthandanimation 400ms ease;
         cursor: pointer;
     }
