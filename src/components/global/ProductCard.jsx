@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../styles/pages/search/productcard.scss"
+import "../../styles/pages/search/productcard.scss";
 
 export default function ProductCard(props) {
 

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductCard from "./ProductCard";
-import "../../styles/pages/search/searchpage.scss"
+import "../../styles/pages/search/searchpage.scss";
+import LoadingSpinner from "./LoadingSpinner";
 
 export default function SearchPageGrid(props) {
+
+    const [dataLoad, setDataLoad] = useState(true)
 
     // fazer o get na API. 
 
@@ -18,22 +21,27 @@ export default function SearchPageGrid(props) {
         { image: "https://socalskateshop.com/mm5/graphics/00000001/40/Black-Label-Skateboards-5-Flame-5-Panel-Snapback-Hat-Khaki-1_280x280.jpg", name: "Hat Khaki", price: "$ 29.95" }
     ];
 
-    return (
-        <div className="searchPage">
-            <h1>{props.h1title}</h1>
-            <div className="searchPage__grid">
-                {arrayDeRetornoDaBusca.map((item, index) => {
-                    return (
-                        <ProductCard 
-                            id={index}
-                            image={item.image}
-                            name={item.name}
-                            price={item.price}
-                        />
-                    )
-                })}
+    if (!dataLoad) {
+        return <LoadingSpinner verticalsize="350" horizontalsize="1000" />
+    } else {
+        return (
+            <div className="searchPage">
+                <h1>{props.h1title}</h1>
+                <div className="searchPage__grid">
+                    {arrayDeRetornoDaBusca.map((item, index) => {
+                        return (
+                            <ProductCard 
+                                id={index}
+                                image={item.image}
+                                name={item.name}
+                                price={item.price}
+                            />
+                        )
+                    })}
+                </div>
             </div>
-        </div>
-        
-    )
+        )
+    }
+
+    
 }

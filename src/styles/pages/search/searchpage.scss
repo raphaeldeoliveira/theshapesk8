@@ -1,5 +1,4 @@
 .searchPage {
-    padding: 0px 50px;
     text-align: center;
     background-color: black;
     color: white;
@@ -15,5 +14,6 @@
         // vao aparecer conforme o tamanho da width (usando media querys(
         display: flex;
         justify-content: space-evenly;
+        padding: 0px 50px;
     }
 }
