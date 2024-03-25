@@ -55,4 +55,19 @@ header {
     .sgv--user {
         margin-right: 60px;
     }
+
+    .cart__quantity {
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        color: white;
+        background-color: $secundary-color;
+        position: absolute;
+        top: 30px;
+        right: 140px;
+        font-size: 1.2rem;
+    }
 }
