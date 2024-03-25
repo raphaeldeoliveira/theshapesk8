@@ -1,0 +1,56 @@
+.cart-card {
+    border: 4px dashed white;
+    padding: 16px;
+    display: flex;
+    margin: 30px;
+    align-items: center;
+    justify-content: space-between;
+
+    & > img {
+        width: 25%;
+    }
+
+    & > div {
+        width: 75%;
+        text-align: center;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    & > div > h4 {
+        font-size: 2rem;
+        width: 90%;
+        text-align: left;
+        margin-left: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-all;
+    }
+
+    .sgv--trash {
+        position: relative;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+
+        &:hover {
+            cursor: pointer;
+            color: red;
+            transition: color 0.3s ease;
+        }
+    }
+
+    .cart__qp-container {
+        display: flex;
+        width: 75%;
+        justify-content: space-between;
+        margin: 0px 12px;
+
+        & > h5 {
+            font-size: 1.6rem;
+        }
+    }
+}

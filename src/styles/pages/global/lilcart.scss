@@ -1,25 +1,24 @@
 @import "../../global/fonts.scss";
+@import "../../global/colors.scss";
 
 .lil-cart {
-    background-color: greenyellow;
     position: fixed;
     top: 0;
     right: 0;
-    width: 40%;
+    width: 33%;
     height: 100%;
+    overflow-x: auto;
     background-color: #333;
     color: #fff;
     z-index: 999;
     transition: transform 0.5s ease;
-    display: flex;
 
     .cart__header {
         display: flex;
         align-items: center;
         height: 80px;
-        width: 100%;
         justify-content: space-between;
-        margin: 10px 50px;
+        margin: 10px 35px;
 
         & > h1 {
             font-family: $font-primary;
@@ -30,9 +29,27 @@
         width: 50px;
         height: 50px;
         cursor: pointer;
+        //margin-right: 100px;
 
         &:hover {
             color: darken(white, 30%);
+        }
+    }
+
+    .cart__separator {
+        width: 90%;
+        margin: auto;
+        border: 2px dashed white;
+    }
+
+    .cart__pf-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        & > h2 {
+            color: $secundary-color;
+            margin: 16px 0px;
         }
     }
 }

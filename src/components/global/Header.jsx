@@ -15,7 +15,7 @@ export default function Header() {
     const navigate = useNavigate()
     const [searchTerm, setSearchTerm] = useState('');
     const [showCart, setShowCart] = useState(false)
-    const [cartQuantity, setCartQuantity] = useState(0)
+    const [cartQuantity, setCartQuantity] = useState(1)
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
