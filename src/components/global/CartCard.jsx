@@ -1,8 +1,12 @@
 import React from "react";
 import "../../styles/pages/global/cartcard.scss";
 import { FaRegTrashAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { removeFromCart } from "../../redux/cart/actions";
 
 export default function CartCard(props) {
+
+    const dispatch = useDispatch()
 
     return (
         <div className="cart-card">
@@ -14,7 +18,10 @@ export default function CartCard(props) {
                     <h5>{props.price}</h5>
                 </div>
             </div>
-            <FaRegTrashAlt className="sgv--trash" />
+            <FaRegTrashAlt 
+                className="sgv--trash" 
+                onClick={() => dispatch(removeFromCart(props.id))}
+            />
         </div>
     )
 }

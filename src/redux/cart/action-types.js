@@ -1,6 +1,3 @@
-const CartActionTypes = {
-    ADICIONAR_ITEM: "cart/additem",
-    REMOVER_ITEM: "cart/removeitem",
-}
-
-export default CartActionTypes
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const CALCULATE_TOTAL_PRICE = 'CALCULATE_TOTAL_PRICE';

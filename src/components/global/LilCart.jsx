@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/pages/global/lilcart.scss";
 import { IoMdClose } from "react-icons/io";
 import CartCard from "./CartCard";
 import ButtonShape from "./ButtonShape"
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, calculateTotalPrice } from "../../redux/cart/actions";
+
 
 export default function LilCart(props) {
 
@@ -15,23 +18,37 @@ export default function LilCart(props) {
     // aqui nao precisa de loading porque o carrinho vai ficar armazenado no redux
     // ou no localstorage
 
+    const dispatch = useDispatch();
+    const cartItems = useSelector(state => state.cartReducer.cartItems);
+    const totalPrice = useSelector(state => state.cartReducer.totalPrice);
+
+    useEffect(() => {
+        dispatch(calculateTotalPrice());
+    }, [cartItems, dispatch]);
+
     return (
         <div className={`lil-cart ${props.showCart ? "cart__show" : "cart__hideen"}`}>
             <div className="cart__header">
                 <h1>Seu carrinho</h1>
                 <IoMdClose className="sgv--close" onClick={() => props.setShowCart((prev) => !prev)} />
             </div>
-            {cartProducts.map((item) => {
-                return <CartCard 
-                    image={item.image}
-                    title={item.title}
-                    price={item.price}
-                    quantity={item.quantity}
-                />
-            })}
+            {cartItems ? (
+                cartItems.map((item) => {
+                    return <CartCard 
+                        id={item.id}
+                        image={item.image}
+                        title={item.title}
+                        price={item.price}
+                        quantity={item.quantity}
+                    />
+                })
+            ) : (
+                <h1>Seu carrinho esta vazio</h1>
+            )}
+            
             <div className="cart__separator"></div>
             <div className="cart__pf-container">
-                <h2>Subtotal: $ 512.12</h2>
+                <h2>Subtotal: ${totalPrice.toFixed(2)}</h2>
                 <ButtonShape 
                     color="673ab7"
                     title="Finalizar compra"

@@ -9,6 +9,7 @@ import Error from "./pages/Error";
 import Layout from "./components/global/Layout";
 import Search from "./pages/Search"
 import User from "./pages/User";
+import Payment from "./pages/Payment";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="product/:id" element={<Product />} />
           <Route path="search/:productname?" element={<Search />} />
           <Route path="user" element={<User />} />
+          <Route path="payment" element={<Payment />} />
           <Route path="*" element={<Error />} />
         </Route>
       </Routes>

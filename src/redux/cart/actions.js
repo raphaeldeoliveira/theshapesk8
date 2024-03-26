@@ -1,15 +1,15 @@
-import CartActionTypes from "./action-types";
+import { ADD_TO_CART, REMOVE_FROM_CART, CALCULATE_TOTAL_PRICE } from './action-types';
 
-export const addItem = (payload) => {
-    return {
-        type: CartActionTypes.ADICIONAR_ITEM,
-        payload,
-    }
-}
+export const addToCart = (product) => ({
+  type: ADD_TO_CART,
+  payload: product,
+});
 
-export const removeItem = (payload) => {
-    return {
-        type: CartActionTypes.REMOVER_ITEM,
-        payload,
-    }
-}
+export const removeFromCart = (productId) => ({
+  type: REMOVE_FROM_CART,
+  payload: productId,
+});
+
+export const calculateTotalPrice = () => ({
+  type: CALCULATE_TOTAL_PRICE,
+});

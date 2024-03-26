@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/pages/global/header.scss";
 import { MdShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
@@ -6,16 +6,23 @@ import { IoSearchSharp } from "react-icons/io5";
 import banner from "../../assets/images/banner.png";
 import { Link } from "react-router-dom";
 import { escrever } from "../../redux/search/actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LilCart from "./LilCart";
 
 export default function Header() {
+    const cartItems = useSelector(state => state.cartReducer.cartItems);
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
-    const [showCart, setShowCart] = useState(false)
-    const [cartQuantity, setCartQuantity] = useState(1)
+    const [showCart, setShowCart] = useState(false);
+    const [cartQuantity, setCartQuantity] = useState(0);
+
+    // Atualizar a quantidade total de itens no carrinho usando useEffect
+    useEffect(() => {
+        const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+        setCartQuantity(totalQuantity);
+    }, [cartItems]);
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -24,7 +31,7 @@ export default function Header() {
     const handleSubmit = (event) => {
         event.preventDefault();
         dispatch(escrever(searchTerm));
-        navigate(`/search/${searchTerm}`)
+        navigate(`/search/${searchTerm}`);
     };
 
     return (
@@ -37,7 +44,7 @@ export default function Header() {
                 <button>{<IoSearchSharp className="sgv--search"/>}</button>
             </form>
             <div>
-                {(cartQuantity != 0) && <div className="cart__quantity">{cartQuantity}</div>}
+                {(cartQuantity !== 0) && <div className="cart__quantity">{cartQuantity}</div>}
                 <MdShoppingCart 
                     onClick={() => setShowCart((prev) => !prev)} 
                     className="sgv--cart" 
@@ -49,5 +56,5 @@ export default function Header() {
                 setShowCart={setShowCart}
             />
         </header>
-    )
+    );
 }
