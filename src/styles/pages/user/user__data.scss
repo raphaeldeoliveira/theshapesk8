@@ -1,0 +1,30 @@
+@import "../../global/colors.scss";
+
+.user__data {
+    width: 80%;
+    margin: auto;
+    display: flex;
+
+    & > .data__hald--left {
+        width: 50%;
+    }
+
+    & > .data__hald--right {
+        width: 50%;
+    }
+
+    & > div > .data__title__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px 40px;
+
+        .h1--pessoal {
+            color: $secundary-color;
+        }
+
+        .h1--envio {
+            color: $primary-color;
+        }
+    }
+}

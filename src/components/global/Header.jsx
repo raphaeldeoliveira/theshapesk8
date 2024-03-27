@@ -12,6 +12,7 @@ import LilCart from "./LilCart";
 
 export default function Header() {
     const cartItems = useSelector(state => state.cartReducer.cartItems);
+    const loggedIn = useSelector(state => state.userReducer.loggedIn);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
@@ -34,6 +35,10 @@ export default function Header() {
         navigate(`/search/${searchTerm}`);
     };
 
+    const handleRedirect = () => {
+        loggedIn ? navigate("/user/pedidos") : navigate("/register")
+    }
+
     return (
         <header>
             <Link to="/">
@@ -49,7 +54,10 @@ export default function Header() {
                     onClick={() => setShowCart((prev) => !prev)} 
                     className="sgv--cart" 
                 />
-                <FaUserCircle className="sgv--user" />
+                <FaUserCircle 
+                    onClick={handleRedirect}
+                    className="sgv--user" 
+                />
             </div>
             <LilCart 
                 showCart={showCart} 

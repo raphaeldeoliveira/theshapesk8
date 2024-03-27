@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
 import ButtonShape from "../components/global/ButtonShape";
 import "../styles/pages/product/product.scss"
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../components/global/LoadingSpinner";
@@ -23,6 +23,7 @@ export default function Product() {
     const [dataLoad, setDataLoad] = useState(true)
 
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     function incrementQdt() {
         setProductQtd((prev) => prev + 1)
@@ -94,7 +95,7 @@ export default function Product() {
                         </div>
                         <div>
                             <button onClick={handleAddToCart}>Adicionar ao carrinho</button>
-                            <button onClick={}>Comprar agora</button>
+                            <button onClick={() => navigate("/payment")}>Comprar agora</button>
                             <ButtonShape onClick={handleAddToCart} title="ADICIONAR AO CARRINHO" color="673ab7"/>
                             <ButtonShape title="COMPRAR AGORA" color="ff9800" />
                         </div>

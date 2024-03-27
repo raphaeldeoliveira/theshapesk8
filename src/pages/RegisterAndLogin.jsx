@@ -1,9 +1,20 @@
 import { useState, React } from "react";
-import "../styles/pages/registerandlogin/registerandlogin.scss"
+import "../styles/pages/registerandlogin/registerandlogin.scss";
 import { Link } from "react-router-dom";
 import ButtonShape from "../components/global/ButtonShape";
+import { useDispatch, UseDispatch } from "react-redux";
+import { loginSuccess } from "../redux/login/actions"
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const mockadoLogin = () => {
+        dispatch(loginSuccess())
+        navigate("/user/pedidos")
+    }
 
     const [loginData, setLoginData] = useState({
         email: '',
@@ -89,6 +100,7 @@ export default function Register() {
                     <input type="password" name="senha" placeholder="Senha" value={loginData.senha} onChange={handleLoginInputChange}></input>
                     <Link>Esqueci minha senha</Link>
                     <ButtonShape type="submit" title="ENTRAR" color="ff9800"/>
+                    <button onClick={mockadoLogin}>ENTRAR</button>
                 </form>
             </div>
             <div className="login_and_register__register">

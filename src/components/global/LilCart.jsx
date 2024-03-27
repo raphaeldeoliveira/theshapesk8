@@ -5,6 +5,7 @@ import CartCard from "./CartCard";
 import ButtonShape from "./ButtonShape"
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, calculateTotalPrice } from "../../redux/cart/actions";
+import { useNavigate } from "react-router-dom";
 
 
 export default function LilCart(props) {
@@ -17,6 +18,8 @@ export default function LilCart(props) {
     
     // aqui nao precisa de loading porque o carrinho vai ficar armazenado no redux
     // ou no localstorage
+
+    const navigate = useNavigate()
 
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cartReducer.cartItems);
@@ -49,6 +52,7 @@ export default function LilCart(props) {
             <div className="cart__separator"></div>
             <div className="cart__pf-container">
                 <h2>Subtotal: ${totalPrice.toFixed(2)}</h2>
+                <button onClick={() => navigate("/payment")}>Finalizar compra</button>
                 <ButtonShape 
                     color="673ab7"
                     title="Finalizar compra"

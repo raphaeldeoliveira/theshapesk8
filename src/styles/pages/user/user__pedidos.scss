@@ -1,0 +1,73 @@
+@import "../../global/colors.scss";
+
+.user__pedidos {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    color: white;
+
+    .pedidos__half-left {
+        width: 50%;
+
+        & > h1 {
+            color: $secundary-color;
+            margin: 20px 0px;
+        }
+
+        & > .h1--v2 {
+            font-size: 2rem;
+            color: white;
+        }
+
+        & > nav {
+            margin: 20px 0px;
+
+            & > ul {
+                background-color: darken(white, 75%);
+                padding: 12px;
+                border-radius: 12px;
+                list-style: none;
+
+                & > li {
+                    color: white;
+                    font-size: 1.5rem;
+                    margin: 8px 12px;
+        
+                    &:hover {
+                        cursor: pointer;
+                        color: black;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .pedidos__half-right {
+        width: 50%;
+        align-self: center;
+        margin-top: 50px;
+
+        & > h1 {
+            font-size: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        & > div {
+            border: 3px dashed white;
+            width: 80%;
+            margin: auto;
+            text-align: center;
+
+            & > h2 {
+                margin-top: 14px;
+            }
+
+            & > h3 {
+                margin: 10px 0px;
+            }
+        }
+    }
+
+}

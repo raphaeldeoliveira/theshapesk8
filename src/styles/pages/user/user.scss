@@ -1,0 +1,34 @@
+.user-page {
+    color: white;
+
+    & > nav {
+        padding: 10px 70px;
+        background-color: darken(white, 50%);
+        
+        & > ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            margin: 0px 40px;
+
+            & > li {
+                font-size: 1.3rem;
+                font-weight: bold;
+                display: block;
+                
+                & > a {
+                    color: white;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: black;
+                    }
+                }
+
+                .active {
+                    color: black;
+                }
+            }
+        }
+    }
+}

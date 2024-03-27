@@ -1,19 +1,24 @@
 @import "../../global/colors.scss";
 
 .login_and_register {
-    background-color: $tertiary-color;
     display: flex;
     justify-content: space-between;
     padding: 0px 50px;
+    width: 80%;
+    margin: auto;
 
     .login_and_register__login, .login_and_register__register {
         width: 50%;
+        margin: auto;
+        align-items: center;
+
         h2 {
             margin: 20px 0px;
+            text-align: center;
         }
         input, button {
             display: block;
-            margin: 10px 0px;
+            margin: 10px auto;
         }
         /*button {
             border: 1px solid black;

@@ -1,10 +1,49 @@
-import React from "react"
+import React from "react";
+import { Outlet, NavLink } from "react-router-dom";
+import "../styles/pages/user/user.scss";
+import { useDispatch, UseDispatch } from "react-redux";
+import { logout } from "../redux/login/actions"
 
 export default function User() {
+    
+    const dispatch = useDispatch()
 
+    const handlelogout = () => {
+        dispatch(logout())
+    }
+    
     return (
-        <div>
-            <h1>user page goes here</h1>
+        <div className="user-page">
+            <nav>
+                <ul>
+                    <li>
+                    <NavLink exact activeClassName="active" to="/user/pedidos">
+                        PEDIDOS
+                    </NavLink>
+                    </li>
+                    <li>
+                        <NavLink activeClassName="active" to="/user/dados">
+                            DADOS
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink activeClassName="active" to="/user/enderecos">
+                            ENDEREÇOS
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink activeClassName="active" to="/user/paymentMethods">
+                            MÉTODOS DE PAGAMENTO
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink onClick={handlelogout} activeClassName="active" to="/">
+                            SAIR
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
+            <Outlet />
         </div>
-    )
+    );
 }
