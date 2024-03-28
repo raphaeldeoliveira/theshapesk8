@@ -1,32 +1,32 @@
 import * as types from './action-types';
 
 const initialState = {
-  loggedIn: false,
-  loading: false,
+  userId: localStorage.getItem('userId') || null,
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.LOGIN_REQUEST:
+    case types.STORE_USER_ID:
+      localStorage.setItem('userId', action.payload);
       return {
         ...state,
-        loading: true,
+        userId: action.payload,
       };
-    case types.LOGIN_SUCCESS:
+    case types.CHECK_USER_ID:
       return {
         ...state,
-        loggedIn: true,
-        loading: false,
+        userId: localStorage.getItem('userId') || null,
       };
-    case types.LOGIN_FAILURE:
+    case types.LOGOUT_USER:
+      localStorage.removeItem('userId');
       return {
         ...state,
-        loading: false,
+        userId: null,
       };
-    case types.LOGOUT:
+    case types.IS_USER_LOGGED_IN:
       return {
         ...state,
-        loggedIn: false,
+        loggedIn: !!localStorage.getItem('userId'),
       };
     default:
       return state;

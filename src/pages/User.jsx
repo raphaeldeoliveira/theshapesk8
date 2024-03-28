@@ -2,14 +2,14 @@ import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import "../styles/pages/user/user.scss";
 import { useDispatch, UseDispatch } from "react-redux";
-import { logout } from "../redux/login/actions"
+import { logoutUser } from "../redux/login/actions"
 
 export default function User() {
     
     const dispatch = useDispatch()
 
     const handlelogout = () => {
-        dispatch(logout())
+        dispatch(logoutUser())
     }
     
     return (

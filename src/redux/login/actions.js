@@ -1,17 +1,18 @@
 import * as types from './action-types';
 
-export const loginRequest = () => ({
-  type: types.LOGIN_REQUEST,
+export const storeUserId = (userId) => ({
+  type: types.STORE_USER_ID,
+  payload: userId,
 });
 
-export const loginSuccess = () => ({
-  type: types.LOGIN_SUCCESS,
+export const checkUserId = () => ({
+  type: types.CHECK_USER_ID,
 });
 
-export const loginFailure = () => ({
-  type: types.LOGIN_FAILURE,
+export const logoutUser = () => ({
+  type: types.LOGOUT_USER,
 });
 
-export const logout = () => ({
-  type: types.LOGOUT,
+export const isUserLoggedIn = () => ({
+  type: types.IS_USER_LOGGED_IN,
 });

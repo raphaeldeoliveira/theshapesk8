@@ -9,15 +9,21 @@ import { escrever } from "../../redux/search/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LilCart from "./LilCart";
+import { checkUserId } from "../../redux/login/actions";
 
 export default function Header() {
     const cartItems = useSelector(state => state.cartReducer.cartItems);
-    const loggedIn = useSelector(state => state.userReducer.loggedIn);
+    const loggedIn = useSelector(state => state.userReducer.userId);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState('');
     const [showCart, setShowCart] = useState(false);
     const [cartQuantity, setCartQuantity] = useState(0);
+
+    useEffect(() => {
+        dispatch(checkUserId());
+        console.log(loggedIn)
+    }, [dispatch]);
 
     // Atualizar a quantidade total de itens no carrinho usando useEffect
     useEffect(() => {

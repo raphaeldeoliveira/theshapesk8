@@ -1,20 +1,20 @@
-import { useState, React } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/pages/registerandlogin/registerandlogin.scss";
 import { Link } from "react-router-dom";
 import ButtonShape from "../components/global/ButtonShape";
-import { useDispatch, UseDispatch } from "react-redux";
-import { loginSuccess } from "../redux/login/actions"
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { storeUserId, checkUserId } from "../redux/login/actions"
 
 export default function Register() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-
-    const mockadoLogin = () => {
-        dispatch(loginSuccess())
-        navigate("/user/pedidos")
-    }
+    const userId = useSelector(state => state.userReducer.userId);
+    useEffect(() => {
+        dispatch(checkUserId());
+        console.log(userId)
+    }, [dispatch]);
 
     const [loginData, setLoginData] = useState({
         email: '',
@@ -23,55 +23,65 @@ export default function Register() {
 
     const [registerData, setRegisterData] = useState({
         nome: '',
-        sobrenome: '',
+        cpf: '',
         email: '',
+        telefone: '',
         senha: '',
-        confirmarSenha: '',
-        aceitarPromocoes: false
+        dataNascimento: ''
     });
 
-    const handleLoginSubmit = (event) => {
+    // não implementado
+    const handleLoginSubmit = async (event) => {
         event.preventDefault();
-        //console.log(loginData);
-        fetch('URL_DA_API/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(loginData),
-        })
-        .then(response => {
+        /*try {
+            const response = await fetch('URL_DA_API/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(loginData),
+            });
             if (!response.ok) {
                 throw new Error('Erro ao fazer login');
             }
             // redireciona pra Home com useHistory (react router)
-            return response.json();
-        })
-        .catch(error => {
+            const data = await response.json();
+            console.log(data); // Tratar os dados recebidos conforme necessário
+        } catch (error) {
             console.error('Erro:', error);
-        });
+        }
+        console.log(loginData)*/
     };
 
-    const handleRegisterSubmit = (event) => {
+    const loggedIn = useSelector(state => state.userReducer.loggedIn);
+
+    useEffect(() => {
+        console.log(loggedIn);
+    }, [loggedIn]);
+
+    const handleRegisterSubmit = async (event) => {
         event.preventDefault();
-        //console.log(registerData);
-        fetch('URL_DA_API/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(loginData),
-        })
-        .then(response => {
+        console.log(registerData);
+        try {
+            const response = await fetch('https://e-commerce-prod.onrender.com/api/clientes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(registerData),
+            });
             if (!response.ok) {
+                alert("Falha ao registrar!")
                 throw new Error('Erro ao fazer login');
             }
             // redireciona pra Home com useHistory (react router)
-            return response.json();
-        })
-        .catch(error => {
+            const data = await response.json();
+            dispatch(storeUserId(data.dados.id))
+            navigate("/user/pedidos")
+            
+        } catch (error) {
             console.error('Erro:', error);
-        });
+        }
     };
 
     const handleLoginInputChange = (event) => {
@@ -83,11 +93,10 @@ export default function Register() {
     };
 
     const handleRegisterInputChange = (event) => {
-        const { name, value, type, checked } = event.target;
-        const newValue = type === 'checkbox' ? checked : value;
+        const { name, value } = event.target;
         setRegisterData(prevState => ({
             ...prevState,
-            [name]: newValue
+            [name]: value
         }));
     };
 
@@ -100,24 +109,25 @@ export default function Register() {
                     <input type="password" name="senha" placeholder="Senha" value={loginData.senha} onChange={handleLoginInputChange}></input>
                     <Link>Esqueci minha senha</Link>
                     <ButtonShape type="submit" title="ENTRAR" color="ff9800"/>
-                    <button onClick={mockadoLogin}>ENTRAR</button>
+                    <button onClick={() => {
+                        userId ? navigate("/user/pedidos") : alert("Criei uma conta para estar logado")
+                    }}>ENTRAR</button>
                 </form>
             </div>
             <div className="login_and_register__register">
                 <h2>Ainda não tenho cadastro</h2>
                 <form onSubmit={handleRegisterSubmit}>
-                    <input type="text" placeholder="Nome" value={registerData.nome} onChange={handleRegisterInputChange}></input>
-                    <input type="text" placeholder="Sobrenome" value={registerData.sobrenome} onChange={handleRegisterInputChange}></input>
-                    <input type="text" placeholder="E-mail" value={registerData.email} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="nome" placeholder="Nome" value={registerData.nome} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="cpf" placeholder="CPF" value={registerData.cpf} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="email" placeholder="E-mail" value={registerData.email} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="telefone" placeholder="Telefone" value={registerData.telefone} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="dataNascimento" placeholder="Data de Nascimento" value={registerData.dataNascimento} onChange={handleRegisterInputChange}></input>
                     <input type="password" name="senha" placeholder="Senha" value={registerData.senha} onChange={handleRegisterInputChange}></input>
-                    <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" value={registerData.confirmarSenha} onChange={handleRegisterInputChange}></input>
-                    <div className="checkbox__container">
-                        <input className="input--checkbox" type="checkbox"></input>
-                        <label>Aceito receber promoções</label>
-                    </div>
-                    <ButtonShape type="submit" title="REGISTRAR" color="673ab7"/>
+                    <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" value={registerData.confirmarSenha}></input>
+                    <button type="submit">REGISTRAR</button>
+                    {/*<ButtonShape type="submit" title="REGISTRAR" color="673ab7"/>*/}
                 </form>
             </div>
         </div>
-    )
+    );
 }
