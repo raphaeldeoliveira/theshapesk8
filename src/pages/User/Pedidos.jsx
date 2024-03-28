@@ -4,45 +4,43 @@ import LoadingSpinner from "../../components/global/LoadingSpinner";
 
 export default function Pedidos() {
 
-    const [pedidos, setPedidos] = useState(
-        [
+    const pedidos = [
+        {
+            "valorTotal": 5.6,
+            "data": "2024-03-30",
+            "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "itens": [
             {
-              "valorTotal": 5.6,
-              "data": "2024-03-30",
-              "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-              "itens": [
-                {
-                  "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                  "qtd_Produto": 1
-                }
-              ]
-            },
-            {
-              "valorTotal": 987.65,
-              "data": "2024-09-10",
-              "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-              "itens": [
-                {
-                  "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                  "qtd_Produto": 42
-                }
-              ]
-            },
-            {
-              "valorTotal": 0,
-              "data": "2024-03-26",
-              "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-              "itens": [
-                {
-                  "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                  "qtd_Produto": 0
-                }
-              ]
+                "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "qtd_Produto": 1
             }
-          ]
+            ]
+        },
+        {
+            "valorTotal": 987.65,
+            "data": "2024-09-10",
+            "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "itens": [
+            {
+                "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "qtd_Produto": 42
+            }
+            ]
+        },
+        {
+            "valorTotal": 0,
+            "data": "2024-03-26",
+            "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+            "itens": [
+            {
+                "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                "qtd_Produto": 0
+            }
+            ]
+        }
+    ]
           
-    )
-    const [dataLoad, setDataLoad] = useState(true)
+    const dataLoad = true
     // da um get na API para pegar os pedidos (a quantidade, nao os pedidos em sí)
     const [pedidoSelecionado, setPedidoSelecionado] = useState(null);
 
@@ -63,11 +61,15 @@ export default function Pedidos() {
                         <nav>
                             <ul>
                                 {pedidos.map((item, index) => {
-                                    {console.log(item)}
-                                    return <li
-                                        key={index}
-                                        onClick={() => handleClickPedido(item)}
-                                    >Pedido : {item.data}</li>;
+                                    console.log(item); // Remover o bloco aninhado redundante
+                                    return (
+                                        <li
+                                            key={index}
+                                            onClick={() => handleClickPedido(item)}
+                                        >
+                                            Pedido : {item.data}
+                                        </li>
+                                    );
                                 })}
                                 <li
                                     onClick={limparDetalhePedido}

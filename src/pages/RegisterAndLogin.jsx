@@ -16,7 +16,7 @@ export default function Register() {
     useEffect(() => {
         dispatch(checkUserId());
         console.log(userId)
-    }, [dispatch]);
+    }, [userId]);
 
     const [loginData, setLoginData] = useState({
         email: '',
@@ -34,7 +34,7 @@ export default function Register() {
 
     // esse mock é só pra deixar possivel acessar a pagina de administrador
     const mockLogAsAdmin = () => {
-        if (loginData.email == "admin" && loginData.senha == "admin") {
+        if (loginData.email === "admin" && loginData.senha === "admin") {
             navigate("/admin/addProduct")
         } else {
             userId ? navigate("/user/pedidos") : alert("Criei uma conta para estar logado")

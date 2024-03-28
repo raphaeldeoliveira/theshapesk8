@@ -7,7 +7,6 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../components/global/LoadingSpinner";
 import { addToCart } from "../redux/cart/actions";
-import { getProductData } from "../api";
 
 export default function Product() {
 
@@ -91,7 +90,7 @@ export default function Product() {
             <div className="product__container">
                 <div className="container__product__image">
                     {dataLoad ? 
-                        (<img src={productData?.dados.imagem}/>) 
+                        (<img prop="" src={productData?.dados.imagem}/>) 
                         : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
                 </div>
                 {dataLoad && productData ? (

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "../styles/pages/payment/payment.scss";
 import { useSelector } from "react-redux";
 
 export default function Payment() {
 
-    const [cartItems, setCartitems] = useState(useSelector(state => state.cartReducer.cartItems))
+    const cartItems = useSelector(state => state.cartReducer.cartItems)
 
     return (
         <div className="payment">

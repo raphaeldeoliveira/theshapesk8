@@ -10,7 +10,7 @@ export default function CartCard(props) {
 
     return (
         <div className="cart-card">
-            <img src={props.image} />
+            <img prop="" src={props.image} />
             <div>
                 <h4>{props.title}</h4>
                 <div className="cart__qp-container">

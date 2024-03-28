@@ -37,8 +37,8 @@ export default function BradingCarrousel() {
             {branding.map((brand, index) => {
                 return (
                     <div className="brand__container">
-                        <img className="branding__hover" src={brandingHover[index]} />
-                        <img className="branding__default" src={brand} />
+                        <img prop="" className="branding__hover" src={brandingHover[index]} />
+                        <img prop="" className="branding__default" src={brand} />
                     </div>
                 )
             })}
