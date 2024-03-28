@@ -3,25 +3,35 @@
 .admin__container {
     width: 80%;
     margin: auto;
+    color: white;
     //background-color: rgb(130, 164, 130);
 
     & > h1 {
         color: $secundary-color;
+        margin: 18px 0px;
     }
 
-    & > div {
+    & > nav {
         display: flex;
+        justify-content: space-evenly;
+        padding: 12px;
+        background-color: darken(white, 50%);
+        width: 90%;
+        margin: 10px auto;
+        border-radius: 6px;
 
-        & > .container__half--left, & > .container__half--right {
-            width: 50%;
+        & > a {
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+
+            &:hover {
+                color: $secundary-color;
+            }
         }
 
-        & > .container__half--left {
-            background-color: red;
-        }
-
-        & > .container__half--right {
-            background-color: blue;
+        .active {
+            color: black;
         }
     }
 }

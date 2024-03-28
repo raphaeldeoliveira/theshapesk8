@@ -22,7 +22,6 @@ export default function Header() {
 
     useEffect(() => {
         dispatch(checkUserId());
-        console.log(loggedIn)
     }, [dispatch]);
 
     // Atualizar a quantidade total de itens no carrinho usando useEffect

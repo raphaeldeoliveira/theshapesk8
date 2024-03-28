@@ -16,6 +16,11 @@ import Pedidos from "./pages/User/Pedidos";
 import UserData from "./pages/User/UserData";
 import DeliveryAddress from "./pages/User/DeliveryAddress";
 import PaymentMethods from "./pages/User/PaymentMethods";
+// rotas aninhadas de admin
+import AddProduct from "./pages/Admin/AddProduct";
+import AddUser from "./pages/Admin/AddUser";
+import ListProducts from "./pages/Admin/ListProducts";
+import ListUsers from "./pages/Admin/ListUsers";
 
 function App() {
   return (
@@ -26,7 +31,12 @@ function App() {
           <Route path="register" element={<RegisterAndLogin />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="search/:productname?" element={<Search />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="admin" element={<Admin />} >
+            <Route path="addProduct" element={<AddProduct />} />
+            <Route path="listProduct" element={<ListProducts />} />
+            <Route path="addUser" element={<AddUser />} />
+            <Route path="listUser" element={<ListUsers />} />
+          </Route>
           <Route path="user" element={<User />}>
             <Route path="pedidos" element={<Pedidos />} />
             <Route path="dados" element={<UserData />} />
