@@ -12,7 +12,7 @@ export default function Home() {
     return (
         <div className="homePage">
             <NavOptions />
-            <img prop="" src={mainBanner} />
+            <img alt="" src={mainBanner} />
             {/* a imagem a cima tem que direcionar para a rota de busca e passar o parametro "ofertas" na barra de busca pra fazer uma consulta SQL e retornar os items em promoção */}
             <BradingCarrousel />
             <SearchPageGrid h1title="Principais ofertas" />

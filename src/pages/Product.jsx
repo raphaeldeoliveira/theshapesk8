@@ -90,7 +90,7 @@ export default function Product() {
             <div className="product__container">
                 <div className="container__product__image">
                     {dataLoad ? 
-                        (<img prop="" src={productData?.dados.imagem}/>) 
+                        (<img alt="" src={productData?.dados.imagem}/>) 
                         : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
                 </div>
                 {dataLoad && productData ? (

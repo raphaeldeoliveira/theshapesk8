@@ -15,8 +15,9 @@ export default function Register() {
     const userId = useSelector(state => state.userReducer.userId);
     useEffect(() => {
         dispatch(checkUserId());
-        console.log(userId)
-    }, [userId]);
+        console.log(userId);
+    }, [dispatch, userId]);
+    
 
     const [loginData, setLoginData] = useState({
         email: '',
