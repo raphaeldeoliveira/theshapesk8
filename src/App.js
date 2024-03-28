@@ -10,6 +10,7 @@ import Layout from "./components/global/Layout";
 import Search from "./pages/Search"
 import User from "./pages/User";
 import Payment from "./pages/Payment";
+import Admin from "./pages/Admin"
 // rotas aninhadas de user
 import Pedidos from "./pages/User/Pedidos";
 import UserData from "./pages/User/UserData";
@@ -25,6 +26,7 @@ function App() {
           <Route path="register" element={<RegisterAndLogin />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="search/:productname?" element={<Search />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="user" element={<User />}>
             <Route path="pedidos" element={<Pedidos />} />
             <Route path="dados" element={<UserData />} />

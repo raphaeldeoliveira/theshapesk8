@@ -1,0 +1,27 @@
+@import "../../global/colors.scss";
+
+.admin__container {
+    width: 80%;
+    margin: auto;
+    //background-color: rgb(130, 164, 130);
+
+    & > h1 {
+        color: $secundary-color;
+    }
+
+    & > div {
+        display: flex;
+
+        & > .container__half--left, & > .container__half--right {
+            width: 50%;
+        }
+
+        & > .container__half--left {
+            background-color: red;
+        }
+
+        & > .container__half--right {
+            background-color: blue;
+        }
+    }
+}
