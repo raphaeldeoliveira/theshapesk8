@@ -11,16 +11,43 @@ import { getProductData } from "../api";
 
 export default function Product() {
 
+    const [dataLoad, setDataLoad] = useState(false)
+    const [productData, setProductData] = useState()
+    const { id } = useParams()
+
+    // fazer o get na API. 
+    useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                const response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/${id}`);
+                if (!response.ok) {
+                    alert("Falha ao registrar!")
+                    throw new Error('Erro ao fazer login');
+                }
+                const data = await response.json();
+                console.log("--------")
+                console.log(data)
+                console.log("--------")
+                setProductData(data)
+                setDataLoad(true)
+            } catch(error) {
+                console.error('Erro:', error);
+                alert('Erro:', error)
+                setDataLoad(true)
+            }
+        }
+        loadProducts()
+    }, [id])
+
     // os dados do productData vem da API. No momento ta mockado para teste
-    const [productData, setProductData] = useState({
+    /*const [productData, setProductData] = useState({
         id: "1",
         title: "Black frog",
         image: "https://socalskateshop.com/mm5/graphics/00000001/38/Dickies-Vincent-Alvarez-Block-Collar-Short-Sleeve-Work-Shirt-Gulf-Blue-1_280x280.jpg",
         price: 247.98,
         quantity: 1
-    })
+    })*/
     const [productQtd, setProductQtd] = useState(1)
-    const [dataLoad, setDataLoad] = useState(true)
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -46,20 +73,17 @@ export default function Product() {
     // a parte do product container esta fugindo do wireframe, mais pro site inspiração
     // isso por conta da falta de complexidade: uma foto, sem opções de cor, etc
 
-    const { id } = useParams()
     // usa esse ID pra recuperar as informações do produto (pelo menos uma imagem
     // com melhor resolução)
 
-    useEffect(() => {
+    /*useEffect(() => {
         const data = getProductData(id);
         setProductData(data);
-    }, [id]);
+    }, [id]);*/
 
 
     const product_sizes = ["P", "M", "G"]
     // essa informação vai vim da API
-
-    const { productname } = useParams()
 
     return (
         <div>
@@ -67,18 +91,18 @@ export default function Product() {
             <div className="product__container">
                 <div className="container__product__image">
                     {dataLoad ? 
-                        (<img src={productData.image}/>) 
+                        (<img src={productData?.dados.imagem}/>) 
                         : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
                 </div>
-                {dataLoad ? (
+                {dataLoad && productData ? (
                     <div className="container__product__detail">
-                        <h2>{productData.title}</h2>
-                        <h3>R$ {productData.price.toFixed(2)}<label>ou {(productData.price * 1.08).toFixed(2)} em 3x</label></h3>
+                        <h2>{productData.dados.nome}</h2>
+                        <h3>R$ {productData.dados.valor?.toFixed(2)}<label>ou {(productData.dados.valor * 1.08)?.toFixed(2)} em 3x</label></h3>
                         <div className="detail__size">
                             <h4>select size: </h4>
                             {product_sizes.map((item) => {
                                 return (
-                                    <div className="size__input">
+                                    <div className="size__input" key={item}>
                                         <input type="radio" name="size" />
                                         <label>{item}</label>
                                     </div>

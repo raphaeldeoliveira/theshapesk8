@@ -33,15 +33,6 @@ export default function SearchPageGrid(props) {
     /* Não vai ter filtros. Somente 'busca por: ', quando clicar em spitfire
     ele vai ficar 'Busca por: Spitfire' */
 
-    // essa variavel vai mudar de nome quando implementar a chamada da api
-    // pra popular esse array com os itens da busca
-    const arrayDeRetornoDaBusca = [
-        { image: "https://socalskateshop.com/mm5/graphics/00000001/39/Santa-Cruz-stone-ls-flannel-shirt-blackbrown-1_280x280.jpg", name: "Vans Shoes", price: "$ 79.99" },
-        { image: "https://socalskateshop.com/mm5/graphics/00000001/38/Dickies-Vincent-Alvarez-Block-Collar-Short-Sleeve-Work-Shirt-Gulf-Blue-1_280x280.jpg", name: "Black frong", price: "$ 19.99" },
-        { image: "https://socalskateshop.com/mm5/graphics/00000001/36/Alien-Workshop-Skateboards-Visitor-Window-Button-Down-Shirt-Perriwinkle-White-1_280x280.jpg", name: "Tyler's shape", price: "$ 69.99" },
-        { image: "https://socalskateshop.com/mm5/graphics/00000001/40/Black-Label-Skateboards-5-Flame-5-Panel-Snapback-Hat-Khaki-1_280x280.jpg", name: "Hat Khaki", price: "$ 29.95" }
-    ];
-
     if (loading) {
         return <LoadingSpinner verticalsize="350" horizontalsize="1000" />
     } else {
@@ -55,6 +46,7 @@ export default function SearchPageGrid(props) {
                             image={item.imagem}
                             name={item.nome}
                             price={item.valor}
+                            id={item.id}
                         />
                     ))}
                 </div>

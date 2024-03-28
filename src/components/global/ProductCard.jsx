@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/pages/search/productcard.scss";
 
 export default function ProductCard(props) {
+
+
 
     return (
         <Link to={`/product/${props.id}`} className="productCard">

@@ -5,6 +5,7 @@ export default function AddProduct() {
     // não consegui passar os dados corretamente pro endpoint
     const [formData, setFormData] = useState({
         nome: "",
+        descricao: "",
         imagem: "",
         valor: 0,
         tamanho: ""
@@ -27,8 +28,6 @@ export default function AddProduct() {
                 ...formData,
                 valor: parseFloat(formData.valor)
             };
-    
-            console.log(formDataWithNumber);
             const response = await fetch('https://e-commerce-prod.onrender.com/api/produtos', {
                 method: 'POST',
                 headers: {
@@ -46,6 +45,7 @@ export default function AddProduct() {
             // Limpar o formulário após o envio bem-sucedido
             setFormData({
                 nome: "",
+                descricao: "",
                 imagem: "",
                 valor: 0,
                 tamanho: ""
@@ -66,6 +66,14 @@ export default function AddProduct() {
                     placeholder="Nome" 
                     name="nome" 
                     value={formData.nome} 
+                    onChange={handleChange} 
+                    required 
+                />
+                <input 
+                    type="text" 
+                    placeholder="Descrição" 
+                    name="descricao" 
+                    value={formData.descricao} 
                     onChange={handleChange} 
                     required 
                 />

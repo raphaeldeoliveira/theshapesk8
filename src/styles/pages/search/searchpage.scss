@@ -2,9 +2,11 @@
     text-align: center;
     background-color: black;
     color: white;
+    margin: 26px 0px;
 
     & > h1 {
         padding: 20px 0px;
+        margin-bottom: 12px;
     }
 
     .searchPage__grid {
@@ -12,8 +14,14 @@
         // de resultados que a busca retornar
         // Teremos 3 classes de grid: 2 colunas, 3 colunas e 4 colunas e elas
         // vao aparecer conforme o tamanho da width (usando media querys(
-        display: flex;
+        /*display: flex;
         justify-content: space-evenly;
-        padding: 0px 50px;
+        padding: 0px 50px;*/
+
+        margin: auto;
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
     }
 }
