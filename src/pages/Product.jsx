@@ -61,9 +61,10 @@ export default function Product() {
         }
     }
 
-    function handleAddToCart() {
-        console.log("caiu na vila")
-        dispatch(addToCart(productData));
+    function handleAddToCart() {    
+        console.log("caiu na vila o peixe fuzila")
+        console.log(productData.dados)
+        dispatch(addToCart(productData.dados));
     };
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);

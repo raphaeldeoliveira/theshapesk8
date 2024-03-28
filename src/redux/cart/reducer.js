@@ -51,7 +51,17 @@ const cartReducer = (state = initialState, action) => {
       };
 
     case CALCULATE_TOTAL_PRICE:
-      const totalPrice = state.cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+      const totalPrice = state.cartItems.reduce((acc, item) => {
+        // Verifica se o preço e a quantidade são numéricos
+        const itemPrice = Number(item.valor);
+        const itemQuantity = Number(item.quantity);
+        // Verifica se os valores são válidos antes de realizar a operação matemática
+        if (!isNaN(itemPrice) && !isNaN(itemQuantity)) {
+          return acc + (itemPrice * itemQuantity);
+        } else {
+          return acc;
+        }
+      }, 0);
       return {
         ...state,
         totalPrice: totalPrice,

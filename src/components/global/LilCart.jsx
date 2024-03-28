@@ -37,11 +37,12 @@ export default function LilCart(props) {
             </div>
             {cartItems ? (
                 cartItems.map((item) => {
+                    console.log(item)
                     return <CartCard 
                         id={item.id}
-                        image={item.image}
-                        title={item.title}
-                        price={item.price}
+                        image={item.imagem}
+                        title={item.nome}
+                        price={item.valor}
                         quantity={item.quantity}
                     />
                 })
