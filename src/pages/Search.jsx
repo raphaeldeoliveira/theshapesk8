@@ -13,6 +13,6 @@ export default function Search() {
     // nada)
 
     // em vez de true tem que esperar a promisse virar um objeto quando da o fetch
-    return <SearchPageGrid h1title={`Busca por: ${productname}`} />
+    return <SearchPageGrid productname={productname} />
 
 }
