@@ -6,4 +6,26 @@
     & > h1 {
         margin: 30px 0px;
     }
+
+    & > div {
+        display: flex;
+
+        & > .payment__half--left {
+            width: 50%;
+            overflow-y: auto;
+            height: 50vh;
+            margin: auto;
+            margin-bottom: 30px;
+            border: 2px dashed white;
+        }
+
+        & > .payment__half--right {
+            width: 50%;
+            text-align: center;
+        }
+    }
+    
+    
+
+    
 }

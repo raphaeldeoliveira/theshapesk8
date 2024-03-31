@@ -53,6 +53,16 @@
             margin: 16px 0px;
         }
     }
+
+    .your-cart-is-empty {
+        width: 70%;
+        height: 60vh;
+        font-size: 2.6rem;
+        display: flex;
+        align-items: center;
+        margin: auto;
+        text-align: center;
+    }
 }
 
 .cart__hideen {

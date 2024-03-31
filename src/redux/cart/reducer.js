@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, CALCULATE_TOTAL_PRICE } from './action-types';
+import { ADD_TO_CART, REMOVE_FROM_CART, CALCULATE_TOTAL_PRICE, CLEAR_CART } from './action-types';
 
 // Função para obter os dados do carrinho armazenados no localStorage
 const getCartFromLocalStorage = () => {
@@ -48,6 +48,13 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         cartItems: updatedCartItems,
+      };
+
+    case CLEAR_CART: // Novo case para limpar o carrinho
+      localStorage.removeItem('cart'); // Remove os dados do carrinho do localStorage
+      return {
+        ...state,
+        cartItems: [], // Define o carrinho como vazio
       };
 
     case CALCULATE_TOTAL_PRICE:

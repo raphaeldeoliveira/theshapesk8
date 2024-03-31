@@ -1,46 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/pages/user/user__pedidos.scss";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
+import { useSelector } from "react-redux";
 
 export default function Pedidos() {
 
-    const pedidos = [
-        {
-            "valorTotal": 5.6,
-            "data": "2024-03-30",
-            "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-            "itens": [
-            {
-                "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                "qtd_Produto": 1
+    const [loading, setLoading] = useState(true)
+    const [pedidos, setPedidos] = useState([])
+    const userId = useSelector(state => state.userReducer.userId);
+    
+    useEffect(() => {
+        const loadProducts = async () => {
+            try {
+                const response = await fetch(`https://e-commerce-prod.onrender.com/api/pedidos/cliente/${userId}`);
+                if (!response.ok) {
+                    alert("Falha ao registrar!")
+                    throw new Error('Erro ao fazer login');
+                }
+                const pedidos = await response.json();
+                console.log("pedidos")
+                console.log(pedidos.dados)
+                setPedidos(pedidos.dados);
+            } catch(error) {
+                console.error('Erro:', error);
+                alert('Erro:', error);
+            } finally {
+                setLoading(false);
             }
-            ]
-        },
-        {
-            "valorTotal": 987.65,
-            "data": "2024-09-10",
-            "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-            "itens": [
-            {
-                "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                "qtd_Produto": 42
-            }
-            ]
-        },
-        {
-            "valorTotal": 0,
-            "data": "2024-03-26",
-            "id_Cliente": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-            "itens": [
-            {
-                "id_Produto": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-                "qtd_Produto": 0
-            }
-            ]
         }
-    ]
-          
-    const dataLoad = true
+        loadProducts();
+    }, []);
+
     // da um get na API para pegar os pedidos (a quantidade, nao os pedidos em sí)
     const [pedidoSelecionado, setPedidoSelecionado] = useState(null);
 
@@ -53,7 +43,7 @@ export default function Pedidos() {
     };
 
     return (
-        dataLoad ? (
+        !loading ? (
             <div className="user__pedidos">
                 <div className="pedidos__half-left">
                     <h1>Pedidos</h1>

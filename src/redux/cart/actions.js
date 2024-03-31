@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, CALCULATE_TOTAL_PRICE } from './action-types';
+import { ADD_TO_CART, REMOVE_FROM_CART, CALCULATE_TOTAL_PRICE, CLEAR_CART } from './action-types';
 
 export const addToCart = (product) => ({
   type: ADD_TO_CART,
@@ -20,4 +20,8 @@ export const removeFromCart = (productId) => ({
 
 export const calculateTotalPrice = () => ({
   type: CALCULATE_TOTAL_PRICE,
+});
+
+export const clearCart = () => ({
+  type: CLEAR_CART,
 });

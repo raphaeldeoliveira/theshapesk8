@@ -25,6 +25,9 @@ export default function LilCart(props) {
     const cartItems = useSelector(state => state.cartReducer.cartItems);
     const totalPrice = useSelector(state => state.cartReducer.totalPrice);
 
+    console.log("---cart itens---")
+    console.log(cartItems)
+
     useEffect(() => {
         dispatch(calculateTotalPrice());
     }, [cartItems, dispatch]);
@@ -35,7 +38,7 @@ export default function LilCart(props) {
                 <h1>Seu carrinho</h1>
                 <IoMdClose className="sgv--close" onClick={() => props.setShowCart((prev) => !prev)} />
             </div>
-            {cartItems ? (
+            {cartItems.length != 0 ? (
                 cartItems.map((item) => {
                     console.log(item)
                     return <CartCard 
@@ -45,20 +48,31 @@ export default function LilCart(props) {
                         price={item.valor}
                         quantity={item.quantity}
                     />
-                })
+                }
+                )
             ) : (
-                <h1>Seu carrinho esta vazio</h1>
+                <h1 className="your-cart-is-empty">Seu carrinho esta vazio</h1>
+            )}
+            {cartItems.length != 0 ? (
+                <div>
+                    <div className="cart__separator"></div>
+                    <div className="cart__pf-container">
+                        <h2>Subtotal: ${totalPrice.toFixed(2)}</h2>
+                        <button onClick={() => {
+                            navigate("/payment"); 
+                            props.setShowCart((prev) => !prev);
+                        }}>Finalizar compra</button>
+                        <ButtonShape 
+                            color="673ab7"
+                            title="Finalizar compra"
+                        />
+                    </div>
+                </div>
+                
+            ) : (
+                <div></div>
             )}
             
-            <div className="cart__separator"></div>
-            <div className="cart__pf-container">
-                <h2>Subtotal: ${totalPrice.toFixed(2)}</h2>
-                <button onClick={() => navigate("/payment")}>Finalizar compra</button>
-                <ButtonShape 
-                    color="673ab7"
-                    title="Finalizar compra"
-                />
-            </div>
         </div>
     )
 }
