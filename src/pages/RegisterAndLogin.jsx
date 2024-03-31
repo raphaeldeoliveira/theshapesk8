@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles/pages/registerandlogin/registerandlogin.scss";
 import { Link } from "react-router-dom";
-import ButtonShape from "../components/global/ButtonShape";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { storeUserId, checkUserId } from "../redux/login/actions"
@@ -125,8 +124,7 @@ export default function Register() {
                     <form onSubmit={handleLoginSubmit}>
                         <input type="text" name="email" placeholder="E-mail" value={loginData.email} onChange={handleLoginInputChange}></input>
                         <input type="password" name="senha" placeholder="Senha" value={loginData.senha} onChange={handleLoginInputChange}></input>
-                        <Link>Esqueci minha senha</Link>
-                        <ButtonShape type="submit" title="ENTRAR" color="ff9800"/>
+                        <Link onClick={() => alert("Função não implementada")}>Esqueci minha senha</Link>
                         <button onClick={() => {
                             mockLogAsAdmin()
                         }}>ENTRAR</button>
@@ -143,7 +141,6 @@ export default function Register() {
                         <input type="password" name="senha" placeholder="Senha" value={registerData.senha} onChange={handleRegisterInputChange}></input>
                         <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" value={registerData.confirmarSenha}></input>
                         <button type="submit">REGISTRAR</button>
-                        {/*<ButtonShape type="submit" title="REGISTRAR" color="673ab7"/>*/}
                     </form>
                 </div>
             </div>

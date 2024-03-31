@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
-import ButtonShape from "../components/global/ButtonShape";
 import "../styles/pages/product/product.scss"
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";

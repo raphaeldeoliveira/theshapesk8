@@ -1,6 +1,7 @@
 import React from "react";
-import "../../styles/pages/home/brandingCarrousel.scss"
+import "../../styles/pages/home/brandingCarrousel.scss";
 import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 // import das imagens
 import alien from "../../assets/images/home/brandings/Alien-Workshop-HP-Logo-Fade.jpg"
@@ -27,7 +28,10 @@ import allbrands_hover from "../../assets/images/home/brandings_hover/AllBrands2
 
 export default function BradingCarrousel() {
     
+    const navigate = useNavigate()
+
     // aqui vao ser colcadas as imagens ja importadas
+    const brandingName = ["Alien", "Dogtown", "Vans", "Bonies", "Dickies", "Spitfire", "Creature", "Santacruz", "Blacklabel", "Allbrands"] 
     const branding = [alien, dogtown, vans, bonies, dickies, spitfire, creature, santacruz, blacklabel, allbrands]
     const brandingHover = [alien_hover, dogtown_hover, vans_hover, bonies_hover, dickies_hover, spitfire_hover, creature_hover, santacruz_hover, blacklabel_hover, allbrands_hover]
 
@@ -35,10 +39,11 @@ export default function BradingCarrousel() {
         <div className="brandingCarrousel">
             <FaHandPointLeft className="branding__arrow--left"/>
             {branding.map((brand, index) => {
+                console.log(brand)
                 return (
                     <div className="brand__container">
                         <img alt="" className="branding__hover" src={brandingHover[index]} />
-                        <img alt="" className="branding__default" src={brand} />
+                        <img onClick={() => navigate(`/search/${brandingName[index]}`)} alt="" className="branding__default" src={brand} />
                     </div>
                 )
             })}

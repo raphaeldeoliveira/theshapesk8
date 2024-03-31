@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import "../../styles/pages/global/lilcart.scss";
 import { IoMdClose } from "react-icons/io";
 import CartCard from "./CartCard";
-import ButtonShape from "./ButtonShape"
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalPrice } from "../../redux/cart/actions";
 import { useNavigate } from "react-router-dom";
