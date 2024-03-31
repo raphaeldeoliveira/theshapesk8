@@ -38,7 +38,7 @@ export default function LilCart(props) {
                 <h1>Seu carrinho</h1>
                 <IoMdClose className="sgv--close" onClick={() => props.setShowCart((prev) => !prev)} />
             </div>
-            {cartItems.length != 0 ? (
+            {cartItems.length !== 0 ? (
                 cartItems.map((item) => {
                     console.log(item)
                     return <CartCard 
@@ -53,7 +53,7 @@ export default function LilCart(props) {
             ) : (
                 <h1 className="your-cart-is-empty">Seu carrinho esta vazio</h1>
             )}
-            {cartItems.length != 0 ? (
+            {cartItems.length !== 0 ? (
                 <div>
                     <div className="cart__separator"></div>
                     <div className="cart__pf-container">
