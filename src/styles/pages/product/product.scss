@@ -37,6 +37,31 @@
         h4 {
             text-decoration: underline;
         }
+
+        & > .detail__buttons > button {
+            padding: 14px 70px;
+            display: block;
+            color: white;
+            border-radius: 8px;
+            border: 2px solid white;
+            font-weight: bold;
+            font-size: 1rem;
+            margin: auto;
+        }
+        .button--add {
+            background-color: $primary-color;
+            &:hover {
+                background-color: darken($primary-color, 20%);
+                cursor: pointer;
+            }
+        }
+        .button--buy {
+            background-color: $secundary-color;
+            &:hover {
+                background-color: darken($secundary-color, 20%);
+                cursor: pointer;
+            }
+        }
     }
 
     .detail__size {

@@ -18,7 +18,6 @@ import DeliveryAddress from "./pages/User/DeliveryAddress";
 import PaymentMethods from "./pages/User/PaymentMethods";
 // rotas aninhadas de admin
 import AddProduct from "./pages/Admin/AddProduct";
-import AddUser from "./pages/Admin/AddUser";
 import ListProducts from "./pages/Admin/ListProducts";
 import ListUsers from "./pages/Admin/ListUsers";
 
@@ -34,7 +33,6 @@ function App() {
           <Route path="admin" element={<Admin />} >
             <Route path="addProduct" element={<AddProduct />} />
             <Route path="listProduct" element={<ListProducts />} />
-            <Route path="addUser" element={<AddUser />} />
             <Route path="listUser" element={<ListUsers />} />
           </Route>
           <Route path="user" element={<User />}>

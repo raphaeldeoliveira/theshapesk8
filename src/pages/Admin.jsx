@@ -15,9 +15,6 @@ export default function Admin() {
                 <NavLink activeClassName="active" to="/admin/listProduct">
                     LISTAR PROTUDOS
                 </NavLink>
-                <NavLink activeClassName="active" to="/admin/addUser">
-                    ADICIONAR USUARIO
-                </NavLink>
                 <NavLink activeClassName="active" to="/admin/listUser">
                     LISTAR USUARIOS
                 </NavLink>

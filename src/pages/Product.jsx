@@ -14,7 +14,6 @@ export default function Product() {
     const [productData, setProductData] = useState()
     const { id } = useParams()
 
-    // fazer o get na API. 
     useEffect(() => {
         const loadProducts = async () => {
             try {
@@ -38,14 +37,6 @@ export default function Product() {
         loadProducts()
     }, [id])
 
-    // os dados do productData vem da API. No momento ta mockado para teste
-    /*const [productData, setProductData] = useState({
-        id: "1",
-        title: "Black frog",
-        image: "https://socalskateshop.com/mm5/graphics/00000001/38/Dickies-Vincent-Alvarez-Block-Collar-Short-Sleeve-Work-Shirt-Gulf-Blue-1_280x280.jpg",
-        price: 247.98,
-        quantity: 1
-    })*/
     const [productQtd, setProductQtd] = useState(1)
 
     const dispatch = useDispatch()
@@ -68,23 +59,9 @@ export default function Product() {
     };
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);
-    //alert(`search: ${search}`)
-
-    // a parte do product container esta fugindo do wireframe, mais pro site inspiração
-    // isso por conta da falta de complexidade: uma foto, sem opções de cor, etc
-
-    // usa esse ID pra recuperar as informações do produto (pelo menos uma imagem
-    // com melhor resolução)
-
-    /*useEffect(() => {
-        const data = getProductData(id);
-        setProductData(data);
-    }, [id]);*/
-
-
+    
     const product_sizes = ["P", "M", "G"]
-    // essa informação vai vim da API
-
+    
     return (
         <div>
             <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}><FaArrowLeft /> <span>voltar para pagina de busca: {searchTerm}</span></Link>
@@ -117,11 +94,9 @@ export default function Product() {
                                 <button onClick={incrementQdt}>+</button>
                             </div>
                         </div>
-                        <div>
-                            <button onClick={handleAddToCart}>Adicionar ao carrinho</button>
-                            <button onClick={() => navigate("/payment")}>Comprar agora</button>
-                            <ButtonShape onClick={handleAddToCart} title="ADICIONAR AO CARRINHO" color="673ab7"/>
-                            <ButtonShape title="COMPRAR AGORA" color="ff9800" />
+                        <div className="detail__buttons">
+                            <button className="button--add" onClick={handleAddToCart}>Adicionar ao carrinho</button>
+                            <button className="button--buy" onClick={() => navigate("/payment")}>Comprar agora</button>
                         </div>
                     </div>
                 ) : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}

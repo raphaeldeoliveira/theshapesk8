@@ -52,6 +52,20 @@
             color: $secundary-color;
             margin: 16px 0px;
         }
+
+        & > button {
+            padding: 14px 90px;
+            border-radius: 8px;
+            border: 2px solid white;
+            color: white;
+            font-weight: bold;
+            background-color: $primary-color;
+
+            &:hover {
+                cursor: pointer;
+                background-color: darken($primary-color, 20%);
+            }
+        }
     }
 
     .your-cart-is-empty {
