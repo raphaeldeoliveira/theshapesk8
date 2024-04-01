@@ -43,7 +43,7 @@ export default function UserData() {
             }
         }
         loadProducts();
-    }, []);
+    }, [userId]);
 
     // Função para alternar entre modo de edição e modo de visualização
     const toggleEditMode = () => {
