@@ -7,3 +7,5 @@ inspiração:
 https://socalskateshop.com/
 https://www.matrizskateshop.com.br/
 https://golfwang.com/
+
+foi instalado para mascaras no input: npm install react-input-mask

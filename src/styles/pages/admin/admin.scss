@@ -81,4 +81,42 @@
             }
         }
     }
+
+    .add__product {
+        & > h1 {
+            margin: 20px 0px;
+        }
+        & > form {
+            //margin: 16px;
+            width: 100%;
+            //margin: 32px;
+            //background-color: purple;
+            margin-bottom: 20px;
+
+            & div {
+                //display: flex;
+                //margin: 32px;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr; /* Define três colunas com largura igual */
+                gap: 16px;
+                align-items: center;
+
+                & > button {
+                    padding: 12px 0px;
+                    margin-right: 90px;
+                    margin-top: 10px;
+                    background-color: $primary-color;
+                    color: white;
+                    border: 2px solid white;
+                    border-radius: 8px;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: darken($primary-color, 20%);
+                    }
+                }
+            }
+        }
+    }
 }

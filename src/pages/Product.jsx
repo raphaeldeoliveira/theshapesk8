@@ -14,6 +14,7 @@ export default function Product() {
     const { id } = useParams()
 
     useEffect(() => {
+        setDataLoad(false)
         const loadProducts = async () => {
             try {
                 const response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/${id}`);
@@ -22,14 +23,12 @@ export default function Product() {
                     throw new Error('Erro ao fazer login');
                 }
                 const data = await response.json();
-                console.log("--------")
-                console.log(data)
-                console.log("--------")
                 setProductData(data)
-                setDataLoad(true)
             } catch(error) {
                 console.error('Erro:', error);
                 alert('Erro:', error)
+                
+            } finally {
                 setDataLoad(true)
             }
         }
@@ -95,7 +94,10 @@ export default function Product() {
                         </div>
                         <div className="detail__buttons">
                             <button className="button--add" onClick={handleAddToCart}>Adicionar ao carrinho</button>
-                            <button className="button--buy" onClick={() => navigate("/payment")}>Comprar agora</button>
+                            <button className="button--buy" onClick={() => {
+                                handleAddToCart();
+                                navigate("/payment");
+                            }}>Comprar agora</button>
                         </div>
                     </div>
                 ) : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}

@@ -49,6 +49,8 @@ export default function SearchPageGrid(props) {
     let h1title;
     if (props.h1title) {
         h1title = props.h1title;
+    } else if (productname === undefined) {
+        h1title = "Todos os produtos"
     } else {
         h1title = `Busca por: ${productname}`;
     }
@@ -59,7 +61,10 @@ export default function SearchPageGrid(props) {
         return (
             <div className="searchPage">
                 <h1>{h1title}</h1>
-                <div className="searchPage__grid">
+                {products.dados && products.dados.length === 0 ? (
+                    <h1>A busca não retornou resultados</h1>
+                ) : (
+                    <div className="searchPage__grid">
                     {products.dados && products.dados.map((item, index) => (
                         <ProductCard 
                             key={index}
@@ -70,6 +75,8 @@ export default function SearchPageGrid(props) {
                         />
                     ))}
                 </div>
+                )}
+                
             </div>
         );
     }

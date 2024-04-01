@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/pages/payment/payment.scss";
 import { useSelector, useDispatch } from "react-redux";
 import CartCard from "../components/global/CartCard";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../redux/cart/actions";
+import LoadingSpinner from "../components/global/LoadingSpinner";
 
 export default function Payment() {
 
@@ -12,6 +13,7 @@ export default function Payment() {
     const cartItems = useSelector(state => state.cartReducer.cartItems);
     const totalPrice = useSelector(state => state.cartReducer.totalPrice);
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false)
 
     const idAndQuantityArray = cartItems.map(product => ({
         id_Produto: product.id,
@@ -33,6 +35,7 @@ export default function Payment() {
     const dataFormatada = `${ano}-${mes}-${dia}`;
 
     const finalizarPedido = async () => {
+        setLoading(true)
         try {
             console.log(JSON.stringify({
                 valorTotal: totalPrice,
@@ -64,7 +67,10 @@ export default function Payment() {
             }
         } catch (error) {
             console.error('Erro ao finalizar o pedido:', error);
-            // Implemente o tratamento de erro conforme necessário
+            alert('Erro ao finalizar o pedido:', error)
+        } finally {
+            setLoading(false)
+            navigate("/");
         }
         dispatch(clearCart());
     };
@@ -72,24 +78,29 @@ export default function Payment() {
     return (
         <div className="payment">
             <h1>Finalize sua compra</h1>
-            <div>
-                <div className="payment__half--left">
-                    {cartItems.map((item) => (
-                        <CartCard 
-                            key={item.id}
-                            id={item.id}
-                            image={item.imagem}
-                            title={item.nome}
-                            price={item.valor}
-                            quantity={item.quantity}
-                        />
-                    ))}
+            {loading ? (
+                <LoadingSpinner verticalsize="300" horizontalsize="800" />
+            ) : (
+                <div>
+                    <div className="payment__half--left">
+                        {cartItems.map((item) => (
+                            <CartCard 
+                                key={item.id}
+                                id={item.id}
+                                image={item.imagem}
+                                title={item.nome}
+                                price={item.valor}
+                                quantity={item.quantity}
+                            />
+                        ))}
+                    </div>
+                    <div className="payment__half--right">
+                        <h2>Valor do pedido: R${totalPrice.toFixed(2)}</h2>
+                        <button onClick={finalizarPedido}>Finalizar pedido</button>
+                    </div>
                 </div>
-                <div className="payment__half--right">
-                    <h2>Valor do pedido: {totalPrice.toFixed(2)}</h2>
-                    <button onClick={finalizarPedido}>Finalizar pedido</button>
-                </div>
-            </div>
+            )}
+            
         </div>
     );
 }

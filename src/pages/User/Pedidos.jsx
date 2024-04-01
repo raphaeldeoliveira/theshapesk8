@@ -71,16 +71,16 @@ export default function Pedidos() {
                     )}
                 </div>
                 <div className="pedidos__half-right">
+                    {pedidoSelecionado && <h2>Detalhes do Pedido</h2>}
                     {pedidoSelecionado ? (
                         <div>
-                            <h2>Detalhes do Pedido</h2>
                             <h3>Data: {pedidoSelecionado.data}</h3>
-                            <h4>Valor Total: {pedidoSelecionado.valorTotal}</h4>
-                            <h4>Itens comprados</h4>
+                            <h4>Valor Total: R${pedidoSelecionado.valorTotal}</h4>
+                            <h3>Itens comprados:</h3>
                             {pedidoSelecionado.itens.map((item) => {
                                 return <div>
-                                    <h3>nome: {item.id_Produto}</h3>
-                                    <h3>quantidade: {item.qtd_Produto}</h3>
+                                    <h3>{item.produto.nome}</h3>
+                                    <h4>quantidade: {item.qtd_Produto}x</h4>
                                 </div>
                             })}
                         </div>

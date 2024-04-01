@@ -3,8 +3,9 @@ import "../styles/pages/registerandlogin/registerandlogin.scss";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { storeUserId, checkUserId } from "../redux/login/actions"
+import { storeUserId, checkUserId } from "../redux/login/actions";
 import LoadingSpinner from "../components/global/LoadingSpinner";
+import InputMask from 'react-input-mask';
 
 export default function Register() {
     const dispatch = useDispatch();
@@ -133,11 +134,11 @@ export default function Register() {
                 <div className="login_and_register__register">
                     <h2>Ainda não tenho cadastro</h2>
                     <form onSubmit={handleRegisterSubmit}>
-                        <input type="text" name="nome" placeholder="Nome" value={registerData.nome} onChange={handleRegisterInputChange}></input>
-                        <input type="text" name="cpf" placeholder="CPF" value={registerData.cpf} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="nome" placeholder="Nome" value={registerData.nome} onChange={handleRegisterInputChange}></input>
+                        <InputMask mask="999.999.999-99" maskChar={null} type="text" name="cpf" placeholder="CPF" value={registerData.cpf} onChange={handleRegisterInputChange}></InputMask>
                         <input type="text" name="email" placeholder="E-mail" value={registerData.email} onChange={handleRegisterInputChange}></input>
-                        <input type="text" name="telefone" placeholder="Telefone" value={registerData.telefone} onChange={handleRegisterInputChange}></input>
-                        <input type="text" name="dataNascimento" placeholder="Data de Nascimento" value={registerData.dataNascimento} onChange={handleRegisterInputChange}></input>
+                        <InputMask mask="(99)99999-9999" maskChar={null} type="text" name="telefone" placeholder="Telefone" value={registerData.telefone} onChange={handleRegisterInputChange}></InputMask>
+                        <InputMask mask="9999-99-99" maskChar={null} type="text" name="dataNascimento" placeholder="Data de Nascimento" value={registerData.dataNascimento} onChange={handleRegisterInputChange}></InputMask>
                         <input type="password" name="senha" placeholder="Senha" value={registerData.senha} onChange={handleRegisterInputChange}></input>
                         <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" value={registerData.confirmarSenha}></input>
                         <button type="submit">REGISTRAR</button>

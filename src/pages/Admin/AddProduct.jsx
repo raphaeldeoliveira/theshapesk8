@@ -7,7 +7,7 @@ export default function AddProduct() {
         nome: "",
         descricao: "",
         imagem: "",
-        valor: 0,
+        valor: 55.32,
         tamanho: ""
     });
 
@@ -58,50 +58,69 @@ export default function AddProduct() {
     
 
     return (
-        <div>
+        <div className="add__product">
             <h1>Add Product</h1>
             <form onSubmit={handleSubmit}>
-                <input 
-                    type="text" 
-                    placeholder="Nome" 
-                    name="nome" 
-                    value={formData.nome} 
-                    onChange={handleChange} 
-                    required 
-                />
-                <input 
-                    type="text" 
-                    placeholder="Descrição" 
-                    name="descricao" 
-                    value={formData.descricao} 
-                    onChange={handleChange} 
-                    required 
-                />
-                <input 
-                    type="text" 
-                    placeholder="Imagem" 
-                    name="imagem" 
-                    value={formData.imagem} 
-                    onChange={handleChange} 
-                    required 
-                />
-                <input 
-                    type="number" 
-                    placeholder="Valor" 
-                    name="valor" 
-                    value={formData.valor} 
-                    onChange={handleChange} 
-                    required 
-                />
-                <input 
-                    type="text" 
-                    placeholder="Tamanho" 
-                    name="tamanho" 
-                    value={formData.tamanho} 
-                    onChange={handleChange} 
-                    required 
-                />
-                <button type="submit">Adicionar</button>
+                <div>
+                    <div>
+                        <label>Nome: </label>
+                        <input 
+                            type="text" 
+                            placeholder="A crazy shape..." 
+                            name="nome" 
+                            value={formData.nome} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <label>Descrição: </label>
+                        <input 
+                            type="text" 
+                            placeholder="Feito de madeira" 
+                            name="descricao" 
+                            value={formData.descricao} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <label>Imagem</label>
+                        <input 
+                            type="text" 
+                            placeholder="https://i.ytimg.com/vi/K36J9aNDnoM/maxresdefault.jpg" 
+                            name="imagem" 
+                            value={formData.imagem} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label>Valor:</label>
+                        <input 
+                            type="number" 
+                            name="valor" 
+                            value={formData.valor} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <label>Tamanho: </label>
+                        <input 
+                            type="text" 
+                            placeholder="P M G" 
+                            name="tamanho" 
+                            value={formData.tamanho} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    
+                    <button type="submit">Adicionar</button>
+                </div>
             </form>
         </div>
     );

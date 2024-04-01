@@ -15,7 +15,7 @@ export default function CartCard(props) {
                 <h4>{props.title}</h4>
                 <div className="cart__qp-container">
                     <h5>{props.quantity}X</h5>
-                    <h5>{props.price}</h5>
+                    <h5>R$ {props.price}</h5>
                 </div>
             </div>
             <FaRegTrashAlt 
