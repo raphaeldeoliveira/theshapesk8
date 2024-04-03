@@ -19,6 +19,7 @@ import PaymentMethods from "./pages/User/PaymentMethods";
 // rotas aninhadas de admin
 import AddProduct from "./pages/Admin/AddProduct";
 import ListProducts from "./pages/Admin/ListProducts";
+import EditProduct from "./pages/Admin/EditProduct";
 import ListUsers from "./pages/Admin/ListUsers";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="admin" element={<Admin />} >
             <Route path="addProduct" element={<AddProduct />} />
             <Route path="listProduct" element={<ListProducts />} />
+            <Route path="editProduct/productid?" element={<EditProduct />} />
             <Route path="listUser" element={<ListUsers />} />
           </Route>
           <Route path="user" element={<User />}>

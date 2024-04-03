@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
-import { FaTrashAlt, FaExternalLinkAlt } from "react-icons/fa";
+import { FaTrashAlt, FaExternalLinkAlt, FaEdit } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export default function ListProducts() {
     const [products, setProducts] = useState(null);
+    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -53,7 +55,6 @@ export default function ListProducts() {
             alert('Erro ao excluir produto. Tente novamente mais tarde.');
         }
     };
-    
 
     return products ? (
         <div className="product__list">
@@ -65,6 +66,10 @@ export default function ListProducts() {
                             <h4>{item.nome}</h4>
                             <div>
                                 <Link className="sgv--link" to={`/product/${item.id}`}><FaExternalLinkAlt /></Link>
+                                <Link className="sgv--edit" to={`editProduct/${item.id}`}>
+                                    <FaEdit />
+                                </Link>
+                                
                                 <FaTrashAlt className="sgv--trash" onClick={() => deleteProduct(item.id)} />
                             </div>
                         </div>
