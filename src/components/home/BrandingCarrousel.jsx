@@ -33,7 +33,7 @@ export default function BradingCarrousel() {
     const navigate = useNavigate()
 
     // aqui vao ser colcadas as imagens ja importadas
-    const brandingName = ["Alien", "Dogtown", "Vans", "Bonies", "Dickies", "Spitfire", "Creature", "Santacruz", "Blacklabel", "Allbrands"] 
+    const brandingName = ["Alien", "Dogtown", "Vans", "Bonies", "Dickies", "Spitfire", "Creature", "Santa Cruz", "Black Label", "Toy Machine"] 
     const branding = [alien, dogtown, vans, bonies, dickies, spitfire, creature, santacruz, blacklabel, toymachine]
     const brandingHover = [alien_hover, dogtown_hover, vans_hover, bonies_hover, dickies_hover, spitfire_hover, creature_hover, santacruz_hover, blacklabel_hover, toymachine_hover]
 

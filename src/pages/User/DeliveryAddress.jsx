@@ -2,6 +2,6 @@ import React from "react";
 
 export default function DeliveryAddress() {
     return (
-        <div>delivery address</div>
+        <div style={{ minHeight: '53.5vh' }}>delivery address</div>
     )
 }
