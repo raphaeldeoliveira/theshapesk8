@@ -4,7 +4,7 @@ import { FaHandPointLeft, FaHandPointRight } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 
 // import das imagens
-import alien from "../../assets/images/home/brandings/Alien-Workshop-HP-Logo-Fade.jpg"
+import alien from "../../assets/images/home/brandings/Alien-Workshop-HP-Logo-Fade.png"
 import dogtown from "../../assets/images/home/brandings/Dogtown-Skateboards-Brand-Icon-90-2.jpg"
 import vans from "../../assets/images/home/brandings/HomepageBrandLogos_02.jpg"
 import bonies from "../../assets/images/home/brandings/HomepageBrandLogos_05.jpg"
@@ -15,7 +15,7 @@ import santacruz from "../../assets/images/home/brandings/HomepageBrandLogos_19.
 import blacklabel from "../../assets/images/home/brandings/HomepageBrandLogos_20.jpg"
 import allbrands from "../../assets/images/home/brandings/AllBrands1.jpg"
 // imagens com hover
-import alien_hover from "../../assets/images/home/brandings_hover/Alien-Workshop-HP-Logo-Hover.jpg"
+import alien_hover from "../../assets/images/home/brandings_hover/Alien-Workshop-HP-Logo-Hover.png"
 import dogtown_hover from "../../assets/images/home/brandings_hover/Dogtown-Skateboards-Brand-Icon.jpg"
 import vans_hover from "../../assets/images/home/brandings_hover/HomepageBrandLogos2_02.jpg"
 import bonies_hover from "../../assets/images/home/brandings_hover/HomepageBrandLogos2_05.jpg"

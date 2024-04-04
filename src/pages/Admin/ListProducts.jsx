@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 import { FaTrashAlt, FaExternalLinkAlt, FaEdit } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 export default function ListProducts() {
     const [products, setProducts] = useState(null);
-    const navigate = useNavigate()
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -61,15 +59,16 @@ export default function ListProducts() {
             <h1>List of products</h1>
             <div>
                 {products.dados.map((item) => {
+                    console.log("aaa")
+                    console.log(item.id)
                     return (
                         <div key={item.id}>
                             <h4>{item.nome}</h4>
                             <div>
                                 <Link className="sgv--link" to={`/product/${item.id}`}><FaExternalLinkAlt /></Link>
-                                <Link className="sgv--edit" to={`editProduct/${item.id}`}>
+                                <Link className="sgv--edit" to={`/admin/editProduct/${item.id}`}>
                                     <FaEdit />
                                 </Link>
-                                
                                 <FaTrashAlt className="sgv--trash" onClick={() => deleteProduct(item.id)} />
                             </div>
                         </div>

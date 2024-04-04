@@ -5,10 +5,15 @@ import Footer from "../global/Footer"
 
 export default function Layout() {
 
+    const outletStyles = {
+        minHeight: '60vh',
+        height: '100%',
+    };
+
     return (
         <div style={{ backgroundColor: 'black' }}>
             <Header />
-            <Outlet />
+            <Outlet/>
             <Footer />
         </div>
     )

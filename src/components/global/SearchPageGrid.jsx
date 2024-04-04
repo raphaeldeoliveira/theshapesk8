@@ -55,11 +55,16 @@ export default function SearchPageGrid(props) {
         h1title = `Busca por: ${productname}`;
     }
 
+    const outletStyles = {
+        minHeight: '62vh',
+        height: '100%',
+    };
+
     if (loading) {
         return <LoadingSpinner verticalsize="350" horizontalsize="1000" />;
     } else {
         return (
-            <div className="searchPage">
+            <div style={outletStyles} className="searchPage">
                 <h1>{h1title}</h1>
                 {products.dados && products.dados.length === 0 ? (
                     <h1>A busca não retornou resultados</h1>
