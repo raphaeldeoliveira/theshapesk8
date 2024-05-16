@@ -1,15 +1,18 @@
 import React from "react";
 import "../../styles/pages/home/navOptions.scss"
 import OptionSpanAndCard from "./OptionSpanAndCard";
+import { useTranslation } from 'react-i18next';
 
 export default function NavOptions() {
+
+    const { t } = useTranslation();
 
     return (
         <nav className="nav-options">
             <ul>
                 <OptionSpanAndCard 
                     id="1"
-                    text="MARCAS"
+                    text={t('welcome')}
                     cardContent={["Toy Machine", "Vans", "Element", ]}
                 />
                 <OptionSpanAndCard 

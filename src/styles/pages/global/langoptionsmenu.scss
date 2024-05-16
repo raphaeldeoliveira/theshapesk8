@@ -1,0 +1,38 @@
+.langOptionsMenu {
+    background-color: white;
+    //padding: 15px;
+    border-radius: 10px;
+    font-weight: 2rem;
+    color: red;
+    margin-left: 16px;
+    margin-top: -20px;
+
+    position: absolute;
+    font-family: 'Segoe UI Emoji', 'Apple Color Emoji', 'Noto Color Emoji', 'Android Emoji', sans-serif;
+
+    & > ul {
+        list-style-type: none;
+
+        & > li {
+            cursor: pointer;
+        }
+    }
+
+    .flag__container--EN:hover, .flag__container--BR:hover, .flag__container--ES:hover {
+        background-color: gray;
+    }
+
+    .flag__container--EN {
+        padding: 10px 15px 0px 15px;
+        border-bottom: 1px dashed black;
+    }
+
+    .flag__container--BR {
+        padding: 10px 15px;
+        border-bottom: 1px dashed black;
+    }
+
+    .flag__container--ES {
+        padding: 8px 15px 10px 15px;
+    }
+}

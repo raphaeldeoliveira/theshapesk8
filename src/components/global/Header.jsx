@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/pages/global/header.scss";
 import { MdShoppingCart } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
+import { FaLanguage } from "react-icons/fa6";
 import { IoSearchSharp } from "react-icons/io5";
 import banner from "../../assets/images/banner.png";
 import { Link } from "react-router-dom";
@@ -10,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LilCart from "./LilCart";
 import { checkUserId } from "../../redux/login/actions";
+import LangOptionsMenu from "./LangOptionsMenu";
 
 export default function Header() {
     const cartItems = useSelector(state => state.cartReducer.cartItems);
@@ -19,6 +21,8 @@ export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const [showCart, setShowCart] = useState(false);
     const [cartQuantity, setCartQuantity] = useState(0);
+
+    const [showLangOptionsMenu, setShowLangOptionsMenu] = useState(false)
 
     useEffect(() => {
         dispatch(checkUserId());
@@ -54,6 +58,13 @@ export default function Header() {
                 <button>{<IoSearchSharp className="sgv--search"/>}</button>
             </form>
             <div>
+                <FaLanguage 
+                    className="sgv-lang" 
+                    onClick={() => {setShowLangOptionsMenu((prevState) => !prevState)}}
+                />
+                {showLangOptionsMenu ? (
+                    <LangOptionsMenu />
+                ) : null}
                 {(cartQuantity !== 0) && <div className="cart__quantity">{cartQuantity}</div>}
                 <MdShoppingCart 
                     onClick={() => setShowCart((prev) => !prev)} 
