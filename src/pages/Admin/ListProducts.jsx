@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 import { FaTrashAlt, FaExternalLinkAlt, FaEdit } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 export default function ListProducts() {
     const [products, setProducts] = useState(null);
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -39,7 +41,7 @@ export default function ListProducts() {
             }
     
             // Produto excluído com sucesso
-            alert('Produto excluído com sucesso!');
+            alert(t('productDeleted'));
     
             // Atualizar a lista de produtos excluindo o produto removido
             setProducts(prevProducts => {
@@ -50,13 +52,13 @@ export default function ListProducts() {
             });
         } catch (error) {
             console.error('Erro ao excluir produto:', error);
-            alert('Erro ao excluir produto. Tente novamente mais tarde.');
+            alert(t('deletedError'));
         }
     };
 
     return products ? (
         <div className="product__list">
-            <h1>List of products</h1>
+            <h1>{t('productList')}</h1>
             <div>
                 {products.dados.map((item) => {
                     console.log("aaa")

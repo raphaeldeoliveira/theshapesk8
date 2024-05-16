@@ -17,7 +17,7 @@ export default function Pedidos() {
             try {
                 const response = await fetch(`https://e-commerce-prod.onrender.com/api/pedidos/cliente/${userId}`);
                 if (!response.ok) {
-                    alert("Falha ao registrar!")
+                    alert(t('failedRegister'))
                     throw new Error('Erro ao fazer login');
                 }
                 const pedidos = await response.json();
@@ -49,7 +49,7 @@ export default function Pedidos() {
         !loading ? (
             <div className="user__pedidos">
                 <div className="pedidos__half-left">
-                    <h1>Pedidos</h1>
+                    <h1>{t('pedidos2')}</h1>
                     {pedidos ? (
                         <nav>
                             <ul>
@@ -60,7 +60,7 @@ export default function Pedidos() {
                                             key={index}
                                             onClick={() => handleClickPedido(item)}
                                         >
-                                            Pedido : {item.data}
+                                            {t('pedidos3')} : {item.data}
                                         </li>
                                     );
                                 })}
@@ -74,21 +74,21 @@ export default function Pedidos() {
                     )}
                 </div>
                 <div className="pedidos__half-right">
-                    {pedidoSelecionado && <h2>Detalhes do Pedido</h2>}
+                    {pedidoSelecionado && <h2>{t('pedidoDetalhe')}</h2>}
                     {pedidoSelecionado ? (
                         <div>
-                            <h3>Data: {pedidoSelecionado.data}</h3>
-                            <h4>Valor Total: R${pedidoSelecionado.valorTotal}</h4>
-                            <h3>Itens comprados:</h3>
+                            <h3>{t('data2')}: {pedidoSelecionado.data}</h3>
+                            <h4>{t('totalValue')}: ${pedidoSelecionado.valorTotal}</h4>
+                            <h3>{t('buyedItens')}:</h3>
                             {pedidoSelecionado.itens.map((item) => {
                                 return <div>
                                     <h3>{item.produto.nome}</h3>
-                                    <h4>quantidade: {item.qtd_Produto}x</h4>
+                                    <h4>{t('quantity')}: {item.qtd_Produto}x</h4>
                                 </div>
                             })}
                         </div>
                     ) : (
-                        <h1>Selecione um pedido!</h1>
+                        <h1>{t('selectedOrder')}</h1>
                     )}
                 </div>
             </div>

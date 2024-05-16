@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 import { FaTrashAlt } from "react-icons/fa";
+import { useTranslation } from 'react-i18next';
 
 export default function ListUsers() {
 
     const [users, setUsers] = useState()
     const [loading, setLoading] = useState(true)
+
+    const { t } = useTranslation();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,10 +41,10 @@ export default function ListUsers() {
             });
     
             if (!response.ok) {
-                throw new Error('Falha ao excluir produto');
+                throw new Error('Falha ao excluir usuario');
             }
     
-            alert('Usuario excluído com sucesso!');
+            alert(t('userDeleted'));
     
             setUsers(prevUsers => {
                 return {
@@ -51,8 +54,8 @@ export default function ListUsers() {
             });
             
         } catch (error) {
-            console.error('Erro ao excluir produto:', error);
-            alert('Erro ao excluir produto. Tente novamente mais tarde.');
+            console.error(`${t('userDeletedError')}:`, error);
+            alert(`${t('userDeletedError')} ${t('tryAgainLatter')}`);
         }
     };
 
@@ -61,7 +64,7 @@ export default function ListUsers() {
             <LoadingSpinner/>
         ) : (
             <div className="user__list">
-                <h1>List of Users</h1>
+                <h1>{t('listOfUsers')}</h1>
                 <div>
                     {users.dados.map(user => (
                         <div key={user.id}>
