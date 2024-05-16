@@ -22,32 +22,28 @@
 
     .flag__container--EN {
         padding: 10px 15px 0px 15px;
-        border-bottom: 1px dashed black;
+        border-bottom: 2px dashed white;
 
         &:hover {
-            background-color: $secundary-color;
+            background-color: lighten($secundary-color, 20%);
             border-radius: 10px 10px 0px 0px;
         }
     }
 
     .flag__container--BR {
         padding: 10px 15px;
-        border-bottom: 1px dashed black;
+        border-bottom: 2px dashed white;
 
         &:hover {
-            background-color: $secundary-color;
+            background-color: lighten($secundary-color, 20%);
         }
     }
 
     .flag__container--ES {
         padding: 8px 15px 10px 15px;
         &:hover {
-            background-color: $secundary-color;
+            background-color: lighten($secundary-color, 20%);
             border-radius: 0px 0px 10px 10px;
         }
-    }
-
-    .flag--active {
-        background-color: $secundary-color;
     }
 }

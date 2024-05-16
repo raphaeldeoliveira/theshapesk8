@@ -12,8 +12,6 @@ export default function LangOptionsMenu(props) {
 
     const { i18n } = useTranslation();
     const dispatch = useDispatch();
-    const language = useSelector(state => state.language);
-    let langTwoLastLetters = language.substr(-2);
 
     const changeLanguage = (lang) => {
         i18n.changeLanguage(lang);
@@ -23,13 +21,24 @@ export default function LangOptionsMenu(props) {
     return (
         <div className="langOptionsMenu">
             <ul>
-                <li className="flag__container--EN"><img src={ENFlag} 
+                <li 
+                    className="flag__container--EN"
+                    style={{
+                        backgroundColor: i18n.language === "en" ? "#ff9800" : "",
+                        borderRadius: i18n.language === "en" ? "10px 10px 0px 0px" : ""
+                    }}     
+                ><img src={ENFlag} 
                     onClick={() => {
                         changeLanguage('en');
                         props.setShowLangOptionsMenu();
                     }} 
                 /></li>
-                <li className="flag__container--BR"><img src={BRFlag} 
+                <li 
+                    className="flag__container--BR"
+                    style={{
+                        backgroundColor: i18n.language === "pt" ? "#ff9800" : ""
+                    }} 
+                ><img src={BRFlag}
                     onClick={() => {
                         changeLanguage('pt');
                         props.setShowLangOptionsMenu();
@@ -38,8 +47,9 @@ export default function LangOptionsMenu(props) {
                 <li 
                     className="flag__container--ES"
                     style={{
-                        color: langTwoLastLetters === "es" ? "red" : "black", // Exemplo: mudando a cor do texto
-                    }}
+                        backgroundColor: i18n.language === "es" ? "#ff9800" : "",
+                        borderRadius: i18n.language === "es" ? "0px 0px 10px 10px" : ""
+                    }}                    
                 ><img src={ESFlag} 
                     onClick={() => {
                         changeLanguage('es');
