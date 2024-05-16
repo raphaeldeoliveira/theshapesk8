@@ -5,7 +5,7 @@ import BRFlag from "../../assets/images/countryFlags/brazil-flag-waving-icon-64.
 import ENFlag from "../../assets/images/countryFlags/united-kingdom-flag-waving-icon-64.png";
 
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setLanguage } from "../../redux/language/actions";
 
 export default function LangOptionsMenu(props) {
@@ -27,7 +27,7 @@ export default function LangOptionsMenu(props) {
                         backgroundColor: i18n.language === "en" ? "#ff9800" : "",
                         borderRadius: i18n.language === "en" ? "10px 10px 0px 0px" : ""
                     }}     
-                ><img src={ENFlag} 
+                ><img src={ENFlag} alt="" 
                     onClick={() => {
                         changeLanguage('en');
                         props.setShowLangOptionsMenu();
@@ -38,7 +38,7 @@ export default function LangOptionsMenu(props) {
                     style={{
                         backgroundColor: i18n.language === "pt" ? "#ff9800" : ""
                     }} 
-                ><img src={BRFlag}
+                ><img src={BRFlag} alt=""
                     onClick={() => {
                         changeLanguage('pt');
                         props.setShowLangOptionsMenu();
@@ -50,7 +50,7 @@ export default function LangOptionsMenu(props) {
                         backgroundColor: i18n.language === "es" ? "#ff9800" : "",
                         borderRadius: i18n.language === "es" ? "0px 0px 10px 10px" : ""
                     }}                    
-                ><img src={ESFlag} 
+                ><img src={ESFlag} alt=""
                     onClick={() => {
                         changeLanguage('es');
                         props.setShowLangOptionsMenu();
