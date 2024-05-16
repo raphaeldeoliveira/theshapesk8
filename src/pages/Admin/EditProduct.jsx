@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 export default function EditProduct() {
+
+    const { t } = useTranslation();
     
     const [loading, setLoading] = useState(true)
     const productId = useParams();
@@ -25,7 +28,6 @@ export default function EditProduct() {
                     const response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/${productId.productid}`);
                     if (response.ok) {
                         const productData = await response.json();
-                        console.log("gjgjgjgj")
                         console.log(productData)
                         setFormData({
                             nome: productData.dados.nome,
@@ -73,10 +75,10 @@ export default function EditProduct() {
                 body: JSON.stringify(formData)
             });
             if (response.ok) {
-                alert('Produto atualizado com sucesso!')
+                alert(t('updateProductAlertMsg'))
                 console.log('Produto atualizado com sucesso!');
             } else {
-                alert('Falha ao atualizar o produto')
+                alert(t('failedUpdatedMsg'))
                 console.error('Falha ao atualizar o produto');
             }
         } catch (error) {
@@ -91,37 +93,37 @@ export default function EditProduct() {
     } else {
         return (
             <div className="product__edit">
-                <h1>Edit Product</h1>
+                <h1>{t('editProduct')}</h1>
                 <form className="product__edit" onSubmit={handleSubmit}>
                     <div className="edit__half--left">
                         <label>
-                            Nome:
+                            {t('name')}:
                             <input type="text" name="nome" value={formData.nome} onChange={handleChange} />
                         </label>
                         <br />
                         <label>
-                            Imagem:
+                            {t('imagem')}:
                             <input type="text" name="imagem" value={formData.imagem} onChange={handleChange} />
                         </label>
                         <br />
                         <label>
-                            Tamanho:
+                            {t('tamanho')}:
                             <input type="text" name="tamanho" value={formData.tamanho} onChange={handleChange} />
                         </label>
                         <br />
                     </div>
                     <div className="edit__hald--right">
                         <label>
-                            Descrição:
+                            {t('description')}:
                             <input type="text" name="descricao" value={formData.descricao} onChange={handleChange} />
                         </label>
                         <br />
                         <label>
-                            Valor:
+                            {t('valor')}:
                             <input type="number" name="valor" value={formData.valor} onChange={handleChange} />
                         </label>
                         <br />
-                        <button type="submit">Atualizar Produto</button>
+                        <button type="submit">{t('updateProduct')}</button>
                     </div>
                 </form>
             </div>

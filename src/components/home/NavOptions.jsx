@@ -12,27 +12,27 @@ export default function NavOptions() {
             <ul>
                 <OptionSpanAndCard 
                     id="1"
-                    text={t('welcome')}
+                    text={t('marcas')}
                     cardContent={["Toy Machine", "Vans", "Element", ]}
                 />
                 <OptionSpanAndCard 
                     id="2"
-                    text="TÊNIS"
+                    text={t('tenis')}
                     cardContent={["Toy Machine", "Vans", "Element", ]}
                 />
                 <OptionSpanAndCard 
                     id="3"
-                    text="SKATE"
+                    text={t('skate')}
                     cardContent={["Toy Machine", "Vans", "Element", ]}
                 />
                 <OptionSpanAndCard 
                     id="4"
-                    text="ROUPAS"
+                    text={t('roupas')}
                     cardContent={["Toy Machine", "Vans", "Element", ]}
                 />
                 <OptionSpanAndCard 
                     id="5"
-                    text="ACESSÓRIOS"
+                    text={t('acessorios')}
                     cardContent={["Toy Machine", "Vans", "Element", ]}
                 />
             </ul>

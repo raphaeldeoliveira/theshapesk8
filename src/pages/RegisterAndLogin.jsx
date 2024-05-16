@@ -6,11 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { storeUserId, checkUserId } from "../redux/login/actions";
 import LoadingSpinner from "../components/global/LoadingSpinner";
 import InputMask from 'react-input-mask';
+import { useTranslation } from 'react-i18next';
 
 export default function Register() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false)
+    const { t } = useTranslation();
 
     const userId = useSelector(state => state.userReducer.userId);
     useEffect(() => {
@@ -121,27 +123,27 @@ export default function Register() {
         ) : (
             <div className="login_and_register">
                 <div className="login_and_register__login">
-                    <h2>Já sou cliente</h2>
+                    <h2>{t('alreadyCustumer')}</h2>
                     <form onSubmit={handleLoginSubmit}>
                         <input type="text" name="email" placeholder="E-mail" value={loginData.email} onChange={handleLoginInputChange}></input>
                         <input type="password" name="senha" placeholder="Senha" value={loginData.senha} onChange={handleLoginInputChange}></input>
-                        <Link onClick={() => alert("Função não implementada")}>Esqueci minha senha</Link>
+                        <Link onClick={() => alert("Função não implementada")}>{t('forgotPassword')}</Link>
                         <button onClick={() => {
                             mockLogAsAdmin()
-                        }}>ENTRAR</button>
+                        }}>{t('enter')}</button>
                     </form>
                 </div>
                 <div className="login_and_register__register">
-                    <h2>Ainda não tenho cadastro</h2>
+                    <h2>{t('noRegistered')}</h2>
                     <form onSubmit={handleRegisterSubmit}>
-                    <input type="text" name="nome" placeholder="Nome" value={registerData.nome} onChange={handleRegisterInputChange}></input>
+                    <input type="text" name="nome" placeholder={t('name')} value={registerData.nome} onChange={handleRegisterInputChange}></input>
                         <InputMask mask="999.999.999-99" maskChar={null} type="text" name="cpf" placeholder="CPF" value={registerData.cpf} onChange={handleRegisterInputChange}></InputMask>
                         <input type="text" name="email" placeholder="E-mail" value={registerData.email} onChange={handleRegisterInputChange}></input>
-                        <InputMask mask="(99)99999-9999" maskChar={null} type="text" name="telefone" placeholder="Telefone" value={registerData.telefone} onChange={handleRegisterInputChange}></InputMask>
-                        <InputMask mask="9999-99-99" maskChar={null} type="text" name="dataNascimento" placeholder="Data de Nascimento" value={registerData.dataNascimento} onChange={handleRegisterInputChange}></InputMask>
-                        <input type="password" name="senha" placeholder="Senha" value={registerData.senha} onChange={handleRegisterInputChange}></input>
-                        <input type="password" name="confirmarSenha" placeholder="Confirmar Senha" value={registerData.confirmarSenha}></input>
-                        <button type="submit">REGISTRAR</button>
+                        <InputMask mask="(99)99999-9999" maskChar={null} type="text" name="telefone" placeholder={t('telephone')} value={registerData.telefone} onChange={handleRegisterInputChange}></InputMask>
+                        <InputMask mask="9999-99-99" maskChar={null} type="text" name="dataNascimento" placeholder={t('dataNascimento')} value={registerData.dataNascimento} onChange={handleRegisterInputChange}></InputMask>
+                        <input type="password" name="senha" placeholder={t('password')} value={registerData.senha} onChange={handleRegisterInputChange}></input>
+                        <input type="password" name="confirmarSenha" placeholder={t('confirmPassword')} value={registerData.confirmarSenha}></input>
+                        <button type="submit">{t('register')}</button>
                     </form>
                 </div>
             </div>

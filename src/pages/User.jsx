@@ -2,14 +2,16 @@ import React from "react";
 import { Outlet, NavLink } from "react-router-dom";
 import "../styles/pages/user/user.scss";
 import { useDispatch } from "react-redux";
-import { logoutUser } from "../redux/login/actions"
+import { logoutUser } from "../redux/login/actions";
+import { useTranslation } from 'react-i18next';
 
 export default function User() {
     
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const handlelogout = () => {
-        dispatch(logoutUser())
+        dispatch(logoutUser());
     }
     
     return (
@@ -17,28 +19,28 @@ export default function User() {
             <nav>
                 <ul>
                     <li>
-                    <NavLink exact activeClassName="active" to="/user/pedidos">
-                        PEDIDOS
-                    </NavLink>
+                        <NavLink exact activeClassName="active" to="/user/pedidos">
+                            {t('pedidos')}
+                        </NavLink>
                     </li>
                     <li>
                         <NavLink activeClassName="active" to="/user/dados">
-                            DADOS
+                            {t('dados')}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink activeClassName="active" to="/user/enderecos">
-                            ENDEREÇOS
+                            {t('enderecos')}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink activeClassName="active" to="/user/paymentMethods">
-                            MÉTODOS DE PAGAMENTO
+                            {t('paymentMethods')}
                         </NavLink>
                     </li>
                     <li>
                         <NavLink onClick={handlelogout} activeClassName="active" to="/">
-                            SAIR
+                            {t('exit')}
                         </NavLink>
                     </li>
                 </ul>

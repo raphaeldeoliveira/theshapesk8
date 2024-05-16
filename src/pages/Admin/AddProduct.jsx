@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 export default function AddProduct() {
+
+    const { t } = useTranslation();
 
     // não consegui passar os dados corretamente pro endpoint
     const [formData, setFormData] = useState({
@@ -41,7 +44,7 @@ export default function AddProduct() {
             }
     
             // Se chegou aqui, o produto foi cadastrado com sucesso
-            alert('Produto cadastrado com sucesso!');
+            alert(t('registeredProductSucefully'));
             // Limpar o formulário após o envio bem-sucedido
             setFormData({
                 nome: "",
@@ -51,22 +54,21 @@ export default function AddProduct() {
                 tamanho: ""
             });
         } catch (error) {
-            console.error('Erro ao cadastrar produto:', error);
-            alert('Erro ao cadastrar produto. Verifique os campos e tente novamente.');
+            alert(t('registerError'));
         }
     };
     
 
     return (
         <div className="add__product">
-            <h1>Add Product</h1>
+            <h1>{'addProduct2'}</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>
-                        <label>Nome: </label>
+                        <label>{t('name')}: </label>
                         <input 
                             type="text" 
-                            placeholder="A crazy shape..." 
+                            placeholder={t('namePlaceholder')}
                             name="nome" 
                             value={formData.nome} 
                             onChange={handleChange} 
@@ -74,10 +76,10 @@ export default function AddProduct() {
                         />
                     </div>
                     <div>
-                        <label>Descrição: </label>
+                        <label>{t('description')}: </label>
                         <input 
                             type="text" 
-                            placeholder="Feito de madeira" 
+                            placeholder={t('descriptionPlaceholder')} 
                             name="descricao" 
                             value={formData.descricao} 
                             onChange={handleChange} 
@@ -85,7 +87,7 @@ export default function AddProduct() {
                         />
                     </div>
                     <div>
-                        <label>Imagem</label>
+                        <label>{t('imagem')}</label>
                         <input 
                             type="text" 
                             placeholder="https://i.ytimg.com/vi/K36J9aNDnoM/maxresdefault.jpg" 
@@ -98,7 +100,7 @@ export default function AddProduct() {
                 </div>
                 <div>
                     <div>
-                        <label>Valor:</label>
+                        <label>{t('valor')}:</label>
                         <input 
                             type="number" 
                             name="valor" 
@@ -108,10 +110,10 @@ export default function AddProduct() {
                         />
                     </div>
                     <div>
-                        <label>Tamanho: </label>
+                        <label>{t('tamanho')}: </label>
                         <input 
                             type="text" 
-                            placeholder="P M G" 
+                            placeholder={`${t('tamanhoP')}, ${t('tamanhoM')}, ${t('tamanhoG')}`}
                             name="tamanho" 
                             value={formData.tamanho} 
                             onChange={handleChange} 
@@ -119,7 +121,7 @@ export default function AddProduct() {
                         />
                     </div>
                     
-                    <button type="submit">Adicionar</button>
+                    <button type="submit">{t('adicionar')}</button>
                 </div>
             </form>
         </div>

@@ -6,12 +6,14 @@ import { FaArrowLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import LoadingSpinner from "../components/global/LoadingSpinner";
 import { addToCart } from "../redux/cart/actions";
+import { useTranslation } from 'react-i18next';
 
 export default function Product() {
 
     const [dataLoad, setDataLoad] = useState(false)
     const [productData, setProductData] = useState()
     const { id } = useParams()
+    const { t } = useTranslation();
 
     useEffect(() => {
         setDataLoad(false)
@@ -62,7 +64,7 @@ export default function Product() {
     
     return (
         <div>
-            <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}><FaArrowLeft /> <span>voltar para pagina de busca: {searchTerm}</span></Link>
+            <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}><FaArrowLeft /> <span>{t('returnSearchPage')} {searchTerm}</span></Link>
             <div className="product__container">
                 <div className="container__product__image">
                     {dataLoad ? 
@@ -72,9 +74,9 @@ export default function Product() {
                 {dataLoad && productData ? (
                     <div className="container__product__detail">
                         <h2>{productData.dados.nome}</h2>
-                        <h3>R$ {productData.dados.valor?.toFixed(2)}<label>ou {(productData.dados.valor * 1.08)?.toFixed(2)} em 3x</label></h3>
+                        <h3>$ {productData.dados.valor?.toFixed(2)} <label> {t('conector2')} {(productData.dados.valor * 1.08)?.toFixed(2)} {t('conector3')} 3x</label></h3>
                         <div className="detail__size">
-                            <h4>select size: </h4>
+                            <h4>{t('selectSize')}: </h4>
                             {product_sizes.map((item) => {
                                 return (
                                     <div className="size__input" key={item}>
@@ -85,7 +87,7 @@ export default function Product() {
                             })}
                         </div>
                         <div className="detail__quantity">
-                            <h3>Quantidade: </h3>
+                            <h3>{t('quantity')}: </h3>
                             <div>
                                 <button onClick={decrementQtd}>-</button>
                                 <div>{productQtd}</div>
@@ -93,17 +95,17 @@ export default function Product() {
                             </div>
                         </div>
                         <div className="detail__buttons">
-                            <button className="button--add" onClick={handleAddToCart}>Adicionar ao carrinho</button>
+                            <button className="button--add" onClick={handleAddToCart}>{t('addCartButton')}</button>
                             <button className="button--buy" onClick={() => {
                                 handleAddToCart();
                                 navigate("/payment");
-                            }}>Comprar agora</button>
+                            }}>{t('buyNowButton')}</button>
                         </div>
                     </div>
                 ) : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
                 
             </div>
-            <SearchPageGrid h1title="Produtos interessantes pra você:" />
+            <SearchPageGrid h1title={t('pageGridTitle2')} />
         </div>
     )
 }

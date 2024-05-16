@@ -5,14 +5,15 @@ import CartCard from "./CartCard";
 import { useDispatch, useSelector } from "react-redux";
 import { calculateTotalPrice } from "../../redux/cart/actions";
 import { useNavigate } from "react-router-dom";
-
+import { useTranslation } from 'react-i18next';
 
 export default function LilCart(props) {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const cartItems = useSelector(state => state.cartReducer.cartItems);
     const totalPrice = useSelector(state => state.cartReducer.totalPrice);
+    const { t } = useTranslation();
 
     useEffect(() => {
         dispatch(calculateTotalPrice());
@@ -21,7 +22,7 @@ export default function LilCart(props) {
     return (
         <div className={`lil-cart ${props.showCart ? "cart__show" : "cart__hideen"}`}>
             <div className="cart__header">
-                <h1>Seu carrinho</h1>
+                <h1>{t('yourLilCart')}</h1>
                 <IoMdClose className="sgv--close" onClick={() => props.setShowCart((prev) => !prev)} />
             </div>
             {cartItems.length !== 0 ? (
@@ -37,17 +38,17 @@ export default function LilCart(props) {
                 }
                 )
             ) : (
-                <h1 className="your-cart-is-empty">Seu carrinho esta vazio</h1>
+                <h1 className="your-cart-is-empty">{t('emptyCartMsg')}</h1>
             )}
             {cartItems.length !== 0 ? (
                 <div>
                     <div className="cart__separator"></div>
                     <div className="cart__pf-container">
-                        <h2>Subtotal: R${totalPrice.toFixed(2)}</h2>
+                        <h2>{t('subtotalCart')} ${totalPrice.toFixed(2)}</h2>
                         <button onClick={() => {
                             navigate("/payment"); 
                             props.setShowCart((prev) => !prev);
-                        }}>Finalizar compra</button>
+                        }}>{t('finalizePurchase')}</button>
                     </div>
                 </div>
                 

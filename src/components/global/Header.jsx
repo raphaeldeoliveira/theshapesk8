@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import LilCart from "./LilCart";
 import { checkUserId } from "../../redux/login/actions";
 import LangOptionsMenu from "./LangOptionsMenu";
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
     const cartItems = useSelector(state => state.cartReducer.cartItems);
@@ -21,8 +22,9 @@ export default function Header() {
     const [searchTerm, setSearchTerm] = useState('');
     const [showCart, setShowCart] = useState(false);
     const [cartQuantity, setCartQuantity] = useState(0);
+    const { t } = useTranslation();
 
-    const [showLangOptionsMenu, setShowLangOptionsMenu] = useState(false)
+    const [showLangOptionsMenu, setShowLangOptionsMenu] = useState(false);
 
     useEffect(() => {
         dispatch(checkUserId());
@@ -54,7 +56,7 @@ export default function Header() {
                 <img src={banner} alt=""/>
             </Link>
             <form className="searchBar" onSubmit={handleSubmit}>
-                <input type="text" placeholder="Search the Shop" onChange={handleChange}></input>
+                <input type="text" placeholder={t('inputPlaceholder')} onChange={handleChange}></input>
                 <button>{<IoSearchSharp className="sgv--search"/>}</button>
             </form>
             <div>

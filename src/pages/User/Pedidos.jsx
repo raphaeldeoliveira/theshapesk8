@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../../styles/pages/user/user__pedidos.scss";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 import { useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
 
 export default function Pedidos() {
 
     const [loading, setLoading] = useState(true)
     const [pedidos, setPedidos] = useState([])
     const userId = useSelector(state => state.userReducer.userId);
+
+    const { t } = useTranslation();
     
     useEffect(() => {
         const loadProducts = async () => {
@@ -63,11 +66,11 @@ export default function Pedidos() {
                                 })}
                                 <li
                                     onClick={limparDetalhePedido}
-                                >Limpar detalhe do pedido</li>
+                                >{t('cleanRequests')}</li>
                             </ul>
                         </nav>
                     ) : (
-                        <h1 className="h1--v2">Sua lista de pedidos está vazia</h1>
+                        <h1 className="h1--v2">{t('yourRequestListIsEmpty')}</h1>
                     )}
                 </div>
                 <div className="pedidos__half-right">

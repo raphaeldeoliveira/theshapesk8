@@ -1,25 +1,27 @@
 import React from "react";
 import "../styles/pages/admin/admin.scss";
 import { Outlet, NavLink } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export default function Admin() {
 
+    const { t } = useTranslation();
 
     return (
         <div className="admin__container">
             <h1>Admin</h1>
             <nav>
                 <NavLink exact activeClassName="active" to="/admin/addProduct">
-                    ADICIONAR PROTUDO
+                    {t('addProduct')}
                 </NavLink>
                 <NavLink activeClassName="active" to="/admin/listProduct">
-                    LISTAR PROTUDOS
+                    {t('listProduct')}
                 </NavLink>
                 <NavLink activeClassName="active" to="/admin/editProduct">
-                    EDITAR PRODUTO
+                    {t('editProduct')}
                 </NavLink>
                 <NavLink activeClassName="active" to="/admin/listUser">
-                    LISTAR USUARIOS
+                    {t('listUser')}
                 </NavLink>
             </nav>
             <Outlet />
