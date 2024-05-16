@@ -63,7 +63,9 @@ export default function Header() {
                     onClick={() => {setShowLangOptionsMenu((prevState) => !prevState)}}
                 />
                 {showLangOptionsMenu ? (
-                    <LangOptionsMenu />
+                    <LangOptionsMenu
+                    setShowLangOptionsMenu={setShowLangOptionsMenu}
+                    />
                 ) : null}
                 {(cartQuantity !== 0) && <div className="cart__quantity">{cartQuantity}</div>}
                 <MdShoppingCart 

@@ -1,10 +1,12 @@
+@import "../../global/colors.scss";
+
 .langOptionsMenu {
-    background-color: white;
+    background-color: lighten(black, 30%);
     //padding: 15px;
     border-radius: 10px;
     font-weight: 2rem;
     color: red;
-    margin-left: 16px;
+    margin-left: 0px;
     margin-top: -20px;
 
     position: absolute;
@@ -18,21 +20,34 @@
         }
     }
 
-    .flag__container--EN:hover, .flag__container--BR:hover, .flag__container--ES:hover {
-        background-color: gray;
-    }
-
     .flag__container--EN {
         padding: 10px 15px 0px 15px;
         border-bottom: 1px dashed black;
+
+        &:hover {
+            background-color: $secundary-color;
+            border-radius: 10px 10px 0px 0px;
+        }
     }
 
     .flag__container--BR {
         padding: 10px 15px;
         border-bottom: 1px dashed black;
+
+        &:hover {
+            background-color: $secundary-color;
+        }
     }
 
     .flag__container--ES {
         padding: 8px 15px 10px 15px;
+        &:hover {
+            background-color: $secundary-color;
+            border-radius: 0px 0px 10px 10px;
+        }
+    }
+
+    .flag--active {
+        background-color: $secundary-color;
     }
 }
