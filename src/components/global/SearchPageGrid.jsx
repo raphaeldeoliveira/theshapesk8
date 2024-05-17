@@ -43,7 +43,7 @@ export default function SearchPageGrid(props) {
             }
         }
         loadProducts();
-    }, [productname]); // Adiciona productname como dependência para garantir que a solicitação seja feita sempre que a rota mudar
+    }, [productname, t]); // Adiciona productname como dependência para garantir que a solicitação seja feita sempre que a rota mudar
 
     /* Não vai ter filtros. Somente 'busca por: ', quando clicar em spitfire
     ele vai ficar 'Busca por: Spitfire' */

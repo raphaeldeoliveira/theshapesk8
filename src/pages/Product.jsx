@@ -35,7 +35,7 @@ export default function Product() {
             }
         }
         loadProducts()
-    }, [id])
+    }, [id, t])
 
     const [productQtd, setProductQtd] = useState(1)
 

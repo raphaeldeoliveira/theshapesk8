@@ -32,7 +32,7 @@ export default function Pedidos() {
             }
         }
         loadProducts();
-    }, [userId]);
+    }, [userId, t]);
 
     // da um get na API para pegar os pedidos (a quantidade, nao os pedidos em sí)
     const [pedidoSelecionado, setPedidoSelecionado] = useState(null);
