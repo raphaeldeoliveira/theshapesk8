@@ -21,7 +21,7 @@ export default function Product() {
             try {
                 const response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/${id}`);
                 if (!response.ok) {
-                    alert("Falha ao registrar!")
+                    alert(t('registerError2'))
                     throw new Error('Erro ao fazer login');
                 }
                 const data = await response.json();
@@ -60,7 +60,7 @@ export default function Product() {
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);
     
-    const product_sizes = ["P", "M", "G"]
+    const product_sizes = [t('tamanhoP'), t('tamanhoM'), t('tamanhoG')]
     
     return (
         <div>

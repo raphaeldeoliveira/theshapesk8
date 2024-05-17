@@ -3,11 +3,13 @@ import ProductCard from "./ProductCard";
 import "../../styles/pages/search/searchpage.scss";
 import LoadingSpinner from "./LoadingSpinner";
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 export default function SearchPageGrid(props) {
 
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const { t } = useTranslation();
 
     // Obtém o nome do produto da URL
     const { productname } = useParams();
@@ -26,7 +28,7 @@ export default function SearchPageGrid(props) {
                 }
                 
                 if (!response.ok) {
-                    alert("Falha ao registrar!")
+                    alert(t('failedRegister'))
                     throw new Error('Erro ao fazer login');
                 }
                 const data = await response.json();
@@ -50,9 +52,9 @@ export default function SearchPageGrid(props) {
     if (props.h1title) {
         h1title = props.h1title;
     } else if (productname === undefined) {
-        h1title = "Todos os produtos"
+        h1title = t('allProducts')
     } else {
-        h1title = `Busca por: ${productname}`;
+        h1title = `${t('searchFor')}: ${productname}`;
     }
 
     const outletStyles = {
@@ -67,7 +69,7 @@ export default function SearchPageGrid(props) {
             <div style={outletStyles} className="searchPage">
                 <h1>{h1title}</h1>
                 {products.dados && products.dados.length === 0 ? (
-                    <h1>A busca não retornou resultados</h1>
+                    <h1>{t('searchNoReturnResults')}</h1>
                 ) : (
                     <div className="searchPage__grid">
                     {products.dados && products.dados.map((item, index) => (

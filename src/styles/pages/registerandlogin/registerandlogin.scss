@@ -7,7 +7,7 @@
     width: 80%;
     // esse height nao vai funcionar conforme esperado. A div pai tem que ter 100vh e
     // ele ser obrigado a ter um padrao se nao vai ficar fora de esquadro em outros PC
-    height: 69vh;
+    min-height: 69vh;
     margin: auto;
 
     .login_and_register__login, .login_and_register__register {

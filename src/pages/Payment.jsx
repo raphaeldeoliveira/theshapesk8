@@ -5,6 +5,7 @@ import CartCard from "../components/global/CartCard";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../redux/cart/actions";
 import LoadingSpinner from "../components/global/LoadingSpinner";
+import { useTranslation } from 'react-i18next';
 
 export default function Payment() {
 
@@ -14,6 +15,7 @@ export default function Payment() {
     const totalPrice = useSelector(state => state.cartReducer.totalPrice);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(false)
+    const { t } = useTranslation();
 
     const idAndQuantityArray = cartItems.map(product => ({
         id_Produto: product.id,
@@ -61,13 +63,13 @@ export default function Payment() {
             if (response.ok) {
                 // Implemente o que deseja fazer após finalizar o pedido, como redirecionar para outra página
                 //navigate("/pagina-de-sucesso");
-                alert("pedido enviado com sucesso")
+                alert(t('orderSend'))
             } else {
-                throw new Error('Erro ao finalizar o pedido');
+                throw new Error(t('orderSendFailed'));
             }
         } catch (error) {
-            console.error('Erro ao finalizar o pedido:', error);
-            alert('Erro ao finalizar o pedido:', error)
+            console.error(t('orderSendFailed'), error);
+            alert(t('orderSendFailed'), error)
         } finally {
             setLoading(false)
             navigate("/");
@@ -77,7 +79,7 @@ export default function Payment() {
 
     return (
         <div className="payment">
-            <h1>Finalize sua compra</h1>
+            <h1>{t('finishYourOrder')}</h1>
             {loading ? (
                 <LoadingSpinner verticalsize="300" horizontalsize="800" />
             ) : (
@@ -95,8 +97,8 @@ export default function Payment() {
                         ))}
                     </div>
                     <div className="payment__half--right">
-                        <h2>Valor do pedido: R${totalPrice.toFixed(2)}</h2>
-                        <button onClick={finalizarPedido}>Finalizar pedido</button>
+                        <h2>{t('orderValue')}: ${totalPrice.toFixed(2)}</h2>
+                        <button onClick={finalizarPedido}>{t('finishOrder')}</button>
                     </div>
                 </div>
             )}

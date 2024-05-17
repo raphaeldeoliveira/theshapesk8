@@ -126,7 +126,7 @@ export default function Register() {
                     <h2>{t('alreadyCustumer')}</h2>
                     <form onSubmit={handleLoginSubmit}>
                         <input type="text" name="email" placeholder="E-mail" value={loginData.email} onChange={handleLoginInputChange}></input>
-                        <input type="password" name="senha" placeholder="Senha" value={loginData.senha} onChange={handleLoginInputChange}></input>
+                        <input type="password" name="senha" placeholder={t('password')} value={loginData.senha} onChange={handleLoginInputChange}></input>
                         <Link onClick={() => alert("Função não implementada")}>{t('forgotPassword')}</Link>
                         <button onClick={() => {
                             mockLogAsAdmin()

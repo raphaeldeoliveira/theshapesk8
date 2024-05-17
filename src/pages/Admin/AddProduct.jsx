@@ -61,7 +61,7 @@ export default function AddProduct() {
 
     return (
         <div className="add__product">
-            <h1>{'addProduct2'}</h1>
+            <h1>{t('addProduct2')}</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <div>
