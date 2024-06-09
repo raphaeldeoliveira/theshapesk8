@@ -7,10 +7,11 @@
     width: 80%;
     margin: auto;
 
-    .brand__container {
+    .brand__item {
         position: relative;
-        width: 90px;
-        height: 90px;
+        width: 108px;
+        margin: 0px 11px;
+        height: 108px;
     
         .branding__default,
         .branding__hover {
@@ -31,8 +32,8 @@
     }
 
     .branding__arrow--left , .branding__arrow--right {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         color: $secundary-color;
     }
 
@@ -57,6 +58,20 @@
         color: lighten($secundary-color, 20%);
         animation: righthandanimation 400ms ease;
         cursor: pointer;
+    }
+
+    .brand__carrousel {
+        margin: auto;
+        overflow: hidden;
+        position: relative;
+        width: 84%;
+        display: flex;
+    }
+
+    .brand__carrousel__internal {
+        width: 2400px;
+        display: flex;
+        transition: transform 0.4s ease-in-out;
     }
 
 }
