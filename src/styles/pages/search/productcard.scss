@@ -1,4 +1,5 @@
 @import "../../global/colors.scss";
+@import "../../global/fonts.scss";
 
 .productCard {
     display: flex;
@@ -17,15 +18,16 @@
     & > h2, & > h3 {
         color: white;
         text-decoration: none;
+        font-family: $font-tertiary;
     }
 
     & > h2 {
         margin: 14px 0px;
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
 
     & > h3 {
-        font-size: 1.4rem;
+        font-size: 1.7rem;
     }
 
     &:hover {
