@@ -6,16 +6,16 @@
 
     .option__span {
         margin: 6px 0px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: $font-secundary;
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 1px black;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: $font-secundary;
+        font-size: 1.2rem;
+        text-shadow: 1px 1px 1px black;
 
-            &:hover {
-                color: $secundary-color;
-                text-shadow: 3px 3px 2px black;
-            }
+        &:hover {
+            color: $secundary-color;
+            text-shadow: 3px 3px 2px black;
+        }
     }
     
     .nav-options__item__menu {
