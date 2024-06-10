@@ -1,0 +1,41 @@
+@import "../../global/fonts.scss";
+@import "../../global/colors.scss";
+
+.nav-options__item__container {
+    margin: 10px 0px;
+
+    .option__span {
+        margin: 6px 0px;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: $font-secundary;
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 1px black;
+
+            &:hover {
+                color: $secundary-color;
+                text-shadow: 3px 3px 2px black;
+            }
+    }
+    
+    .nav-options__item__menu {
+        padding: 8px;
+        //display: none;
+        font-family: $font-tertiary;
+        font-size: 1.3rem;
+
+        & > ul {
+            list-style: none;
+            list-style-type: none;
+
+            .item__menu__li {
+                margin: 8px 0px;
+
+                &:hover {
+                    cursor: pointer;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

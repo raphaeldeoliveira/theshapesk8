@@ -52,10 +52,10 @@ export default function Product() {
         }
     }
 
-    function handleAddToCart() {    
-        console.log("caiu na vila o peixe fuzila")
-        console.log(productData.dados)
-        dispatch(addToCart(productData.dados));
+    function handleAddToCart() {
+        for (let i=0; i<productQtd; i++) {
+            dispatch(addToCart(productData.dados));
+        }
     };
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);
@@ -74,33 +74,38 @@ export default function Product() {
                 {dataLoad && productData ? (
                     <div className="container__product__detail">
                         <h2>{productData.dados.nome}</h2>
-                        <h3>$ {productData.dados.valor?.toFixed(2)} <label> {t('conector2')} {(productData.dados.valor * 1.08)?.toFixed(2)} {t('conector3')} 3x</label></h3>
-                        <div className="detail__size">
-                            <h4>{t('selectSize')}: </h4>
-                            {product_sizes.map((item) => {
-                                return (
-                                    <div className="size__input" key={item}>
-                                        <input type="radio" name="size" />
-                                        <label>{item}</label>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div className="detail__quantity">
-                            <h3>{t('quantity')}: </h3>
+                        <div className="container__product__detail__two-section">
                             <div>
-                                <button onClick={decrementQtd}>-</button>
-                                <div>{productQtd}</div>
-                                <button onClick={incrementQdt}>+</button>
+                                <h3>$ {productData.dados.valor?.toFixed(2)} <label> {t('conector2')} {(productData.dados.valor * 1.08)?.toFixed(2)} {t('conector3')} 3x</label></h3>
+                                <div className="detail__size">
+                                    <h4>{t('selectSize')}: </h4>
+                                    {product_sizes.map((item) => {
+                                        return (
+                                            <div className="size__input" key={item}>
+                                                <input type="radio" name="size" />
+                                                <label>{item}</label>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+                                <div className="detail__quantity">
+                                    <h3>{t('quantity')}: </h3>
+                                    <div>
+                                        <button onClick={decrementQtd}>-</button>
+                                        <div>{productQtd}</div>
+                                        <button onClick={incrementQdt}>+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="detail__buttons">
+                                <button className="button--add" onClick={handleAddToCart}>{t('addCartButton')}</button>
+                                <button className="button--buy" onClick={() => {
+                                    handleAddToCart();
+                                    navigate("/payment");
+                                }}>{t('buyNowButton')}</button>
                             </div>
                         </div>
-                        <div className="detail__buttons">
-                            <button className="button--add" onClick={handleAddToCart}>{t('addCartButton')}</button>
-                            <button className="button--buy" onClick={() => {
-                                handleAddToCart();
-                                navigate("/payment");
-                            }}>{t('buyNowButton')}</button>
-                        </div>
+                        
                     </div>
                 ) : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
                 

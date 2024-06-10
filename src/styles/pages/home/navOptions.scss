@@ -1,5 +1,4 @@
 @import "../../global/colors.scss";
-@import "../../global/fonts.scss";
 
 .nav-options {
     background-color: $primary-color;
@@ -9,36 +8,6 @@
         display: flex;
         justify-content: space-between;
         list-style: none;
-
-        li {
-            margin: 6px 0px;
-            font-weight: bold;
-            cursor: pointer;
-            //font-family: $font-tertiary;
-            //font-size: 1.7rem;
-            font-family: $font-secundary;
-            font-size: 1.2rem;
-            text-shadow: 1px 1px 1px black;
-
-            &:hover {
-                color: $secundary-color;
-                text-shadow: 3px 3px 2px black;
-            }
-        }
-
-        li:first-child {
-            margin-left: 90px;
-        }
-        li:last-child {
-            margin-right: 90px;
-        }
-    }
-
-    .option__span {
-
-    }
-
-    .option__card {
-        
+        list-style-type: none;
     }
 }

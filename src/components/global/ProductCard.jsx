@@ -8,7 +8,6 @@ export default function ProductCard(props) {
         window.scrollTo({ top: 0 });
     };
 
-
     return (
         <Link onClick={scrollToTop} to={`/product/${props.id}`} className="productCard">
             <img alt="" src={props.image} />

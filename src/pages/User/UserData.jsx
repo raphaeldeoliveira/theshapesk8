@@ -98,18 +98,25 @@ export default function UserData() {
                     <h1 className="h1--pessoal">{t('pessoalData')}</h1>
                     <FaRegEdit onClick={toggleEditMode} className="edit__icon" />
                 </div>
-                <form onSubmit={handleUpdateUserData}>
-                    <input type="text" name="nome" placeholder={t('name')} value={pessoalData.dados.nome || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
-                    <input type="text" name="cpf" placeholder="CPF" value={pessoalData.dados.cpf || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
-                    <input type="email" name="email" placeholder="E-mail" value={pessoalData.dados.email || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
-                    <input type="text" name="telefone" placeholder={t('telephone')} value={pessoalData.dados.telefone || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
-                    <input type="text" name="dataNascimento" placeholder={t('dataNascimento')} value={pessoalData.dados.dataNascimento || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
-                    <input type="password" name="senha" placeholder={t('password')} value={pessoalData.dados.senha || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                <form className="data__half__form" onSubmit={handleUpdateUserData}>
+                    <div>
+                        <label>name: </label><input type="text" name="nome" placeholder={t('name')} value={pessoalData.dados.nome || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                        <label>cpf: </label><input type="text" name="cpf" placeholder="CPF" value={pessoalData.dados.cpf || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                        <label>email: </label><input type="email" name="email" placeholder="E-mail" value={pessoalData.dados.email || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                    </div>
+                    <div>
+                        <label>telefone: </label><input type="text" name="telefone" placeholder={t('telephone')} value={pessoalData.dados.telefone || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                        <label>data nasc: </label><input type="text" name="dataNascimento" placeholder={t('dataNascimento')} value={pessoalData.dados.dataNascimento || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                        <label>senha: </label><input type="password" name="senha" placeholder={t('password')} value={pessoalData.dados.senha || ""} onChange={handleChangeUserData} disabled={!editPessoalData}></input>
+                    </div>
                     {/* Adicione outros campos de dados conforme necessário */}
                     {editPessoalData && <button type="submit">{t('saveChanges')}</button>}
                 </form>
             </div>
-            <div className="data__half--right">
+            <div 
+                className="data__half--right"
+                style={{ display: "none" }}
+            >
                 <div className="data__title__container">
                     <h1 className="h1--envio">{t('shippingDetails')}</h1>
                     <FaRegEdit onClick={toggleEditMode} className="edit__icon" />

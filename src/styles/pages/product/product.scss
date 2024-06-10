@@ -38,7 +38,7 @@
             text-decoration: underline;
         }
 
-        & > .detail__buttons > button {
+        .detail__buttons > button {
             padding: 14px 70px;
             display: block;
             color: white;
@@ -46,10 +46,12 @@
             border: 2px solid white;
             font-weight: bold;
             font-size: 1rem;
-            margin: auto;
+            //margin: auto;
         }
         .button--add {
             background-color: $primary-color;
+
+            margin: 22px auto;
             &:hover {
                 background-color: darken($primary-color, 20%);
                 cursor: pointer;
@@ -57,6 +59,8 @@
         }
         .button--buy {
             background-color: $secundary-color;
+            margin: 20px auto;
+
             &:hover {
                 background-color: darken($secundary-color, 20%);
                 cursor: pointer;
@@ -113,6 +117,12 @@
                 text-align: center;
             }
         }
+    }
+
+    .container__product__detail__two-section {
+        display: flex ;
+        justify-content: space-evenly;
+        margin: 20px 0px;
     }
 }
 

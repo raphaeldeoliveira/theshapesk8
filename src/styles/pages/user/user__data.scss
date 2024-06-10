@@ -10,6 +10,12 @@
         width: 50%;
     }
 
+    .data__half__form {
+        & > div > input {
+            margin: 18px;
+        }
+    }
+
     & > .data__hald--right {
         width: 50%;
     }
@@ -26,6 +32,12 @@
 
         .h1--envio {
             color: $primary-color;
+        }
+    }
+
+    .edit__icon {
+        &:hover {
+            cursor: pointer;
         }
     }
 }
