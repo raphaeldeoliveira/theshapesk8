@@ -3,8 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
-  .use(LanguageDetector) // Detecta o idioma do navegador
-  .use(initReactI18next) // Passa o i18n para o react-i18next
+  .use(LanguageDetector)
+  .use(initReactI18next)
   .init({
     resources: {
       en: {
@@ -218,8 +218,8 @@ i18n
           shoe: "zapato", 
           boot: "bota", 
           slipper: "zapatilla",
-          highTop: "canã alta", 
-          lowTop: "canã baja",
+          highTop: "cana alta", 
+          lowTop: "cana baja",
           decks: "cubiertas", 
           wheels: "ruedas", 
           hardware: "ferros", 
@@ -238,7 +238,7 @@ i18n
           stickers: "pegatinas",
           plankets: "planchas",
           sunglas: "gafas de sol",
-          randomItems: "artículos aleatorios",
+          randomItems: "articulos aleatorios",
           buttonsPins: "botones y alfileres",
           stickerPacks: "paquete de pegatinas",
         } 
@@ -332,7 +332,7 @@ i18n
           finishYourOrder: "Finalize sua compra",
           orderValue: "Valor do pedido",
           finishOrder: "Finalizar pedido",
-          sneakers: "tênis", 
+          sneakers: "tenis", 
           shoe: "sapato", 
           boot: "bota", 
           slipper: "chinelo",
@@ -341,23 +341,23 @@ i18n
           decks: "decks", 
           wheels: "rodas", 
           hardware: "ferros", 
-          reissues: "reedições", 
-          safety: "itens de segurança",
+          reissues: "reedicoes", 
+          safety: "itens de seguranca",
           tShirt: "camiseta",
           flannel: "flanelas",
-          hats: "chapéus",
+          hats: "chapeus",
           beanie: "gorros",
           short: "shorts",
           jacket: "jaquetas",
           hoodie: "moletom",
-          polo: "pólo",
+          polo: "polo",
           reglan: "reglan",
           patches: "patches",
           stickers: "adesivos",
           plankets: "pranchas",
-          sunglas: "óculos de sol",
+          sunglas: "oculos de sol",
           randomItems: "itens aleatorios",
-          buttonsPins: "botões & alfinete",
+          buttonsPins: "botoes & alfinete",
           stickerPacks: "pacotes de adesivos",
         }
       },
@@ -365,7 +365,7 @@ i18n
     fallbackLng: 'en',
     debug: true,
     interpolation: {
-      escapeValue: false, // React já faz a escapada
+      escapeValue: false,
     }
   });
 
