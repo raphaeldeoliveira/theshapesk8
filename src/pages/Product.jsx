@@ -43,10 +43,10 @@ export default function Product() {
     }, [id, t]);
 
     function incrementQdt() {
-        if (productQtd < productData.product[sizeSelected].quantidade) {
+        if (productData && productData.products && sizeSelected !== null && productQtd < productData.products[sizeSelected].quantidade) {
             setProductQtd((prev) => prev + 1);
         } else {
-            alert("Não há mais produtos disponiveis")
+            alert("Não há mais produtos disponíveis");
         }
     }
 
@@ -58,8 +58,8 @@ export default function Product() {
 
     function handleAddToCart() {
         if (productData) {
-            for (let i=0; i<productQtd; i++) {
-                dispatch(addToCart(productData.dados));
+            for (let i = 0; i < productQtd; i++) {
+                dispatch(addToCart(productData));
             }
         }
     }
@@ -77,7 +77,7 @@ export default function Product() {
                     {dataLoad ? 
                         /*(<img alt="" src={productData?.images[0].imagem}/>) */
                         (<ProductImagesCarrousel 
-                            images={productData.images}
+                            images={productData?.images || []}
                         />)
                         : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)
                     }
@@ -87,7 +87,7 @@ export default function Product() {
                         <h2>{productData.productDetail.nome}</h2>
                         <div className="container__product__detail__categories-section">
                             <div className="categories-section--category">{productData.productDetail.categoria}</div>
-                            <div className="categories-section--subcategory">{productData.productDetail.subCategoria}</div>
+                            <div className="categories-section--subcategory">{productData.productDetail.subcategoria}</div>
                             <div className="categories-section--marca">{productData.productDetail.marca}</div>
                         </div>
                         <div className="container__product__detail__two-section">
@@ -95,13 +95,13 @@ export default function Product() {
                                 <h3>$ {productData.productDetail.valor} <label> {t('conector2')} {(productData.productDetail.valor * 1.08)?.toFixed(2)} {t('conector3')} 3x</label></h3>
                                 <div className="detail__size">
                                     <h4>{t('selectSize')} </h4>
-                                    {productData.product.map((item, index) => (
+                                    {productData.products && productData.products.map((item, index) => (
                                         <button 
                                             key={index}
                                             className="button__size"
                                             style={{
-                                                backgroundColor: sizeSelected == index ? "#673ab7" : "",
-                                                color: sizeSelected == index ? "white" : ""
+                                                backgroundColor: sizeSelected === index ? "#673ab7" : "",
+                                                color: sizeSelected === index ? "white" : ""
                                             }}
                                             onClick={() => {
                                                 setProductQtd(1);

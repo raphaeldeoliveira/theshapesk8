@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { RiDragDropLine } from "react-icons/ri";
 import { useTranslation } from 'react-i18next';
 
+// DESCONTINUADO POR FALTA DE INFRAESTRUTURA PARA DEIXAR FAZER UPLOAD DE IMAGENS
 const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
     const { t } = useTranslation();
 
