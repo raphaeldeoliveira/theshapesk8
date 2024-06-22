@@ -7,7 +7,7 @@ const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
     const { t } = useTranslation();
 
     const onDrop = (acceptedFiles) => {
-        const remainingSlots = 6 - images.length;
+        const remainingSlots = 4 - images.length;
         const filesToAdd = acceptedFiles.slice(0, remainingSlots);
         const newImages = [...images, ...filesToAdd];
         setImages(newImages);
@@ -16,11 +16,11 @@ const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
         onDrop, 
-        disabled: images.length >= 6 
+        disabled: images.length >= 4 
     });
 
     const renderEmptySlots = () => {
-        const totalSlots = 6;
+        const totalSlots = 4;
         const filledSlots = images.length;
         const emptySlots = totalSlots - filledSlots;
 
@@ -38,7 +38,7 @@ const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
             <div 
                 {...getRootProps()} 
                 className={`drag-and-drop__container ${isDragActive ? 'dragging' : ''}`}
-                style={{ cursor: images.length >= 6 ? 'not-allowed' : 'pointer' }}
+                style={{ cursor: images.length >= 4 ? 'not-allowed' : 'pointer' }}
             >
                 <input {...getInputProps()} />
                 {images.length === 0 && (

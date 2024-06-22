@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
+import ProductImagesCarrousel from "../components/global/ProductImagesCarrousel";
 import "../styles/pages/product/product.scss";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
@@ -73,7 +74,10 @@ export default function Product() {
             <div className="product__container">
                 <div className="container__product__image">
                     {dataLoad ? 
-                        (<img alt="" src={productData?.images[0].imagem}/>) 
+                        /*(<img alt="" src={productData?.images[0].imagem}/>) */
+                        (<ProductImagesCarrousel 
+                            images={productData.images}
+                        />)
                         : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)
                     }
                 </div>
