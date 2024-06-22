@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import SearchPageGrid from "../components/global/SearchPageGrid";
-import "../styles/pages/product/product.scss"
+import "../styles/pages/product/product.scss";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,84 +9,99 @@ import { addToCart } from "../redux/cart/actions";
 import { useTranslation } from 'react-i18next';
 
 export default function Product() {
-
-    const [dataLoad, setDataLoad] = useState(false)
-    const [productData, setProductData] = useState()
-    const { id } = useParams()
+    const [dataLoad, setDataLoad] = useState(false);
+    const [productData, setProductData] = useState(null);
+    const [sizeSelected, setSizeSelected] = useState(null);
+    const [productQtd, setProductQtd] = useState(1);
+    const { id } = useParams();
     const { t } = useTranslation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setDataLoad(false)
+        setDataLoad(false);
         const loadProducts = async () => {
             try {
-                const response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/${id}`);
+                const response = await fetch(`http://localhost:8080/mainProductTeste/${id}`);
                 if (!response.ok) {
                     alert(t('registerError2'))
                     throw new Error('Erro ao fazer login');
                 }
                 const data = await response.json();
-                setProductData(data)
+                console.log(data);
+                setProductData(data);
             } catch(error) {
                 console.error('Erro:', error);
-                alert('Erro:', error)
-                
+                alert('Erro:', error);
             } finally {
-                setDataLoad(true)
+                setDataLoad(true);
             }
-        }
-        loadProducts()
-    }, [id, t])
-
-    const [productQtd, setProductQtd] = useState(1)
-
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+        };
+        loadProducts();
+    }, [id, t]);
 
     function incrementQdt() {
-        setProductQtd((prev) => prev + 1)
+        if (productQtd < productData.product[sizeSelected].quantidade) {
+            setProductQtd((prev) => prev + 1);
+        } else {
+            alert("Não há mais produtos disponiveis")
+        }
     }
 
     function decrementQtd() {
         if (productQtd > 1) {
-            setProductQtd((prev) => prev - 1)
+            setProductQtd((prev) => prev - 1);
         }
     }
 
     function handleAddToCart() {
-        for (let i=0; i<productQtd; i++) {
-            dispatch(addToCart(productData.dados));
+        if (productData) {
+            for (let i=0; i<productQtd; i++) {
+                dispatch(addToCart(productData.dados));
+            }
         }
-    };
+    }
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);
-    
-    const product_sizes = [t('tamanhoP'), t('tamanhoM'), t('tamanhoG')]
-    
+    const product_sizes = [t('tamanhoP'), t('tamanhoM'), t('tamanhoG')];
+
     return (
         <div>
-            <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}><FaArrowLeft /> <span>{t('returnSearchPage')} {searchTerm}</span></Link>
+            <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}>
+                <FaArrowLeft /> <span>{t('returnSearchPage')} {searchTerm}</span>
+            </Link>
             <div className="product__container">
                 <div className="container__product__image">
                     {dataLoad ? 
-                        (<img alt="" src={productData?.dados.imagem}/>) 
-                        : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
+                        (<img alt="" src={productData?.images[0].imagem}/>) 
+                        : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)
+                    }
                 </div>
                 {dataLoad && productData ? (
                     <div className="container__product__detail">
-                        <h2>{productData.dados.nome}</h2>
+                        <h2>{productData.productDetail.nome}</h2>
+                        <div className="container__product__detail__categories-section">
+                            <div className="categories-section--category">{productData.productDetail.categoria}</div>
+                            <div className="categories-section--subcategory">{productData.productDetail.subCategoria}</div>
+                            <div className="categories-section--marca">{productData.productDetail.marca}</div>
+                        </div>
                         <div className="container__product__detail__two-section">
                             <div>
-                                <h3>$ {productData.dados.valor?.toFixed(2)} <label> {t('conector2')} {(productData.dados.valor * 1.08)?.toFixed(2)} {t('conector3')} 3x</label></h3>
+                                <h3>$ {productData.productDetail.valor} <label> {t('conector2')} {(productData.productDetail.valor * 1.08)?.toFixed(2)} {t('conector3')} 3x</label></h3>
                                 <div className="detail__size">
-                                    <h4>{t('selectSize')}: </h4>
-                                    {product_sizes.map((item) => {
-                                        return (
-                                            <div className="size__input" key={item}>
-                                                <input type="radio" name="size" />
-                                                <label>{item}</label>
-                                            </div>
-                                        )
-                                    })}
+                                    <h4>{t('selectSize')} </h4>
+                                    {productData.product.map((item, index) => (
+                                        <button 
+                                            key={index}
+                                            className="button__size"
+                                            onClick={() => {
+                                                setProductQtd(1);
+                                                setSizeSelected(index);
+                                            }}
+                                        >
+                                            {item.tamanho}
+                                        </button>
+                                    ))}
                                 </div>
                                 <div className="detail__quantity">
                                     <h3>{t('quantity')}: </h3>
@@ -105,12 +120,10 @@ export default function Product() {
                                 }}>{t('buyNowButton')}</button>
                             </div>
                         </div>
-                        
                     </div>
                 ) : (<LoadingSpinner verticalsize="350" horizontalsize="350" />)}
-                
             </div>
             <SearchPageGrid h1title={t('pageGridTitle2')} />
         </div>
-    )
+    );
 }

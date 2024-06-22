@@ -123,6 +123,12 @@ i18n
           randomItems: "random itens",
           buttonsPins: "button & pins",
           stickerPacks: "sticker packs",
+          dragAndDropMessage: "Drag & drop some files here, or click to select files",
+          category: "Category",
+          subCategory: "Sub-Category",
+          brand: "Brand",
+          size: "Size",
+          amount: "Smount",
         }
       },
       es: {
@@ -241,6 +247,12 @@ i18n
           randomItems: "articulos aleatorios",
           buttonsPins: "botones y alfileres",
           stickerPacks: "paquete de pegatinas",
+          dragAndDropMessage: "Arrastra y suelta algunos archivos aquí, o haz clic para seleccionar archivos",
+          category: "Categoría",
+          subCategory: "Subcategoría",
+          brand: "Marca",
+          size: "Tamaño",
+          amount: "Cantidad",
         } 
       },
       pt: {
@@ -359,6 +371,12 @@ i18n
           randomItems: "itens aleatorios",
           buttonsPins: "botoes & alfinete",
           stickerPacks: "pacotes de adesivos",
+          dragAndDropMessage: "Arraste e solte alguns arquivos aqui ou clique para selecionar arquivos",
+          category: "Categoria",
+          subCategory: "Sub-Categoria",
+          brand: "Marca",
+          size: "Tamanho",
+          amount: "Quantidade",
         }
       },
     },

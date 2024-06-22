@@ -1,22 +1,27 @@
 import React, { useState } from "react";
 import { useTranslation } from 'react-i18next';
+import ImageUploader from "./ImageUploader";
 
 export default function AddProduct() {
 
     const { t } = useTranslation();
 
-    // não consegui passar os dados corretamente pro endpoint
+    const [images, setImages] = useState([]);
+
     const [formData, setFormData] = useState({
         nome: "",
         descricao: "",
-        imagem: "",
         valor: 55.32,
-        tamanho: ""
+        categoria: "",
+        subCategoria: "",
+        marca: "",
+        tamanhoCalçado: "",
+        quantidade: ""
     });
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        const newValue = name === 'valor' ? parseFloat(value) : value; // Converter para número se o campo for 'valor'
+        const newValue = name === 'valor' ? parseFloat(value) : value;
         setFormData({
             ...formData,
             [name]: newValue
@@ -29,9 +34,10 @@ export default function AddProduct() {
         try {
             const formDataWithNumber = {
                 ...formData,
-                valor: parseFloat(formData.valor)
+                valor: parseFloat(formData.valor),
+                imagens: images
             };
-            const response = await fetch('https://e-commerce-prod.onrender.com/api/produtos', {
+            const response = await fetch('http://localhost:8080/product', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,9 +49,7 @@ export default function AddProduct() {
                 throw new Error('Falha ao cadastrar produto');
             }
     
-            // Se chegou aqui, o produto foi cadastrado com sucesso
             alert(t('registeredProductSucefully'));
-            // Limpar o formulário após o envio bem-sucedido
             setFormData({
                 nome: "",
                 descricao: "",
@@ -53,17 +57,22 @@ export default function AddProduct() {
                 valor: 0,
                 tamanho: ""
             });
+            setImages([]);
         } catch (error) {
             alert(t('registerError'));
         }
     };
     
-
     return (
         <div className="add__product">
             <h1>{t('addProduct2')}</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
+            <div className="addProduct__container">
+                <ImageUploader 
+                    images={images}
+                    setImages={setImages}
+                    onImagesUploaded={(uploadedImages) => setImages(uploadedImages)}
+                />
+                <form onSubmit={handleSubmit}>
                     <div>
                         <label>{t('name')}: </label>
                         <input 
@@ -87,19 +96,6 @@ export default function AddProduct() {
                         />
                     </div>
                     <div>
-                        <label>{t('imagem')}</label>
-                        <input 
-                            type="text" 
-                            placeholder="https://i.ytimg.com/vi/K36J9aNDnoM/maxresdefault.jpg" 
-                            name="imagem" 
-                            value={formData.imagem} 
-                            onChange={handleChange} 
-                            required 
-                        />
-                    </div>
-                </div>
-                <div>
-                    <div>
                         <label>{t('valor')}:</label>
                         <input 
                             type="number" 
@@ -110,20 +106,63 @@ export default function AddProduct() {
                         />
                     </div>
                     <div>
-                        <label>{t('tamanho')}: </label>
+                        <label>{t('category')}:</label>
                         <input 
                             type="text" 
-                            placeholder={`${t('tamanhoP')}, ${t('tamanhoM')}, ${t('tamanhoG')}`}
+                            name="tamanho"
+                            placeholder={t('flannel')}
+                            value={formData.tamanho} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <label>{t('subCategory')}: </label>
+                        <input 
+                            type="text" 
+                            placeholder={t('roupas')}
                             name="tamanho" 
                             value={formData.tamanho} 
                             onChange={handleChange} 
                             required 
                         />
                     </div>
-                    
+                    <div>
+                        <label>{t('brand')}: </label>
+                        <input 
+                            type="text" 
+                            placeholder="Spitfire"
+                            name="tamanho" 
+                            value={formData.tamanho} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div className="separador">
+                        <label>{t('size')}: </label>
+                        <input 
+                            type="text" 
+                            placeholder="41"
+                            name="tamanho" 
+                            value={formData.tamanho} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
+                    <div>
+                        <label>{t('amount')}: </label>
+                        <input 
+                            type="text" 
+                            placeholder="17"
+                            name="tamanho" 
+                            value={formData.tamanho} 
+                            onChange={handleChange} 
+                            required 
+                        />
+                    </div>
                     <button type="submit">{t('adicionar')}</button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     );
 }

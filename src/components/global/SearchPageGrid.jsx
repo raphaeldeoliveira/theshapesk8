@@ -24,7 +24,7 @@ export default function SearchPageGrid(props) {
                 if (productname) {
                     response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/nome/${productname}`);
                 } else {
-                    response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos`);
+                    response = await fetch(`http://localhost:8080/mainProductTeste`);
                 }
                 
                 if (!response.ok) {
@@ -68,22 +68,21 @@ export default function SearchPageGrid(props) {
         return (
             <div style={outletStyles} className="searchPage">
                 <h1>{h1title}</h1>
-                {products.dados && products.dados.length === 0 ? (
+                {products.length === 0 ? (
                     <h1>{t('searchNoReturnResults')}</h1>
                 ) : (
                     <div className="searchPage__grid">
-                    {products.dados && products.dados.map((item, index) => (
-                        <ProductCard 
-                            key={index}
-                            image={item.imagem}
-                            name={item.nome}
-                            price={item.valor}
-                            id={item.id}
-                        />
-                    ))}
-                </div>
+                        {products.map((item, index) => (
+                            <ProductCard 
+                                key={index}
+                                image={item.images[0].imagem}
+                                name={item.productDetail.nome}
+                                price={item.productDetail.valor}
+                                id={item.productDetail.id}
+                            />
+                        ))}
+                    </div>
                 )}
-                
             </div>
         );
     }
