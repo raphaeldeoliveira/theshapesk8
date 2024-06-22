@@ -68,15 +68,20 @@
             text-decoration: underline;
         }
 
-        .detail__buttons > button {
-            padding: 14px 70px;
-            display: block;
-            color: white;
-            border-radius: 8px;
-            border: 2px solid white;
-            font-weight: bold;
-            font-size: 1rem;
-            //margin: auto;
+        .detail__buttons {
+            width: 19.6vw;
+           
+
+            & > button {
+                padding: 14px 40px;
+                display: block;
+                color: white;
+                border-radius: 8px;
+                border: 2px solid white;
+                font-weight: bold;
+                font-size: 1rem;
+                //margin: auto;
+            }
         }
         .button--add {
             background-color: $primary-color;
@@ -101,6 +106,10 @@
     .detail__size {
         display: flex;
         margin: 5px 0px;
+
+        & > h4 {
+            width: 8vw;
+        }
 
         .button__size {
             border-radius: 50%;
@@ -141,6 +150,11 @@
                 &:hover {
                     background-color: lighten(black, 20%);
                     cursor: pointer;
+                }
+
+                &:disabled {
+                    cursor: not-allowed;
+                    background-color: black;
                 }
             }
 

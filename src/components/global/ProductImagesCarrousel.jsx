@@ -7,7 +7,7 @@ export default function ProductImagesCarrousel(props) {
     const [carrouselPosition, setCarrouselPosition] = useState(0)
 
     const convertScrollX = useCallback(() => {
-        return carrouselPosition * 27
+        return carrouselPosition * 26
     }, [carrouselPosition])
 
     useEffect(() => {
@@ -15,11 +15,11 @@ export default function ProductImagesCarrousel(props) {
     }, [convertScrollX, carrouselPosition])
 
     function moveRight() {
-        setCarrouselPosition(prevPosition => prevPosition === 3 ? 0 : prevPosition + 1);
+        setCarrouselPosition(prevPosition => prevPosition === props.images.length - 1 ? 0 : prevPosition + 1);
     }
 
     function moveLeft() {
-        setCarrouselPosition(prevPosition => prevPosition === 0 ? 3 : prevPosition - 1);
+        setCarrouselPosition(prevPosition => prevPosition === 0 ? props.images.length -1 : prevPosition - 1);
     }
 
     return (
@@ -28,7 +28,7 @@ export default function ProductImagesCarrousel(props) {
                 {props.images.map((item, index) => (
                     <img 
                         style={{
-                            border: carrouselPosition === index ? "2px solid blue" : "",
+                            border: carrouselPosition === index ? "2px solid #ff9800" : "",
                             padding: carrouselPosition === index ? "3px" : "",
                         }}
                         key={index} 
@@ -44,6 +44,7 @@ export default function ProductImagesCarrousel(props) {
                         <FaArrowAltCircleLeft 
                             onClick={moveLeft}
                             className="banner__arrow--left"
+                            style={{ display: props.images.length == 1 ? "none" : "" }}
                         />
                     </div>
                     <div 
@@ -55,7 +56,6 @@ export default function ProductImagesCarrousel(props) {
                         {props.images.map((item) => {
                             return <img 
                                 src={item.imagem}
-                                className="images-carrousel__main-image"
                                 alt=""
                             />
                         })}
@@ -64,6 +64,7 @@ export default function ProductImagesCarrousel(props) {
                         <FaArrowAltCircleRight 
                             onClick={moveRight}
                             className="banner__arrow--right"
+                            style={{ display: props.images.length == 1 ? "none" : "" }}
                         />
                     </div>
                 </div>

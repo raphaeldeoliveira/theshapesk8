@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Product() {
     const [dataLoad, setDataLoad] = useState(false);
+    const [ableToClick, setAbleToClick] = useState(false)
     const [productData, setProductData] = useState(null);
     const [sizeSelected, setSizeSelected] = useState(null);
     const [productQtd, setProductQtd] = useState(1);
@@ -98,9 +99,14 @@ export default function Product() {
                                         <button 
                                             key={index}
                                             className="button__size"
+                                            style={{
+                                                backgroundColor: sizeSelected == index ? "#673ab7" : "",
+                                                color: sizeSelected == index ? "white" : ""
+                                            }}
                                             onClick={() => {
                                                 setProductQtd(1);
                                                 setSizeSelected(index);
+                                                setAbleToClick(true);
                                             }}
                                         >
                                             {item.tamanho}
@@ -110,9 +116,17 @@ export default function Product() {
                                 <div className="detail__quantity">
                                     <h3>{t('quantity')}: </h3>
                                     <div>
-                                        <button onClick={decrementQtd}>-</button>
+                                        <button 
+                                            onClick={decrementQtd}
+                                            disabled={!ableToClick}
+                                            title={!ableToClick ? t('changeQuantityMsg') : ""}
+                                        >-</button>
                                         <div>{productQtd}</div>
-                                        <button onClick={incrementQdt}>+</button>
+                                        <button 
+                                            onClick={incrementQdt}
+                                            disabled={!ableToClick}
+                                            title={!ableToClick ? t('changeQuantityMsg') : ""}
+                                        >+</button>
                                     </div>
                                 </div>
                             </div>

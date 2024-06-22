@@ -1,3 +1,5 @@
+@import "../../global/colors.scss";
+
 .product-images-carrousel__container {
     display: flex;
     flex-direction: row;
@@ -15,30 +17,30 @@
             &:hover {
                 cursor: pointer;
                 padding: 3px;
-                border: 2px solid blue;
+                border: 2px solid $secundary-color;
             }
         }
     }
 
     .images-carrousel__main-image__container {
+        margin-left: 12px;
 
         .images-carrousel__main-image__carrousel {
-            margin: auto;
+            //margin: auto;
             overflow: hidden;
             position: relative;
-            width: 100%;
+            //width: 100%;
+            width: 26vw;
             display: flex;
 
             .banner__carrousel__internal {
                 display: flex;
                 transition: transform 0.4s ease-in-out;
     
-                .banner__carrousel__item {
-                    position: relative;
-                    
-                    &:hover {
-                        cursor: pointer;
-                    }
+                & > img {
+                    //position: relative;
+                    width: 100%;
+                    //object-fit: cover;
                 }
             }
         }
@@ -60,18 +62,12 @@
                 }
             }
             .banner__arrow--left {
-                margin-left: 1.4vw;
+                margin-left: 1.2vw;
             }
             .banner__arrow--right {
-                margin-left: 22.7vw;
+                margin-left: 22.5vw;
             }
     
-        }
-
-        .images-carrousel__main-image {
-            width: 102%;
-            //height: 102%;
-            margin-left: 12px;
         }
     }
 }

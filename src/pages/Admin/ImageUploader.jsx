@@ -14,9 +14,11 @@ const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
         onImagesUploaded(newImages);
     };
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
-        onDrop, 
-        disabled: images.length >= 4 
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        onDrop: onDrop,
+        accept: 'image/*',
+        multiple: true,
+        disabled: images.length >= 4
     });
 
     const renderEmptySlots = () => {
@@ -35,8 +37,8 @@ const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
 
     return (
         <div className="addProduct__imagem-uploader">
-            <div 
-                {...getRootProps()} 
+            <div
+                {...getRootProps()}
                 className={`drag-and-drop__container ${isDragActive ? 'dragging' : ''}`}
                 style={{ cursor: images.length >= 4 ? 'not-allowed' : 'pointer' }}
             >
@@ -50,9 +52,9 @@ const ImageUploader = ({ images, setImages, onImagesUploaded }) => {
                 <div className="drag-and-drop__images-minuature">
                     {images.map((image, index) => (
                         <div key={index}>
-                            <img 
-                                src={URL.createObjectURL(image)} 
-                                alt={`uploaded preview ${index}`} 
+                            <img
+                                src={URL.createObjectURL(image)}
+                                alt={`uploaded preview ${index}`}
                             />
                         </div>
                     ))}

@@ -129,6 +129,7 @@ i18n
           brand: "Brand",
           size: "Size",
           amount: "Smount",
+          changeQuantityMsg: "You must select a product to change the quantity",
         }
       },
       es: {
@@ -253,6 +254,7 @@ i18n
           brand: "Marca",
           size: "Tamaño",
           amount: "Cantidad",
+          changeQuantityMsg: "Debes seleccionar un producto para cambiar la cantidad.",
         } 
       },
       pt: {
@@ -377,6 +379,7 @@ i18n
           brand: "Marca",
           size: "Tamanho",
           amount: "Quantidade",
+          changeQuantityMsg: "É preciso selecionar um produto para mudar a quantidade",
         }
       },
     },

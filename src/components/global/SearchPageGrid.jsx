@@ -73,13 +73,15 @@ export default function SearchPageGrid(props) {
                 ) : (
                     <div className="searchPage__grid">
                         {products.map((item, index) => (
-                            <ProductCard 
-                                key={index}
-                                image={item.images[0].imagem}
-                                name={item.productDetail.nome}
-                                price={item.productDetail.valor}
-                                id={item.productDetail.id}
-                            />
+                            item.images.length > 0 && (
+                                <ProductCard 
+                                    key={index}
+                                    image={item.images[0].imagem}
+                                    name={item.productDetail.nome}
+                                    price={item.productDetail.valor}
+                                    id={item.productDetail.id}
+                                />
+                            )
                         ))}
                     </div>
                 )}
