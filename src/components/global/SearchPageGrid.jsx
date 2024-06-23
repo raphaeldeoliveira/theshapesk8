@@ -22,7 +22,7 @@ export default function SearchPageGrid(props) {
             try {
                 let response;
                 if (productname) {
-                    response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/nome/${productname}`);
+                    response = await fetch(`http://localhost:8080/mainProductTeste/search/${productname}`);
                 } else {
                     response = await fetch(`http://localhost:8080/mainProductTeste`);
                 }

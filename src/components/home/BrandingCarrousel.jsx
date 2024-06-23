@@ -44,7 +44,7 @@ export default function BradingCarrousel() {
     const [carrouselPosition, setCarrouselPosition] = useState(0)
 
     const convertScrollX = useCallback(() => {
-        return carrouselPosition * 130 // aqui tem que descobrir a medida certa em view width (vw)
+        return carrouselPosition * 130
     }, [carrouselPosition])
 
     useEffect(() => {
