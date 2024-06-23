@@ -11,7 +11,7 @@ export default function ListProducts() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('https://e-commerce-prod.onrender.com/api/produtos');
+                const response = await fetch('http://localhost:8080/mainProductTeste');
                 if (!response.ok) {
                     throw new Error('Erro ao buscar produtos');
                 }   
@@ -27,9 +27,8 @@ export default function ListProducts() {
     }, []);
 
     const deleteProduct = async (id) => {
-        console.log(id)
         try {
-            const response = await fetch(`https://e-commerce-prod.onrender.com/api/produtos/${id}`, {
+            const response = await fetch(`http://localhost:8080/mainProductTeste/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -44,34 +43,27 @@ export default function ListProducts() {
             alert(t('productDeleted'));
     
             // Atualizar a lista de produtos excluindo o produto removido
-            setProducts(prevProducts => {
-                return {
-                    ...prevProducts,
-                    dados: prevProducts.dados.filter(item => item.id !== id)
-                };
-            });
+            setProducts(prevProducts => prevProducts.filter(item => item.productDetail.id !== id));
         } catch (error) {
             console.error('Erro ao excluir produto:', error);
             alert(t('deletedError'));
         }
-    };
+    };    
 
     return products ? (
         <div className="product__list">
             <h1>{t('productList')}</h1>
             <div>
-                {products.dados.map((item) => {
-                    console.log("aaa")
-                    console.log(item.id)
+                {products.map((item) => {
                     return (
-                        <div key={item.id}>
-                            <h4>{item.nome}</h4>
+                        <div key={item.productDetail.id}>
+                            <h4>{item.productDetail.nome}</h4>
                             <div>
-                                <Link className="sgv--link" to={`/product/${item.id}`}><FaExternalLinkAlt /></Link>
-                                <Link className="sgv--edit" to={`/admin/editProduct/${item.id}`}>
+                                <Link className="sgv--link" to={`/product/${item.productDetail.id}`}><FaExternalLinkAlt /></Link>
+                                <Link className="sgv--edit" to={`/admin/editProduct/${item.productDetail.id}`}>
                                     <FaEdit />
                                 </Link>
-                                <FaTrashAlt className="sgv--trash" onClick={() => deleteProduct(item.id)} />
+                                <FaTrashAlt className="sgv--trash" onClick={() => deleteProduct(item.productDetail.id)} />
                             </div>
                         </div>
                     );
