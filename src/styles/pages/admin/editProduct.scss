@@ -1,0 +1,9 @@
+.product__edit {
+    & > h1 {
+        margin-bottom: 16px;
+    }
+
+    .product__edit__container {
+        display: flex;
+    }
+}
