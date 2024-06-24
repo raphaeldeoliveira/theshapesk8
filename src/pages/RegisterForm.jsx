@@ -23,7 +23,7 @@ export default function RegisterForm({ setLoading }) {
         console.log(registerData);
         try {
             setLoading(true);
-            const response = await fetch('https://e-commerce-prod.onrender.com/api/clientes', {
+            const response = await fetch('http://localhost:8080/client', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,17 +31,15 @@ export default function RegisterForm({ setLoading }) {
                 body: JSON.stringify(registerData),
             });
             if (!response.ok) {
-                //alert("Falha ao registrar!")
-                alert("queeeeeeeeeryyyyy")
+                alert("Falha ao registrar!")
                 throw new Error('Erro ao registrar');
             }
             const data = await response.json();
-            dispatch(storeUserId(data.dados.id))
+            dispatch(storeUserId(data.id))
             navigate("/user/pedidos")
         } catch (error) {
             console.error('Erro:', error);
             alert('Erro:', error)
-            alert("queeeeerryyyy222")
         } finally {
             setLoading(false);
         }

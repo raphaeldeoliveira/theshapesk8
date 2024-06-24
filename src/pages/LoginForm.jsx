@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { storeUserId } from "../redux/login/actions";
 
 export default function LoginForm() {
     const { t } = useTranslation();
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [loginData, setLoginData] = useState({
         cpforemail: '',
         senha: ''
@@ -38,7 +41,10 @@ export default function LoginForm() {
                     },
                     body: JSON.stringify(payload),
                 });
+            
                 if (response.ok) {
+                    const data = await response.json();
+                    dispatch(storeUserId(data.id));
                     navigate("/user/pedidos");
                 } else {
                     alert("CPF ou senha inválido");
@@ -46,7 +52,7 @@ export default function LoginForm() {
                 }
             } catch (error) {
                 console.error('Erro:', error);
-            }
+            }            
         }
     };
 
