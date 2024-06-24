@@ -11,7 +11,7 @@ export default function ListProducts() {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('http://localhost:8080/mainProductTeste');
+                const response = await fetch('http://localhost:8080/product');
                 if (!response.ok) {
                     throw new Error('Erro ao buscar produtos');
                 }   
@@ -28,7 +28,7 @@ export default function ListProducts() {
 
     const deleteProduct = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/mainProductTeste/${id}`, {
+            const response = await fetch(`http://localhost:8080/product/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

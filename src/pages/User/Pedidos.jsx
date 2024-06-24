@@ -6,12 +6,12 @@ import { useTranslation } from 'react-i18next';
 
 export default function Pedidos() {
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [pedidos, setPedidos] = useState([])
     const userId = useSelector(state => state.userReducer.userId);
 
     const { t } = useTranslation();
-    
+    /*
     useEffect(() => {
         const loadProducts = async () => {
             try {
@@ -33,7 +33,7 @@ export default function Pedidos() {
         }
         loadProducts();
     }, [userId, t]);
-
+    */
     // da um get na API para pegar os pedidos (a quantidade, nao os pedidos em sí)
     const [pedidoSelecionado, setPedidoSelecionado] = useState(null);
 

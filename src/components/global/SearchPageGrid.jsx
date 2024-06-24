@@ -22,9 +22,9 @@ export default function SearchPageGrid(props) {
             try {
                 let response;
                 if (productname) {
-                    response = await fetch(`http://localhost:8080/mainProductTeste/search/${productname}`);
+                    response = await fetch(`http://localhost:8080/product/search/${productname}`);
                 } else {
-                    response = await fetch(`http://localhost:8080/mainProductTeste`);
+                    response = await fetch(`http://localhost:8080/product`);
                 }
                 
                 if (!response.ok) {
