@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../styles/pages/recoverPassword/recoverpassword__code.scss";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 
@@ -72,7 +71,7 @@ export default function RecoverTemplate(props) {
         loading ? (
             <LoadingSpinner />
         ) : (
-            <div className="recover-password__background" style={{ display: props.currentRecoverPage == props.id ? "" : "none" }}>
+            <div className="recover-password__background" style={{ display: props.currentRecoverPage === props.id ? "" : "none" }}>
                 <div className="recover-password__container">
                     <h1>{props.title}</h1>
                     <p>{props.paragraph1} {props.obscuredEmail} {props.paragraph2}</p>

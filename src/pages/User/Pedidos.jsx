@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../../styles/pages/user/user__pedidos.scss";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 import { useSelector } from "react-redux";
@@ -6,9 +6,9 @@ import { useTranslation } from 'react-i18next';
 
 export default function Pedidos() {
 
-    const [loading, setLoading] = useState(false)
-    const [pedidos, setPedidos] = useState([])
-    const userId = useSelector(state => state.userReducer.userId);
+    const loading = false
+    const pedidos = []
+    //const userId = useSelector(state => state.userReducer.userId);
 
     const { t } = useTranslation();
     /*

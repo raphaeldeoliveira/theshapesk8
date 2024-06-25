@@ -44,7 +44,7 @@ export default function ProductImagesCarrousel(props) {
                         <FaArrowAltCircleLeft 
                             onClick={moveLeft}
                             className="banner__arrow--left"
-                            style={{ display: props.images.length == 1 ? "none" : "" }}
+                            style={{ display: props.images.length === 1 ? "none" : "" }}
                         />
                     </div>
                     <div 
@@ -64,7 +64,7 @@ export default function ProductImagesCarrousel(props) {
                         <FaArrowAltCircleRight 
                             onClick={moveRight}
                             className="banner__arrow--right"
-                            style={{ display: props.images.length == 1 ? "none" : "" }}
+                            style={{ display: props.images.length === 1 ? "none" : "" }}
                         />
                     </div>
                 </div>

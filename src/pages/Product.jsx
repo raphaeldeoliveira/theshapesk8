@@ -65,8 +65,7 @@ export default function Product() {
     }
 
     const searchTerm = useSelector(state => state.searchReducer.currentSearch);
-    const product_sizes = [t('tamanhoP'), t('tamanhoM'), t('tamanhoG')];
-
+    
     return (
         <div>
             <Link className="return-link" to={searchTerm ? `/search/${searchTerm}` : "/search"}>
