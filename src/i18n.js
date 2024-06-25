@@ -130,6 +130,13 @@ i18n
           size: "Size",
           amount: "Smount",
           changeQuantityMsg: "You must select a product to change the quantity",
+          recoverPasswordTitle: "Recover your password",
+          recoverPasswordParagraph1: "To recover your account, check your email",
+          recoverPasswordParagraph2: "and enter the code received in your email.",
+          recoverPasswordInputPlaceholder: "Enter the code received in your email",
+          recoverPasswordSubmit: "Verify",
+          recoverPasswordNotRecieve: "Didn't receive it? Send the code again",
+          recoverPasswordReturnHome: "Return to home",
         }
       },
       es: {
@@ -255,6 +262,13 @@ i18n
           size: "Tamaño",
           amount: "Cantidad",
           changeQuantityMsg: "Debes seleccionar un producto para cambiar la cantidad.",
+          recoverPasswordTitle: "Recupera tu contrasena",
+          recoverPasswordParagraph1: "Para recuperar tu cuenta, revisa tu correo electronico",
+          recoverPasswordParagraph2: "e ingresa el codigo recibido en tu correo electronico.",
+          recoverPasswordInputPlaceholder: "Ingresa el codigo recibido en tu correo electronico",
+          recoverPasswordSubmit: "Verificar",
+          recoverPasswordNotRecieve: "¿No lo recibiste? Envia el codigo nuevamente",
+          recoverPasswordReturnHome: "Regresar a home",
         } 
       },
       pt: {
@@ -380,6 +394,13 @@ i18n
           size: "Tamanho",
           amount: "Quantidade",
           changeQuantityMsg: "É preciso selecionar um produto para mudar a quantidade",
+          recoverPasswordTitle: "Recuperar sua senha",
+          recoverPasswordParagraph1: "Para recuperar sua conta verifique o email",
+          recoverPasswordParagraph2: "e informe o codigo recebido em seu email.",
+          recoverPasswordInputPlaceholder: "Digite o codigo recebido no seu email",
+          recoverPasswordSubmit: "Verificar",
+          recoverPasswordNotRecieve: "Não recebeu? Enviar o codigo novamente",
+          recoverPasswordReturnHome: "Voltar para a home",
         }
       },
     },

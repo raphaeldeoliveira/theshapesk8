@@ -68,7 +68,7 @@ export default function LoginForm() {
         <form onSubmit={handleLoginSubmit}>
             <input type="text" name="cpforemail" placeholder="CPF ou Email" value={loginData.cpforemail} onChange={handleLoginInputChange}></input>
             <input type="password" name="senha" placeholder={t('password')} value={loginData.senha} onChange={handleLoginInputChange}></input>
-            <Link onClick={() => alert("Função não implementada")}>{t('forgotPassword')}</Link>
+            <Link to="/recoverPassword">{t('forgotPassword')}</Link>
             <button type="submit">{t('enter')}</button>
         </form>
     );

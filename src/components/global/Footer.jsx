@@ -10,7 +10,7 @@ export default function Footer() {
     return (
         <footer>
             <img alt="" src={logo}/>
-            <h2>{t('poweredBy')} <a href="https://github.com/raphaeldeoliveira" target="_blank" rel="noreferrer">Raphael de Oliveira</a> {t('conector')} <a href="https://github.com/MAONEZZE" target="_blank" rel="noreferrer">Ruan Sanchez</a></h2>
+            <h2>{t('poweredBy')} <a href="https://github.com/raphaeldeoliveira" target="_blank" rel="noreferrer">Raphael de Oliveira</a></h2>
         </footer>
     )
 }

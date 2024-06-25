@@ -16,6 +16,7 @@ import Pedidos from "./pages/User/Pedidos";
 import UserData from "./pages/User/UserData";
 import DeliveryAddress from "./pages/User/DeliveryAddress";
 import PaymentMethods from "./pages/User/PaymentMethods";
+import RecoverPassword from "./pages/RecoverPassword/RecoverPassword";
 // rotas aninhadas de admin
 import AddProduct from "./pages/Admin/AddProduct";
 import ListProducts from "./pages/Admin/ListProducts";
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="register" element={<RegisterAndLogin />} />
+          <Route path="recoverPassword" element={<RecoverPassword />} />
           <Route path="product/:id" element={<Product />} />
           <Route path="search/:productname?" element={<Search />} />
           <Route path="admin" element={<Admin />} >
