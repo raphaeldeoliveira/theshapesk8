@@ -12,7 +12,6 @@ export default function SearchPageGrid(props) {
     const [page, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const size = 20;
-    const [totalItems, setTotalItems] = useState(0);
     const { t } = useTranslation();
 
     // Obtém o nome do produto da URL
@@ -44,8 +43,6 @@ export default function SearchPageGrid(props) {
 
                 // Calcula o número total de páginas com base no número total de itens retornados
                 const totalPages = Math.ceil(data.totalItems / size);
-
-                setTotalItems(data.totalItems)
 
                 setTotalPages(totalPages);
             } catch(error) {
