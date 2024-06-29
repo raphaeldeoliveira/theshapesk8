@@ -23,7 +23,7 @@ export default function RegisterForm({ setLoading }) {
         console.log(registerData);
         try {
             setLoading(true);
-            const response = await fetch('https://theshapesk8api.onrender.com/client', {
+            const response = await fetch('http://localhost:8080/client', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

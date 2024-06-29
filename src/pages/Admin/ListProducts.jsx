@@ -5,21 +5,26 @@ import { FaTrashAlt, FaExternalLinkAlt, FaEdit } from "react-icons/fa";
 import { useTranslation } from 'react-i18next';
 
 export default function ListProducts() {
+
+    const [loading, setLoading] = useState(false)
     const [products, setProducts] = useState(null);
     const { t } = useTranslation();
 
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch('https://theshapesk8api.onrender.com/product');
+                setLoading(true)
+                const response = await fetch('http://localhost:8080/product');
                 if (!response.ok) {
                     throw new Error('Erro ao buscar produtos');
                 }   
                 const data = await response.json();
                 setProducts(data); // Define os produtos com os dados da API
                 console.log(data)
+                setLoading(false)
             } catch (error) {
                 console.error('Erro ao buscar produtos:', error);
+                setLoading(false)
             }
         };
 
@@ -28,7 +33,7 @@ export default function ListProducts() {
 
     const deleteProduct = async (id) => {
         try {
-            const response = await fetch(`https://theshapesk8api.onrender.com/product/${id}`, {
+            const response = await fetch(`http://localhost:8080/product/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,7 +55,7 @@ export default function ListProducts() {
         }
     };    
 
-    return products ? (
+    return products || !loading ? (
         <div className="product__list">
             <h1>{t('productList')}</h1>
             <div>

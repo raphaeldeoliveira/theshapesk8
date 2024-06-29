@@ -16,18 +16,52 @@
     }
 
     .searchPage__grid {
-        // por enquanto flex, depois tem que implementar o grid conforme o numero
-        // de resultados que a busca retornar
-        // Teremos 3 classes de grid: 2 colunas, 3 colunas e 4 colunas e elas
-        // vao aparecer conforme o tamanho da width (usando media querys(
-        /*display: flex;
-        justify-content: space-evenly;
-        padding: 0px 50px;*/
-
         margin: auto;
         width: 80%;
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 28px;
     }
+
+    .searchPage__grid__pagination {
+        margin-top: 30px;
+        font-size: 1.3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        & > button {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            color: white;
+    
+            & > .pagination__button--left,
+            & > .pagination__button--right {
+                font-size: 36px;
+                color: inherit;
+            }
+
+            &:hover {
+                cursor: pointer;
+                color: gray;
+            }
+
+            &:disabled {
+                color: gray;
+                cursor: not-allowed;
+            }
+    
+            & > .pagination__button--left {
+                margin-right: 19px;
+            }
+    
+            & > .pagination__button--right {
+                margin-left: 19px;
+            }
+        }
+    }
+    
+
 }

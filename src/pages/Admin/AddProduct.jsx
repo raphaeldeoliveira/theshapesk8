@@ -59,7 +59,7 @@ export default function AddProduct() {
         const filteredImages = formData.images.filter(i => i.imagem !== "");
         
         try {
-            const response = await fetch('https://theshapesk8api.onrender.com/product', {
+            const response = await fetch('http://localhost:8080/product', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

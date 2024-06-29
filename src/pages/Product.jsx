@@ -24,7 +24,7 @@ export default function Product() {
         setDataLoad(false);
         const loadProducts = async () => {
             try {
-                const response = await fetch(`https://theshapesk8api.onrender.com/product/${id}`);
+                const response = await fetch(`http://localhost:8080/product/${id}`);
                 if (!response.ok) {
                     alert(t('registerError2'))
                     throw new Error('Erro ao fazer login');

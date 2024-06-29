@@ -34,7 +34,7 @@ export default function LoginForm() {
             navigate("/admin/addProduct");
         } else {
             try {
-                const response = await fetch('https://theshapesk8api.onrender.com/client/login', {
+                const response = await fetch('http://localhost:8080/client/login', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

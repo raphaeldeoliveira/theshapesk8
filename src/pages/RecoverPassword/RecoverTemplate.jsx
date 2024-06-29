@@ -25,7 +25,7 @@ export default function RecoverTemplate(props) {
             setLoading(true);
             props.obscureEmail ? props.obscureEmail(bodyRequest.input1) : console.log(payload);
             console.log(`fetchType: ${props.fetchType}`);
-            const response = await fetch(`https://theshapesk8api.onrender.com/recoverPassword/${props.fetchType}`, {
+            const response = await fetch(`http://localhost:8080/recoverPassword/${props.fetchType}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

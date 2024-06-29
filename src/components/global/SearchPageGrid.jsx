@@ -4,11 +4,15 @@ import "../../styles/pages/search/searchpage.scss";
 import LoadingSpinner from "./LoadingSpinner";
 import { useParams } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight } from "react-icons/fa";
 
 export default function SearchPageGrid(props) {
-
     const [loading, setLoading] = useState(true);
     const [products, setProducts] = useState([]);
+    const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
+    const size = 20;
+    const [totalItems, setTotalItems] = useState(0);
     const { t } = useTranslation();
 
     // Obtém o nome do produto da URL
@@ -16,37 +20,54 @@ export default function SearchPageGrid(props) {
 
     useEffect(() => {
         const loadProducts = async () => {
-            // Atualiza o estado loading para true antes de fazer a nova solicitação
             setLoading(true);
 
             try {
                 let response;
                 if (productname) {
-                    response = await fetch(`https://theshapesk8api.onrender.com/product/search/${productname}`);
+                    response = await fetch(`http://localhost:8080/product/search/${productname}?page=${page}&size=${size}`);
                 } else {
-                    response = await fetch(`https://theshapesk8api.onrender.com/product`);
+                    response = await fetch(`http://localhost:8080/product?page=${page}&size=${size}`);
                 }
                 
                 if (!response.ok) {
-                    alert(t('failedRegister'))
+                    alert(t('failedRegister'));
                     throw new Error('Erro ao fazer login');
                 }
+                
                 const data = await response.json();
-                console.log(data)
-                setProducts(data);
+                console.log(data);
+
+                const productsData = data.content ? data.content : data; // Supondo que 'content' contenha os produtos
+
+                setProducts(productsData);
+
+                // Calcula o número total de páginas com base no número total de itens retornados
+                const totalPages = Math.ceil(data.totalItems / size);
+
+                setTotalItems(data.totalItems)
+
+                setTotalPages(totalPages);
             } catch(error) {
                 console.error('Erro:', error);
                 alert('Erro:', error);
             } finally {
-                // Define o estado loading como false após a conclusão da solicitação
                 setLoading(false);
             }
-        }
-        loadProducts();
-    }, [productname, t]); // Adiciona productname como dependência para garantir que a solicitação seja feita sempre que a rota mudar
+        };
 
-    /* Não vai ter filtros. Somente 'busca por: ', quando clicar em spitfire
-    ele vai ficar 'Busca por: Spitfire' */
+        loadProducts();
+    }, [productname, page, t]); // Removido 'size' da lista de dependências pois é fixo
+
+    const handleNextPage = () => {
+        setPage(prevPage => prevPage + 1);
+    };
+
+    const handlePreviousPage = () => {
+        if (page > 0) {
+            setPage(prevPage => prevPage - 1);
+        }
+    };
 
     let h1title;
     if (props.h1title) {
@@ -71,19 +92,38 @@ export default function SearchPageGrid(props) {
                 {products.length === 0 ? (
                     <h1>{t('searchNoReturnResults')}</h1>
                 ) : (
-                    <div className="searchPage__grid">
-                        {products.map((item, index) => (
-                            item.images.length > 0 && (
-                                <ProductCard 
-                                    key={index}
-                                    image={item.images[0].imagem}
-                                    name={item.productDetail.nome}
-                                    price={item.productDetail.valor}
-                                    id={item.productDetail.id}
+                    <>
+                        <div className="searchPage__grid">
+                            {products.map((item, index) => (
+                                item.images.length > 0 && (
+                                    <ProductCard 
+                                        key={index}
+                                        image={item.images[0].imagem}
+                                        name={item.productDetail.nome}
+                                        price={item.productDetail.valor}
+                                        id={item.productDetail.id}
+                                    />
+                                )
+                            ))}
+                        </div>
+                        <div className="searchPage__grid__pagination" style={{ display: totalPages <= 1 ? "none" : "" }}>
+                            <button disabled={page === 0}>
+                                <FaArrowAltCircleLeft
+                                    className="pagination__button--left"
+                                    onClick={handlePreviousPage}
                                 />
-                            )
-                        ))}
-                    </div>
+                            </button>
+                            
+                            <span>{`PAGE ${page + 1} OF ${totalPages}`}</span>
+
+                            <button disabled={page === totalPages - 1}>
+                                <FaArrowAltCircleRight
+                                    className="pagination__button--right"
+                                    onClick={handleNextPage}
+                                />
+                            </button>
+                        </div>
+                    </>
                 )}
             </div>
         );
