@@ -82,6 +82,11 @@
                 background-color: darken($primary-color, 20%);
                 cursor: pointer;
             }
+
+            &:disabled {
+                cursor: not-allowed;
+                background-color: $primary-color;
+            }
         }
         .button--buy {
             background-color: $secundary-color;
@@ -90,6 +95,11 @@
             &:hover {
                 background-color: darken($secundary-color, 20%);
                 cursor: pointer;
+            }
+
+            &:disabled {
+                cursor: not-allowed;
+                background-color: $secundary-color;
             }
         }
     }

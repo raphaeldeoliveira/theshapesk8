@@ -57,7 +57,7 @@ export default function Product() {
     }
 
     function handleAddToCart() {
-        if (productData) {
+        if (productData && sizeSelected) {
             for (let i = 0; i < productQtd; i++) {
                 dispatch(addToCart(productData));
             }
@@ -130,8 +130,8 @@ export default function Product() {
                                 </div>
                             </div>
                             <div className="detail__buttons">
-                                <button className="button--add" onClick={handleAddToCart}>{t('addCartButton')}</button>
-                                <button className="button--buy" onClick={() => {
+                                <button disabled={sizeSelected === null} className="button--add" onClick={handleAddToCart}>{t('addCartButton')}</button>
+                                <button disabled={sizeSelected === null} className="button--buy" onClick={() => {
                                     handleAddToCart();
                                     navigate("/payment");
                                 }}>{t('buyNowButton')}</button>
