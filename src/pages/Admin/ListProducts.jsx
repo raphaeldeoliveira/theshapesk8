@@ -14,7 +14,7 @@ export default function ListProducts() {
         const fetchProducts = async () => {
             try {
                 setLoading(true)
-                const response = await fetch('http://localhost:8080/product');
+                const response = await fetch('https://theshapesk8api.onrender.com/product');
                 if (!response.ok) {
                     throw new Error('Erro ao buscar produtos');
                 }   
@@ -33,7 +33,7 @@ export default function ListProducts() {
 
     const deleteProduct = async (id) => {
         try {
-            const response = await fetch(`http://localhost:8080/product/${id}`, {
+            const response = await fetch(`https://theshapesk8api.onrender.com/product/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

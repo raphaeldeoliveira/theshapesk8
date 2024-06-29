@@ -25,9 +25,9 @@ export default function SearchPageGrid(props) {
             try {
                 let response;
                 if (productname) {
-                    response = await fetch(`http://localhost:8080/product/search/${productname}?page=${page}&size=${size}`);
+                    response = await fetch(`https://theshapesk8api.onrender.com/product/search/${productname}?page=${page}&size=${size}`);
                 } else {
-                    response = await fetch(`http://localhost:8080/product?page=${page}&size=${size}`);
+                    response = await fetch(`https://theshapesk8api.onrender.com/product?page=${page}&size=${size}`);
                 }
                 
                 if (!response.ok) {

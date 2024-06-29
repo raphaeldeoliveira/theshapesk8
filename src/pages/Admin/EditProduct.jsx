@@ -27,7 +27,7 @@ export default function EditProduct() {
             async function fetchProduct() {
                 try {
                     setLoading(true);
-                    const response = await fetch(`http://localhost:8080/product/${productid}`);
+                    const response = await fetch(`https://theshapesk8api.onrender.com/product/${productid}`);
                     if (response.ok) {
                         const productData = await response.json();
                         console.log("productData");
@@ -88,7 +88,7 @@ export default function EditProduct() {
         e.preventDefault();
         try {
             setLoading(true);
-            const response = await fetch(`http://localhost:8080/product`, {
+            const response = await fetch(`https://theshapesk8api.onrender.com/product`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
